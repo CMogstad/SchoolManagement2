@@ -73,11 +73,8 @@ public class TeacherDAOImplementation implements TeacherDAO {
 
     @Override
     public List<Course> listTeacherCourses(int id) {
-        EntityManager em = emf.createEntityManager();
-
-        TypedQuery<Course> tq = em.createQuery("SELECT t.courses FROM Teacher t WHERE t.id= :id ", );
-
-        em.close();
+        // N/A
+        return null;
     }
 
     @Override
