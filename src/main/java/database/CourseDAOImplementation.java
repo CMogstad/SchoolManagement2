@@ -23,6 +23,7 @@ public class CourseDAOImplementation implements CourseDAO {
         t.commit();
         em.close();
     }
+
     @Override
     public void updateCourse(Course course) {
         EntityManager em = emf.createEntityManager();
@@ -32,8 +33,8 @@ public class CourseDAOImplementation implements CourseDAO {
         em.getTransaction().commit();
 
         em.close();
-
     }
+
     @Override
     public void removeCourse(int id) {
         EntityManager em = emf.createEntityManager();
