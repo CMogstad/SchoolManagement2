@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Teacher {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String firstName;
@@ -24,6 +24,16 @@ public class Teacher {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employmentYear = employmentYear;
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+        course.getTeachers().add(this);
+    }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+        course.getTeachers().remove(this);
     }
 
     public void setId(int id) {

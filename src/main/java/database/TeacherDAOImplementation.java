@@ -1,6 +1,5 @@
 package database;
 
-import entities.Course;
 import entities.Teacher;
 
 import javax.persistence.EntityManager;
@@ -72,17 +71,14 @@ public class TeacherDAOImplementation implements TeacherDAO {
     }
 
     @Override
-    public List<Course> listTeacherCourses(int id) {
-        // N/A
-        return null;
-    }
-
-    @Override
     public List<Teacher> showAllTeachersWithoutCourse() {
         EntityManager em = emf.createEntityManager();
+
         TypedQuery<Teacher> tq = em.createQuery("SELECT t from Teacher t WHERE t.courses.size = 0", Teacher.class);
         List<Teacher> teachers = tq.getResultList();
+
         em.close();
+
         return teachers;
     }
 }
