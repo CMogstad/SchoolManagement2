@@ -27,6 +27,26 @@ public class Course {
         this.coursePoints = coursePoints;
     }
 
+    public void addEducation(Education education) {
+        educations.add(education);
+        education.getStudents().add(this);
+    }
+
+    public void removeEducation(Education education) {
+        educations.remove(education);
+        education.getStudents().remove(this);
+    }
+
+    public void addTeacher(Teacher teacher) {
+        teachers.add(teacher);
+        teacher.getCourses().add(this);
+    }
+
+    public void removeTeacher(Teacher teacher) {
+        teachers.remove(teacher);
+        teacher.getCourses().add(this);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
