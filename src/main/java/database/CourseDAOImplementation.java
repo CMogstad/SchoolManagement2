@@ -10,7 +10,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public abstract class CourseDAOImplementation implements CourseDAO {
+public class CourseDAOImplementation implements CourseDAO {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
