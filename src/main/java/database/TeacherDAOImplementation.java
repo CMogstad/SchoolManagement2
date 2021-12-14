@@ -74,7 +74,7 @@ public class TeacherDAOImplementation implements TeacherDAO {
     public List<Teacher> showAllTeachersWithoutCourse() {
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Teacher> tq = em.createQuery("SELECT t from Teacher t WHERE t.courses.size = 0", Teacher.class);
+        TypedQuery<Teacher> tq = em.createQuery("SELECT t from Teacher t WHERE t.courses IS empty", Teacher.class);
         List<Teacher> teachers = tq.getResultList();
 
         em.close();
