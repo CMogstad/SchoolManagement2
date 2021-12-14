@@ -26,6 +26,15 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public void addEducation(Education education){
+        educations.add(education);
+        education.getStudents().add(this);
+    }
+    public void removeEducation(Education education){
+        educations.remove(education);
+        education.getStudents().remove(this);
+    }
+
     public void setId(int id) {
         this.id = id;
     }

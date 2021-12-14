@@ -16,8 +16,6 @@ public interface TeacherDAO {
 
     List<Teacher> showAllTeachers();
 
-    List<Course> listTeacherCourses(int id);
-
     List<Teacher> showAllTeachersWithoutCourse();
 
     /*
