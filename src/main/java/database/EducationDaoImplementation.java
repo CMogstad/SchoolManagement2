@@ -120,7 +120,6 @@ public class EducationDaoImplementation implements EducationDAO{
         EntityManager em = emf.createEntityManager();
 
 
-
         Education education = em.find(Education.class, id);
 
 
@@ -152,6 +151,7 @@ public class EducationDaoImplementation implements EducationDAO{
 
         EntityManager em = emf.createEntityManager();
 
+
         Education education = em.find(Education.class, id);
 
 
@@ -167,13 +167,13 @@ public class EducationDaoImplementation implements EducationDAO{
 
         em.getTransaction().begin();
 
-        List<Education> list = em.createQuery("SELECT e FROM Education e WHERE e.students is empty", Education.class)
+        List<Education> educations = em.createQuery("SELECT e FROM Education e WHERE e.students is empty", Education.class)
                 .getResultList();
 
         em.getTransaction().commit();
 
         em.close();
 
-        return list;
+        return educations;
     }
 }
