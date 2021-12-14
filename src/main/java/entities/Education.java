@@ -4,6 +4,15 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "Education.showAll", query = "SELECT e FROM Education e"),
+                @NamedQuery(name = "Education.findByEducationName", query = "SELECT e FROM Education e WHERE e.name=:name"),
+
+        }
+)
+
 @Entity
 public class Education {
     @Id
