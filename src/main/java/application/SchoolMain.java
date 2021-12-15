@@ -23,8 +23,9 @@ public class SchoolMain {
         TeacherController tc = new TeacherController(tDAO, cDAO);
         CourseController cc = new CourseController(cDAO, tDAO, eDAO);
         EducationController ec = new EducationController(eDAO, cDAO, sDAO);
+        StatisticsController stc = new StatisticsController();
 
-        ConsoleUI io = new ConsoleUI(uInput, sc, tc, cc, ec);
+        ConsoleUI io = new ConsoleUI(uInput, sc, tc, cc, ec, stc);
 
         MainController mc = new MainController(io, uInput);
         mc.mainProgram();

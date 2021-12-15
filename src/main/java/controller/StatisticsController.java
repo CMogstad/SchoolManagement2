@@ -14,9 +14,9 @@ public class StatisticsController {
 
     StatisticsDaoImplementation sDao;
 
-    public void studentsByDateOfBirthController() {
+    public void studentsByDateOfBirthController(int start, int end) {
 
-       // sDao.studentsByDateOfBirth();
+        sDao.studentsByDateOfBirth(start, end);
 
     }
 

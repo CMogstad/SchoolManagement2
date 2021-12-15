@@ -1,5 +1,7 @@
 package controller;
 
+import database.EducationDAO;
+import database.EducationDaoImplementation;
 import database.StudentImpDAO;
 import entities.Education;
 import entities.Student;
@@ -47,6 +49,35 @@ public class StudentController {
 
         sDAO.updateStudent(student);
     }
+
+   /* public void addStudentToEducationController(int eID, int sID){
+
+        Education education = eDAO.findEducation(eID);
+
+        Student student = sDAO.findStudent(sID);
+
+        education.addStudent(student);
+
+        sDAO.updateStudent(student);
+
+        eDAO.updateEducation(education);
+
+    }
+
+    public void removeStudentFromEducationController(int eID, int sID){
+
+        Education education = eDAO.findEducation(eID);
+
+        Student student = sDAO.findStudent(sID);
+
+        education.removeStudent(student);
+
+        eDAO.updateEducation(education);
+
+        sDAO.updateStudent(student);
+
+
+    }*/
 
     public void deleteStudentByID(int id) {
         Student student = sDAO.findStudent(id);
