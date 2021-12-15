@@ -1,5 +1,6 @@
 package application;
 
+import controller.MainController;
 import entities.Student;
 import entities.Teacher;
 import userinterface.ConsoleInput;
@@ -9,6 +10,16 @@ import java.util.List;
 
 public class SchoolMain {
 
+    public static void main(String[] args) {
+
+
+        ConsoleUI io = new ConsoleUI();
+
+        ConsoleInput uInput = new ConsoleInput();
+
+        MainController mc = new MainController(io, uInput);
+
+        mc.mainProgram();
 
 
 
@@ -42,4 +53,4 @@ public class SchoolMain {
 
     }
 
-
+}

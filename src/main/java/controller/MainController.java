@@ -16,15 +16,16 @@ public class MainController {
 
     ConsoleInput uInput;
 
-    static MainController mc;
+
 
     public MainController(ConsoleUI io, ConsoleInput uInput) {
         this.io = io;
         this.uInput = uInput;
     }
 
-    public static void main(String[] args) {
 
+
+      public void mainProgram(){
 
         while (mainLoop) {
 
@@ -34,12 +35,14 @@ public class MainController {
             teacherLoop = true;
             statisticsLoop = true;
 
-            mc.runSchoolManagementProgram();
+            runSchoolManagementProgram();
         }
     }
 
 
     private void runSchoolManagementProgram() {
+
+
 
         io.printMainMenu();
 
@@ -77,6 +80,7 @@ public class MainController {
 
         }
     }
+
 
     private void studentManagementController() {
 
@@ -177,6 +181,31 @@ public class MainController {
 
     }
 
+
+    private void statisticsManagementController() {
+
+
+        io.printStatisticsMenu();
+
+        String choice = uInput.readString();
+
+        switch (choice) {
+
+            case "1" ->{ /*studentsByDateOfBirthController()*/}
+            case "2" -> {/*courseHighestPointsController();*/}
+            case "3" -> {/*courseLowestPointsController();*/}
+            case "4" -> {/*educationMostStudentsController();*/}
+            case "5" -> {/*teacherMostCoursesController();*/}
+            case "6" -> {/*educationMostCoursesController();*/}
+            case "7" -> {/*averageEmploymentYearController();*/}
+            case "8" -> {/*listEmploymentYearAscOrdController();*/;}
+            case "9" -> {/* numberOfStudentsByEducationController();*/}
+            case "10" -> {/*numberOfCoursesByEducationController();*/}
+            case "0" -> statisticsLoop = false;
+            default -> System.out.println("Wrong input, please choose 1-6");
+        }
+
+    }
     //Run program
 
     //Implement Statistics here

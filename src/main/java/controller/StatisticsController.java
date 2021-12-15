@@ -80,4 +80,10 @@ public class StatisticsController {
 
 
     }
+
+    public void listEmploymentYearAscOrdController(){
+
+        sDao.listEmploymentYearAscOrd();
+
+    }
 }
