@@ -183,6 +183,8 @@ public class ConsoleUI {
 
         System.out.println("Student has been updated!");
 
+        System.out.println("Hej");
+
     }
     public void updateStudentDateOfBirthUI(){
 
