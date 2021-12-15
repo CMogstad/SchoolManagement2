@@ -41,6 +41,16 @@ public class CourseController {
 
         cDAO.updateCourse(course);
     }
+    public void  updateCourseSubjectController (int id, String subject){
+        Course course = cDAO.findCourse(id);
+        course.setSubject(subject);
+        cDAO.updateCourse(course);
+    }
+    public void  updateCoursePointsController (int id, int coursePoints){
+        Course course = cDAO.findCourse(id);
+        course.setCoursePoints(coursePoints);
+        cDAO.updateCourse(course);
+    }
 
     public Course findCourseController(int id) {
 

@@ -25,6 +25,21 @@ public class TeacherController {
         tDAO.updateTeacher(teacher);
 
     }
+    public void  updateTeacherFirstNameController (int id, String name){
+        Teacher teacher = tDAO.findTeacher(id);
+        teacher.setFirstName(name);
+        tDAO.updateTeacher(teacher);
+    }
+    public void  updateTeacherLastNameController (int id, String name){
+        Teacher teacher = tDAO.findTeacher(id);
+        teacher.setLastName(name);
+        tDAO.updateTeacher(teacher);
+    }
+    public void  updateTeacherEmploymentYearController (int id, int employmentYear){
+        Teacher teacher = tDAO.findTeacher(id);
+        teacher.setEmploymentYear(employmentYear);
+        tDAO.updateTeacher(teacher);
+    }
 
     public void deleteTeacherByID(int id) {
 
