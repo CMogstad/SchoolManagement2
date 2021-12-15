@@ -147,7 +147,7 @@ public class StatisticsDaoImplementation implements StatisticsDao {
     }
 
     @Override
-    public List listEmployentYearAscOrd() {
+    public List listEmploymentYearAscOrd() {
 
         EntityManager em = emf.createEntityManager();
 
