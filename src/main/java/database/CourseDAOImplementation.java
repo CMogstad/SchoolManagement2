@@ -31,7 +31,6 @@ public class CourseDAOImplementation implements CourseDAO {
         em.getTransaction().begin();
         em.merge(course);
         em.getTransaction().commit();
-
         em.close();
     }
 
@@ -54,10 +53,10 @@ public class CourseDAOImplementation implements CourseDAO {
     }
 
     @Override
-    List<Course> findCourseByName(String name) {
+    public List<Course> findCourseBySubject(String subject) {
         EntityManager em = emf.createEntityManager();
 
-        List<Course> courses = em.createNamedQuery("Course.findByCourseName", Course.class).setParameter("name", name).getResultList();
+        List<Course> courses = em.createNamedQuery("Course.findByCourseSubject", Course.class).setParameter("subject", subject).getResultList();
 
         em.close();
 
@@ -85,10 +84,22 @@ public class CourseDAOImplementation implements CourseDAO {
 
         em.close();
 
-        return Course.getEducations();
+        return course.getEducations();
     }
 
-    List<Course> showAllCoursesWithoutEducation();
+    public List<Course> showAllCoursesWithoutEducation(){
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        List<Course> list = em.createQuery("SELECT c FROM Course c WHERE c.educations is empty", Course.class).getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+
+        return list;
+    }
 
     @Override
     public List<Teacher> listCourseTeachers(int id) {
@@ -100,10 +111,22 @@ public class CourseDAOImplementation implements CourseDAO {
 
         em.close();
 
-        return Course.getTeachers();
+        return course.getTeachers();
 
     }
 
-    List<Course> showAllCoursesWithoutTeacher();
+    public List<Course> showAllCoursesWithoutTeacher() {
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        List<Course> courses = em.createQuery("SELECT c FROM Course c WHERE c.teachers is empty", Course.class).getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+
+        return courses;
+    }
 
 }

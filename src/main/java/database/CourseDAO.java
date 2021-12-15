@@ -16,7 +16,7 @@ public interface CourseDAO {
 
     Course findCourse(int id);
 
-    List<Course> findCourseByName(String name);
+    List<Course> findCourseBySubject(String subject);
 
     List<Course> showAllCourses();
 
@@ -27,19 +27,5 @@ public interface CourseDAO {
     List<Teacher> listCourseTeachers(int id);
 
     List<Course> showAllCoursesWithoutTeacher();
-
-
-
-
-
-
-
-    /*
-• Add courses of different kind
-• Update course information
-• Show information about a specific course
-• Show all courses
-• Remove a course
-         */
 
 }
