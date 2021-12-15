@@ -2,10 +2,18 @@ package controller;
 
 import database.CourseDAOImplementation;
 import entities.Course;
+import entities.Education;
+import entities.Teacher;
+
+import java.util.List;
 
 public class CourseController {
 
-    CourseDAOImplementation cDAO = new CourseDAOImplementation();
+    CourseDAOImplementation cDAO;
+
+    public CourseController(CourseDAOImplementation cDAO) {
+        this.cDAO = cDAO;
+    }
 
     public void createCourse(String subject, int coursePoints) {
         Course course = new Course(subject, coursePoints);
@@ -15,6 +23,17 @@ public class CourseController {
 
     public void removeCourseById(int id) {
 
+        Course course = cDAO.findCourse(id);
+        List<Teacher> teachers = course.getTeachers();
+        for (Teacher t:
+             teachers) {
+            t.removeCourse(course);
+        }
+        List<Education> educations = course.getEducations();
+        for (Education e:
+             educations) {
+            e.removeCourse(course);
+        }
         cDAO.removeCourse(id);
     }
 
@@ -23,38 +42,38 @@ public class CourseController {
         cDAO.updateCourse(course);
     }
 
-    public void findCourseController(int id) {
+    public Course findCourseController(int id) {
 
-        cDAO.findCourse(id);
+        return cDAO.findCourse(id);
     }
 
-    public void findCourseBySubjectController(String subject) {
+    public List<Course> findCourseBySubjectController(String subject) {
 
-        cDAO.findCourseBySubject(subject);
+        return cDAO.findCourseBySubject(subject);
     }
 
-    public void showAllCoursesController() {
+    public List<Course> showAllCoursesController() {
 
-        cDAO.showAllCourses();
+        return cDAO.showAllCourses();
     }
 
-    public void listCourseEducationsController(int id) {
+    public List<Education> listCourseEducationsController(int id) {
 
-        cDAO.listCourseEducations(id);
+        return cDAO.listCourseEducations(id);
     }
 
-    public void showAllCoursesWithoutEducationController() {
+    public List<Course> showAllCoursesWithoutEducationController() {
 
-        cDAO.showAllCoursesWithoutEducation();
+        return cDAO.showAllCoursesWithoutEducation();
     }
 
-    public void listAllCourseTeachersController(int id) {
+    public List<Teacher> listAllCourseTeachersController(int id) {
 
-        cDAO.listCourseTeachers(id);
+        return cDAO.listCourseTeachers(id);
     }
 
-    public void showAllCoursesWithoutTeacherController() {
+    public List<Course> showAllCoursesWithoutTeacherController() {
 
-        cDAO.showAllCoursesWithoutTeacher();
+        return cDAO.showAllCoursesWithoutTeacher();
     }
 }
