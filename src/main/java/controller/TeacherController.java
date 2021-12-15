@@ -71,4 +71,26 @@ public class TeacherController {
         return tDAO.showAllTeachersWithoutCourse();
 
     }
+
+    public void addCourseToTeacherController(int courseId, int teacherId) {
+        System.out.println("This function has not been implemented yet");
+    }
+
+    public void removeCourseFromTeacherController(int courseId, int teacherId) {
+        System.out.println("This function has not been implemented yet");
+    }
+
+    public void removeTeacherByIDController(int teacherId) {
+        System.out.println("This function has not been implemented yet");
+    }
+
+    public List<Teacher> findTeacherByLastNameController(String lastName) {
+        System.out.println("This function has not been implemented yet");
+        return null;
+    }
+
+    public List<Course> showCoursesOfTeacherController(int teacherId) {
+        System.out.println("This function has not been implemented yet");
+        return null;
+    }
 }

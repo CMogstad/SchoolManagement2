@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String firstName;
@@ -34,14 +34,16 @@ public class Student {
         return yearInt;
     }
 
-    public void addEducation(Education education){
+    public void addEducation(Education education) {
         educations.add(education);
         education.getStudents().add(this);
     }
-    public void removeEducation(Education education){
+
+    public void removeEducation(Education education) {
         educations.remove(education);
         education.getStudents().remove(this);
     }
+
 
     public void setId(int id) {
         this.id = id;
