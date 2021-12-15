@@ -37,6 +37,22 @@ public class CourseController {
         cDAO.removeCourse(id);
     }
 
+    public void removeCourseFromEducationController(int id, int educationID){
+
+        Course course = cDAO.findCourse(id);
+        Education education = null;
+        for (Education e : course.getEducations()) {
+            if (e.getId() == educationID){
+                education = e;
+            }
+
+        }
+        course.removeEducation(education);
+
+    }
+
+
+
     public void updateCourseController(Course course) {
 
         cDAO.updateCourse(course);
