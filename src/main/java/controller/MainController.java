@@ -1,5 +1,6 @@
 package controller;
 
+import database.CourseDAOImplementation;
 import userinterface.ConsoleInput;
 import userinterface.ConsoleUI;
 
@@ -16,9 +17,14 @@ public class MainController {
 
     ConsoleInput uInput;
 
+
     StudentController sc = new StudentController();
 
     TeacherController tc = new TeacherController();
+
+    CourseController cc;
+
+    EducationController ec = new EducationController();
 
 
 
@@ -94,7 +100,7 @@ public class MainController {
 
         switch (choice) {
 
-            case "1" ->{ /*addStudentController();*/}
+            case "1" -> sc.addStudentController();
             case "2" -> {/*updateStudentFirstNameController();*/}
             case "3" -> {/*updateStudentLastNameController();*/}
             case "4" -> {/*updateStudentDateOfBirthController();*/}

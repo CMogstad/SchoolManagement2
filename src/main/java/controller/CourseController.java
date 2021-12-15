@@ -52,6 +52,23 @@ public class CourseController {
         cDAO.updateCourse(course);
     }
 
+    public void addCourseToEducation(int id){
+        Course course = cDAO.findCourse(id);
+
+        Education education = null;
+
+        for (Education e : course.getEducations()) {
+            if (e.getId() == id){
+                education = e;
+            }
+        }
+
+        education.addCourse(course);
+
+        cDAO.updateCourse(course);
+
+    }
+
     public Course findCourseController(int id) {
 
         return cDAO.findCourse(id);

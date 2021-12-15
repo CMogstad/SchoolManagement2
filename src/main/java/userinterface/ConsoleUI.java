@@ -1,5 +1,11 @@
 package userinterface;
 
+import controller.CourseController;
+import controller.EducationController;
+import controller.StudentController;
+import controller.TeacherController;
+import database.EducationDaoImplementation;
+import database.TeacherDAOImplementation;
 import entities.Course;
 import entities.Education;
 import entities.Student;
@@ -10,6 +16,14 @@ import java.util.List;
 public class ConsoleUI {
 
     ConsoleInput input;
+
+    StudentController sc;
+
+    TeacherController tc;
+
+    CourseController cc;
+
+    EducationController ec;
 
     public void printMainMenu() {
         System.out.println("""
@@ -139,80 +153,441 @@ public class ConsoleUI {
                 Please choose: """);
     }
 
-    public Course readCourse() {
 
-        Course course = new Course();
+    public void updateStudentFirstNameUI(){
+
+        System.out.println("Please enter id of student: ");
+
+        int id = input.readInt();
+
+        System.out.println("Please enter new first name of student: ");
+
+        String newName = input.readString();
+
+        sc.updateStudentFirstNameController(id, newName);
+
+        System.out.println("Student has been updated!");
+
+    }
+    public void updateStudentLastNameUI(){
+
+        System.out.println("Please enter id of student: ");
+
+        int id = input.readInt();
+
+        System.out.println("Please enter new last name of student: ");
+
+        String newName = input.readString();
+
+        sc.updateStudentFirstNameController(id, newName);
+
+        System.out.println("Student has been updated!");
+
+    }
+    public void updateStudentDateOfBirthUI(){
+
+        System.out.println("Please enter id of student: ");
+
+        int id = input.readInt();
+
+        System.out.println("Please enter new date of birth of student: ");
+
+        String newDateOfBirth = input.readString();
+
+        sc.updateStudentDateOfBirthController(id, newDateOfBirth);
+
+        System.out.println("Student has been updated!");
+
+    }
+
+    public void removeEducationFromStudent(){
+
+
+        }
+
+       public void removeStudentUI(){
+
+
+}
+
+
+       public void findStudentByLastNameUI(){
+
+        }
+
+        public void showAllStudentsUI(){
+
+
+        }
+
+      public void  showAllStudentsWithoutEducationUI(){
+
+
+        }
+
+
+
+    public void updateTeacherFirstNameUI() {
+
+
+    }
+
+    public void updateTeacherLastNameUI() {
+
+
+    }
+
+    public void updateEmploymentYearUI(){
+
+
+    }
+
+    public void addCourseToTeacherUI(){
+
+
+    }
+
+    public void removeCourseFromTeacherUI(){
+
+
+    }
+
+    public void removeTeacherByIDUI(){
+
+
+    }
+
+
+    public void findTeacherByLastNameUI() {
+
+
+    }
+
+    public void showAllTeachersUI() {
+
+
+
+    }
+
+    public void showAllTeacherWithoutCourseUI() {
+
+
+    }
+
+    public void showCoursesOfTeacherUI(){
+
+
+    }
+
+    public void removeCourseById() {
+
+
+    }
+
+    public void updateCourseController() {
+
+
+    }
+
+    public void findCourseController() {
+
+
+    }
+
+    public void findCourseBySubjectUI() {
+
+
+    }
+
+    public void showAllCoursesUI() {
+
+
+    }
+
+    public void listCourseEducationsUI() {
+
+
+    }
+
+    public void showAllCoursesWithoutEducationUI() {
+
+    }
+
+    public void listAllCourseTeachersUI() {
+
+    }
+
+    public void showAllCoursesWithoutTeacherUI() {
+
+    }
+
+
+
+    public void updateEducationByNameUI() {
+        System.out.println("Please enter id of education: ");
+
+        int id = input.readInt();
+
+        System.out.println("Please enter new first name of Education: ");
+
+        String newName = input.readString();
+
+        ec.updateEducationController(id, newName);
+
+        System.out.println("Education has been updated!");
+
+    }
+
+    public void addEducationToCourseUI(){
+
+        System.out.println("Please enter id of education: ");
+
+        int eID = input.readInt();
+
+        System.out.println("Please enter id of course: ");
+
+        int cID = input.readInt();
+
+        ec.addEducationToCourseController(eID, cID);
+
+        System.out.println("Education and Course has been joined! ");
+
+
+    }
+
+    public void addEducationToStudentUI(){
+
+        System.out.println("Please enter id of education: ");
+
+        int eID = input.readInt();
+
+        System.out.println("Please enter id of student: ");
+
+        int sID = input.readInt();
+
+
+        ec.addEducationToStudentController(eID, sID);
+
+        System.out.println("Education and student has been joined! ");
+
+
+    }
+
+
+    public void removeEducationUI() {
+
+        System.out.println("Please enter id of the education you want to remove: ");
+
+        int id = input.readInt();
+
+        ec.removeEducationByIDController(id);
+
+        System.out.println("Education has been removed! ");
+
+
+    }
+
+    public void removeEducationFromStudentUI(){
+
+        System.out.println("Please enter id of education you want to remove: ");
+
+        int eID = input.readInt();
+
+        System.out.println("Please enter id of student: ");
+
+        int sID = input.readInt();
+
+        ec.removeEducationFromStudentController(eID, sID);
+
+        System.out.println("Education has been removed from student!");
+
+
+    }
+
+    public void removeEducationFromCourse(){
+
+        System.out.println("Please enter id of education you want to remove: ");
+
+        int eID = input.readInt();
+
+        System.out.println("Please enter id of course: ");
+
+        int cID = input.readInt();
+
+        ec.removeEducationFromCourseController(eID, cID);
+
+        System.out.println("Education has been removed from student!");
+
+    }
+
+
+    public void findEducationByNameUI() {
+
+        System.out.println("Please enter name of education : ");
+
+        String name = input.readString();
+
+        printList(ec.findEducationByNameController(name));
+
+
+
+
+    }
+
+
+    public void showAllEducationsUI() {
+
+        printList(ec.showAllEducationsController());
+
+    }
+
+
+    public void listEducationCoursesController() {
+
+        System.out.println("Please enter id of education: ");
+
+        int id = input.readInt();
+
+        printList(ec.listEducationCoursesController(id));
+
+    }
+
+
+    public void showAllEducationsWithoutCourseUI() {
+
+
+        printList(ec.showAllEducationsWithoutCourseController());
+
+
+    }
+
+
+    public void listEducationStudentsUI() {
+
+        System.out.println("Please enter id of education: ");
+
+        int id = input.readInt();
+
+        printList(ec.listEducationStudentsController(id));
+
+    }
+
+
+    public void listEducationWithoutStudentsUI() {
+
+        printList(ec.listEducationWithoutStudentsController());
+
+    }
+
+
+    public void readCourseUI() {
 
 
         System.out.println("Please enter name of course subject : ");
 
-        course.setSubject(input.readString());
+        String subject = input.readString();
 
         System.out.println("Please enter course points: ");
 
-        course.setCoursePoints(input.readInt());
+        int points = input.readInt();
 
-        return course;
+        cc.createCourse(subject, points);
+
+        System.out.println("Course has been added!");
 
     }
+    public void readEducationUI() {
 
-    public Education readEducation() {
-
-        Education education = new Education();
 
 
         System.out.println("Please enter name of Education: ");
 
-        education.setName(input.readString());
+        String educationName = input.readString();
 
-        return education;
+        ec.addEducationController(educationName);
+
+        System.out.println("Student has been updated!");
 
     }
 
-    public Student readStudent() {
-
-        Student student = new Student();
-
-        System.out.println("Please enter name of bank: ");
+    public void readStudentUI() {
 
 
         System.out.println("Please enter first name : ");
 
-        student.setFirstName(input.readString());
+        String firstName = input.readString();
 
         System.out.println("Please enter last name : ");
 
-        student.setLastName(input.readString());
+        String lastName = input.readString();
 
         System.out.println("Please enter date of birth");
 
-        student.setDateOfBirth(input.readString());
+        String dateOfBirth = input.readString();
 
-        return student;
+        sc.createStudentController(firstName, lastName, dateOfBirth);
+
+        System.out.println("Education has been added!");
+
+
 
     }
 
-    public Teacher readTeacher() {
-
-        Teacher teacher = new Teacher();
-
-        System.out.println("Please enter name of bank: ");
+    public void readTeacherUI() {
 
 
         System.out.println("Please enter first name : ");
 
-        teacher.setFirstName(input.readString());
+        String firstName = input.readString();
+
 
         System.out.println("Please enter last name : ");
 
-        teacher.setLastName(input.readString());
+        String lastName = input.readString();
+
 
         System.out.println("Please enter employment Year : ");
 
-        teacher.setEmploymentYear(input.readInt());
+        int employmentYear = input.readInt();
+
+        tc.createTeacher(firstName, lastName, employmentYear);
 
 
-        return teacher;
+    }
+
+    public void printMessage(String message) {
+
+        System.out.println(message);
+
+    }
+
+    public void printEducation(Education education){
+
+        System.out.println(education);
+
+    }
+
+    public void printTeacher(Teacher teacher){
+
+        System.out.println(teacher);
+
+    }
+
+    public void printCourse(Course course){
+
+        System.out.println(course);
+
+    }
+
+    public void printStudent(Student student){
+
+        System.out.println(student);
+
+    }
+
+    public void printList(List list) {
+
+        list.forEach(System.out::println);
 
     }
 }

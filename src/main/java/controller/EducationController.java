@@ -1,6 +1,8 @@
 package controller;
 
+import database.CourseDAOImplementation;
 import database.EducationDaoImplementation;
+import database.StudentImpDAO;
 import entities.Course;
 import entities.Education;
 import entities.Student;
@@ -11,8 +13,15 @@ public class EducationController {
 
     EducationDaoImplementation eDao;
 
-    public EducationController(EducationDaoImplementation eDao) {
+    CourseDAOImplementation cDao;
+
+    StudentImpDAO sDao;
+
+
+    public EducationController(EducationDaoImplementation eDao, CourseDAOImplementation cDao, StudentImpDAO sDao) {
         this.eDao = eDao;
+        this.cDao = cDao;
+        this.sDao = sDao;
     }
 
     public void addEducationController(String name) {
@@ -24,14 +33,55 @@ public class EducationController {
     }
 
 
+
+
     public void updateEducationController(Education education) {
 
         eDao.updateEducation(education);
 
     }
 
+    public void updateEducationController(int id, String newName){
 
-    public void removeEducationController(int id) {
+        Education education = eDao.findEducation(id);
+
+        education.setName(newName);
+
+        eDao.updateEducation(education);
+
+    }
+
+    public void addEducationToCourseController(int eID, int cID){
+
+        Education education = eDao.findEducation(eID);
+
+        Course course = cDao.findCourse(cID);
+
+        course.addEducation(education);
+
+        cDao.updateCourse(course);
+
+        eDao.updateEducation(education);
+
+
+    }
+
+    public void addEducationToStudentController(int eID, int sID){
+
+        Education education = eDao.findEducation(eID);
+
+        Student student = sDao.findStudent(sID);
+
+        student.addEducation(education);
+
+        sDao.updateStudent(student);
+
+        eDao.updateEducation(education);
+
+    }
+
+
+    public void removeEducationByIDController(int id) {
 
         Education education = eDao.findEducation(id);
 
@@ -48,6 +98,38 @@ public class EducationController {
         }
 
         eDao.removeEducation(id);
+
+    }
+
+    public void removeEducationFromStudentController(int eID, int sID){
+
+        Education education = eDao.findEducation(eID);
+
+        Student student = sDao.findStudent(sID);
+
+        student.removeEducation(education);
+
+        eDao.updateEducation(education);
+
+        sDao.updateStudent(student);
+
+
+    }
+
+    public void removeEducationFromCourseController(int eID, int cID){
+
+        Education education = eDao.findEducation(eID);
+
+        Course course = cDao.findCourse(cID);
+
+        course.removeEducation(education);
+
+        eDao.updateEducation(education);
+
+        cDao.updateCourse(course);
+
+
+
 
     }
 
