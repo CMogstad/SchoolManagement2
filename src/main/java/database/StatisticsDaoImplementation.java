@@ -12,6 +12,9 @@ import java.util.List;
 
 public class StatisticsDaoImplementation implements StatisticsDao {
 
+    //Sortera baserat på poäng
+    // Sortera baserat på arraylist
+
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
     @Override

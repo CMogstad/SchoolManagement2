@@ -2,11 +2,14 @@ package userinterface;
 
 import entities.Course;
 import entities.Education;
+import entities.Student;
 import entities.Teacher;
 
 import java.util.List;
 
 public class ConsoleUI {
+
+    ConsoleInput input;
 
     public void printMainMenu() {
         System.out.println("""
@@ -134,6 +137,83 @@ public class ConsoleUI {
                 Please choose: """);
     }
 
+    public Course readCourse() {
 
+        Course course = new Course();
+
+
+        System.out.println("Please enter name of course subject : ");
+
+        course.setSubject(input.readString());
+
+        System.out.println("Please enter course points: ");
+
+        course.setCoursePoints(input.readInt());
+
+        return course;
+
+    }
+
+
+
+    public Education readEducation() {
+
+        Education education = new Education();
+
+
+        System.out.println("Please enter name of Education: ");
+
+        education.setName(input.readString());
+
+        return education;
+
+    }
+
+    public Student readStudent() {
+
+        Student student = new Student();
+
+        System.out.println("Please enter name of bank: ");
+
+
+        System.out.println("Please enter first name : ");
+
+        student.setFirstName(input.readString());
+
+        System.out.println("Please enter last name : ");
+
+        student.setLastName(input.readString());
+
+        System.out.println("Please enter date of birth");
+
+        student.setDateOfBirth(input.readString());
+
+        return student;
+
+    }
+
+    public Teacher readTeacher() {
+
+        Teacher teacher = new Teacher();
+
+        System.out.println("Please enter name of bank: ");
+
+
+        System.out.println("Please enter first name : ");
+
+        teacher.setFirstName(input.readString());
+
+        System.out.println("Please enter last name : ");
+
+        teacher.setLastName(input.readString());
+
+        System.out.println("Please enter employment Year : ");
+
+        teacher.setEmploymentYear(input.readInt());
+
+
+        return teacher;
+
+    }
 
 }
