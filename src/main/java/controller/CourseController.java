@@ -1,29 +1,38 @@
 package controller;
 
 import database.CourseDAOImplementation;
+import database.EducationDaoImplementation;
+import database.TeacherDAOImplementation;
 import entities.Course;
 import entities.Education;
+import entities.Student;
 import entities.Teacher;
 
 import java.util.List;
 
 public class CourseController {
 
-    CourseDAOImplementation cDAO;
+    CourseDAOImplementation cDao;
 
-    public CourseController(CourseDAOImplementation cDAO) {
-        this.cDAO = cDAO;
+    TeacherDAOImplementation tDao;
+
+    EducationDaoImplementation eDao;
+
+    public CourseController(CourseDAOImplementation cDao, TeacherDAOImplementation tDao, EducationDaoImplementation eDao) {
+        this.cDao = cDao;
+        this.tDao = tDao;
+        this.eDao = eDao;
     }
 
     public void createCourse(String subject, int coursePoints) {
         Course course = new Course(subject, coursePoints);
 
-        cDAO.addCourse(course);
+        cDao.addCourse(course);
     }
 
     public void removeCourseById(int id) {
 
-        Course course = cDAO.findCourse(id);
+        Course course = cDao.findCourse(id);
         List<Teacher> teachers = course.getTeachers();
         for (Teacher t:
              teachers) {
@@ -34,89 +43,119 @@ public class CourseController {
              educations) {
             e.removeCourse(course);
         }
-        cDAO.removeCourse(id);
-    }
-
-    public void removeCourseFromEducationController(int id, int educationID){
-
-        Course course = cDAO.findCourse(id);
-        Education education = null;
-        for (Education e : course.getEducations()) {
-            if (e.getId() == educationID){
-                education = e;
-            }
-
-        }
-        course.removeEducation(education);
-
+        cDao.removeCourse(id);
     }
 
 
 
     public void updateCourseController(Course course) {
 
-        cDAO.updateCourse(course);
+        cDao.updateCourse(course);
     }
     public void  updateCourseSubjectController (int id, String subject){
-        Course course = cDAO.findCourse(id);
+        Course course = cDao.findCourse(id);
         course.setSubject(subject);
-        cDAO.updateCourse(course);
+        cDao.updateCourse(course);
     }
     public void  updateCoursePointsController (int id, int coursePoints){
-        Course course = cDAO.findCourse(id);
+        Course course = cDao.findCourse(id);
         course.setCoursePoints(coursePoints);
-        cDAO.updateCourse(course);
+        cDao.updateCourse(course);
     }
 
-    public void addCourseToEducation(int id){
-        Course course = cDAO.findCourse(id);
+    public void addCourseToEducationController(int cID, int eID){
 
-        Education education = null;
 
-        for (Education e : course.getEducations()) {
-            if (e.getId() == id){
-                education = e;
-            }
-        }
 
-        education.addCourse(course);
+        Course course = cDao.findCourse(cID);
 
-        cDAO.updateCourse(course);
+        Education education = eDao.findEducation(eID);
+
+        course.addEducation(education);
+
+        eDao.updateEducation(education);
+
+        cDao.updateCourse(course);
+
 
     }
+
+    public void addCourseToTeacherController(int cID, int tID){
+
+        Course course = cDao.findCourse(cID);
+
+        Teacher teacher = tDao.findTeacher(tID);
+
+        course.addTeacher(teacher);
+
+        cDao.updateCourse(course);
+
+        tDao.updateTeacher(teacher);
+
+    }
+
+    public void removeCourseFromEducationController(int cID, int eID){
+
+
+        Course course = cDao.findCourse(cID);
+
+        Education education = eDao.findEducation(eID);
+
+        education.removeCourse(course);
+
+        cDao.updateCourse(course);
+
+        eDao.updateEducation(education);
+
+    }
+
+    public void removeCourseFromTeacher(int cID, int tID){
+
+        Course course = cDao.findCourse(cID);
+
+        Teacher teacher = tDao.findTeacher(tID);
+
+        teacher.removeCourse(course);
+
+        cDao.updateCourse(course);
+
+        tDao.updateTeacher(teacher);
+
+    }
+
 
     public Course findCourseController(int id) {
 
-        return cDAO.findCourse(id);
+        return cDao.findCourse(id);
     }
 
     public List<Course> findCourseBySubjectController(String subject) {
 
-        return cDAO.findCourseBySubject(subject);
+        return cDao.findCourseBySubject(subject);
     }
 
     public List<Course> showAllCoursesController() {
 
-        return cDAO.showAllCourses();
+        return cDao.showAllCourses();
     }
 
     public List<Education> listCourseEducationsController(int id) {
 
-        return cDAO.listCourseEducations(id);
+        return cDao.listCourseEducations(id);
     }
 
     public List<Course> showAllCoursesWithoutEducationController() {
 
-        return cDAO.showAllCoursesWithoutEducation();
+        return cDao.showAllCoursesWithoutEducation();
     }
 
     public List<Teacher> listAllCourseTeachersController(int id) {
 
-        return cDAO.listCourseTeachers(id);
+        return cDao.listCourseTeachers(id);
     }
 
     public List<Course> showAllCoursesWithoutTeacherController() {
 
-        return cDAO.showAllCoursesWithoutTeacher();
+        return cDao.showAllCoursesWithoutTeacher();
     }
 }
