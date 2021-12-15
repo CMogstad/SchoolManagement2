@@ -26,15 +26,19 @@ public class StatisticsDaoImplementation implements StatisticsDao {
                 .setParameter("bankName", bankName)
                 .getResultList();*/
 
-        List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.dateOfBirth >=:birthStart AND s.dateOfBirth <=:birthEnd", Student.class)
+        /*List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.dateOfBirth >=:birthStart AND s.dateOfBirth <=:birthEnd", Student.class)
                 .setParameter("birthStart", birthStart)
                 .setParameter("birthEnd", birthEnd)
                 .getResultList();
-
         em.close();
+        return students;*/
 
+        List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.birthYear >=:birthStart AND s.birthYear <=:birthEnd",Student.class)
+                .setParameter("birthStart", birthStart)
+                .setParameter("birthEnd", birthEnd)
+                .getResultList();
+        em.close();
         return students;
-
     }
 
     @Override

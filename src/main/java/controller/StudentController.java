@@ -8,7 +8,11 @@ import java.util.List;
 
 public class StudentController {
 
-    StudentImpDAO sDAO = new StudentImpDAO();
+    StudentImpDAO sDAO;
+
+    public StudentController(StudentImpDAO sDAO) {
+        this.sDAO = sDAO;
+    }
 
     public void createStudent(String firstName, String lastName, String dateOfBirth) {
         Student student = new Student(firstName, lastName, dateOfBirth);
@@ -21,6 +25,29 @@ public class StudentController {
 
         sDAO.updateStudent(student);
 
+    }
+
+    public void  updateStudentFirstNameController (int id, String name){
+        Student student = sDAO.findStudent(id);
+
+        student.setFirstName(name);
+
+        sDAO.updateStudent(student);
+    }
+    public void  updateStudentLastNameController (int id, String name){
+        Student student = sDAO.findStudent(id);
+
+        student.setLastName(name);
+
+        sDAO.updateStudent(student);
+    }
+
+    public void  updateStudentDateOfBirthController (int id, String dateOfBirth){
+        Student student = sDAO.findStudent(id);
+
+        student.setLastName(dateOfBirth);
+
+        sDAO.updateStudent(student);
     }
 
     public void deleteStudentByID(int id) {
