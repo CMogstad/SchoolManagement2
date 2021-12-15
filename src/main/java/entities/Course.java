@@ -11,6 +11,7 @@ public class Course {
     private int id;
 
     private String subject;
+
     private int coursePoints;
 
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
@@ -29,12 +30,12 @@ public class Course {
 
     public void addEducation(Education education) {
         educations.add(education);
-        education.getStudents().add(this);
+        education.getCourses().add(this);
     }
 
     public void removeEducation(Education education) {
         educations.remove(education);
-        education.getStudents().remove(this);
+        education.getCourses().remove(this);
     }
 
     public void addTeacher(Teacher teacher) {
