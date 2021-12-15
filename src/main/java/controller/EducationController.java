@@ -5,85 +5,98 @@ import entities.Course;
 import entities.Education;
 import entities.Student;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public class EducationController {
 
     EducationDaoImplementation eDao;
 
-    public void addEducationController() {
+    public EducationController(EducationDaoImplementation eDao) {
+        this.eDao = eDao;
+    }
 
-       // eDao.addEducation();
+    public void addEducationController(String name) {
+
+        Education education = new Education(name);
+
+        eDao.addEducation(education);
 
     }
 
 
-    public void updateEducationController() {
+    public void updateEducationController(Education education) {
 
-       // eDao.updateEducation();
-
-    }
-
-
-
-    public void removeEducationController() {
-
-
-       // eDao.removeEducation();
+        eDao.updateEducation(education);
 
     }
 
 
-    public void findEducationController() {
+    public void removeEducationController(int id) {
 
-       // eDao.findEducation();
+        Education education = eDao.findEducation(id);
 
+        List<Course> courses = education.getCourses();
 
+        for(Course c : courses){
+            c.removeEducation(education);
+        }
 
-    }
+        List<Student> students = education.getStudents();
 
+        for(Student s : students){
+            s.removeEducation(education);
+        }
 
-    public void findEducationByNameController() {
-
-       // eDao.findEducationByName();
-
-    }
-
-
-    public void showAllEducationsController() {
-
-       // eDao.showAllEducations();
-
+        eDao.removeEducation(id);
 
     }
 
 
-    public void listEducationCoursesController() {
+    public Education findEducationController(int id) {
 
-       // eDao.listEducationCourses();
-
-    }
-
-
-    public void showAllEducationsWithoutCourseController() {
-
-     eDao.showAllEducationsWithoutCourse();
-
+        return eDao.findEducation(id);
 
     }
 
 
-    public void listEducationStudentsController() {
+    public List<Education> findEducationByNameController(String name) {
 
-     // eDao.listEducationStudents();
+        return eDao.findEducationByName(name);
 
     }
 
 
-    public void listEducationWithoutStudentsController() {
+    public List<Education> showAllEducationsController() {
 
-        eDao.listEducationWithoutStudents();
+        return eDao.showAllEducations();
+
+    }
+
+
+    public List<Course> listEducationCoursesController(int id) {
+
+        return eDao.listEducationCourses(id);
+
+    }
+
+
+    public List<Education> showAllEducationsWithoutCourseController() {
+
+        return eDao.showAllEducationsWithoutCourse();
+
+    }
+
+
+    public List<Student> listEducationStudentsController(int id) {
+
+        return eDao.listEducationStudents(id);
+
+    }
+
+
+    public List<Education> listEducationWithoutStudentsController() {
+
+       return eDao.listEducationWithoutStudents();
 
     }
 }
