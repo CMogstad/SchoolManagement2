@@ -13,6 +13,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String dateOfBirth;
+    private int birthYear;
 
     @ManyToMany(mappedBy = "students", cascade = CascadeType.PERSIST)
     List<Education> educations = new ArrayList<>();
@@ -24,6 +25,13 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
+        birthYear = getBirthYear();
+    }
+
+    public int getBirthYear() {
+        String yearStr = dateOfBirth.substring(0, 3);
+        Integer yearInt = Integer.valueOf(yearStr);
+        return yearInt;
     }
 
     public void addEducation(Education education){

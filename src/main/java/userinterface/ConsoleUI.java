@@ -156,8 +156,6 @@ public class ConsoleUI {
 
     }
 
-
-
     public Education readEducation() {
 
         Education education = new Education();
@@ -217,5 +215,4 @@ public class ConsoleUI {
         return teacher;
 
     }
-
 }
