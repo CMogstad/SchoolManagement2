@@ -1,5 +1,6 @@
 package database;
 
+import entities.Student;
 import entities.Teacher;
 
 import javax.persistence.EntityManager;
@@ -76,6 +77,19 @@ public class TeacherDAOImplementation implements TeacherDAO {
 
         TypedQuery<Teacher> tq = em.createQuery("SELECT t from Teacher t WHERE t.courses IS empty", Teacher.class);
         List<Teacher> teachers = tq.getResultList();
+
+        em.close();
+
+        return teachers;
+    }
+
+    @Override
+    public List<Teacher> findTeacherByLastName(String lastName) {
+        EntityManager em = emf.createEntityManager();
+
+        List<Teacher> teachers = em.createQuery("SELECT t FROM Teacher t WHERE t.lastName = :name", Teacher.class)
+                .setParameter("name", lastName)
+                .getResultList();
 
         em.close();
 

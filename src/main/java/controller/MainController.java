@@ -13,10 +13,7 @@ public class MainController {
     static boolean statisticsLoop = true;
 
     ConsoleUI io;
-
     ConsoleInput uInput;
-
-
 
     public MainController(ConsoleUI io, ConsoleInput uInput) {
         this.io = io;
@@ -24,9 +21,7 @@ public class MainController {
     }
 
 
-
-      public void mainProgram(){
-
+    public void mainProgram() {
         while (mainLoop) {
 
             studentLoop = true;
@@ -41,9 +36,6 @@ public class MainController {
 
 
     private void runSchoolManagementProgram() {
-
-
-
         io.printMainMenu();
 
         String choice = uInput.readString();
@@ -77,136 +69,122 @@ public class MainController {
             }
             case "0" -> mainLoop = false;
             default -> System.out.println("Wrong input, please choose 1-5");
-
         }
     }
 
 
     private void studentManagementController() {
-
         io.printStudentMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
-
-            case "1" ->{ /*addStudentController();*/}
-            case "2" -> {/*updateStudentFirstNameController();*/}
-            case "3" -> {/*updateStudentLastNameController();*/}
-            case "4" -> {/*updateStudentDateOfBirthController();*/}
-            case "5" -> {/*removeEducationFromStudentController();*/}
-            case "6" -> {/*removeStudentController();*/}
-            case "7" -> {/*findStudentByLastNameController();*/}
-            case "8" -> {/*showAllStudentsController()*/;}
-            case "9" -> {/*showAllStudentsWithoutEducationController();*/}
+            case "1" -> io.readStudentUI();
+            case "2" -> io.updateStudentFirstNameUI();
+            case "3" -> io.updateStudentLastNameUI();
+            case "4" -> io.updateStudentDateOfBirthUI();
+            case "5" -> io.addEducationToStudentUI();
+            case "6" -> io.removeEducationFromStudentUI();
+            case "7" -> io.removeStudentUI();
+            case "8" -> io.findStudentByLastNameUI();
+            case "9" -> io.showAllStudentsUI();
+            case "10" -> io.showAllStudentsWithoutEducationUI();
             case "0" -> studentLoop = false;
             default -> System.out.println("Wrong input, please choose 1-6");
         }
     }
 
     private void teacherManagementController() {
-
-
         io.printTeacherMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
-
-            case "1" ->{ /*addTeacherController();*/}
-            case "2" -> {/*updateTeacherFirstNameController();*/}
-            case "3" -> {/*updateTeacherLastNameController();*/}
-            case "4" -> {/*updateTeacherEmploymentYearController();*/}
-            case "5" -> {/*adTeacherToCurseController();*/}
-            case "6" -> {/*removeTeacherFromCourseController();*/}
-            case "7" -> {/*removeTeacherController();*/}
-            case "8" -> {/*findTeacherByLastNameController()*/;}
-            case "9" -> {/*showAllTeachersController();*/}
-            case "10" -> {/*showAllTeachersWithoutCourseController();*/}
-            case "11" -> {/*showAllCoursesOfTeacherController();*/}
+            case "1" -> io.readTeacherUI();
+            case "2" -> io.updateTeacherFirstNameUI();
+            case "3" -> io.updateTeacherLastNameUI();
+            case "4" -> io.updateEmploymentYearUI();
+            case "5" -> io.addCourseToTeacherUI();
+            case "6" -> io.removeCourseFromTeacherUI();
+            case "7" -> io.removeTeacherByIDUI();
+            case "8" -> io.findTeacherByLastNameUI();
+            case "9" -> io.showAllTeachersUI();
+            case "10" -> io.showAllTeacherWithoutCourseUI();
+            case "11" -> io.showCoursesOfTeacherUI();
             case "0" -> teacherLoop = false;
             default -> System.out.println("Wrong input, please choose 1-6");
         }
-
     }
 
     private void courseManagementController() {
-
         io.printCourseMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
 
-            case "1" ->{ /*addTeacherController();*/}
-            case "2" -> {/*updateTeacherFirstNameController();*/}
-            case "3" -> {/*updateTeacherLastNameController();*/}
-            case "4" -> {/*updateTeacherEmploymentYearController();*/}
-            case "5" -> {/*adTeacherToCurseController();*/}
-            case "6" -> {/*removeTeacherFromCourseController();*/}
-            case "7" -> {/*removeTeacherController();*/}
-            case "8" -> {/*findTeacherByLastNameController()*/;}
-            case "9" -> {/*showAllTeachersController();*/}
-            case "10" -> {/*showAllTeachersWithoutCourseController();*/}
-            case "11" -> {/*showAllCoursesOfTeacherController();*/}
+            case "1" -> io.readCourseUI();
+            case "2" -> io.updateCourseSubjectUI();
+            case "3" -> io.updateCoursePointsUI();
+            case "4" -> io.addEducationToCourseUI();
+            case "5" -> io.addCourseToTeacherUI();
+            case "6" -> io.removeEducationFromCourseUI();
+            case "7" -> io.removeCourseFromTeacherUI();
+            case "8" -> io.removeCourseByIdUI();
+            case "9" -> io.findCourseBySubjectUI();
+            case "10" -> io.showAllCoursesUI();
+            case "11" -> io.showAllCoursesWithoutEducationUI();
+            case "12" -> io.showAllCoursesWithoutTeacherUI();
             case "0" -> courseLoop = false;
             default -> System.out.println("Wrong input, please choose 1-6");
         }
-
     }
 
     private void educationManagementController() {
-
-
         io.printEducationMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
-
-            case "1" ->{ /*addTeacherController();*/}
-            case "2" -> {/*updateTeacherFirstNameController();*/}
-            case "3" -> {/*updateTeacherLastNameController();*/}
-            case "4" -> {/*updateTeacherEmploymentYearController();*/}
-            case "5" -> {/*adTeacherToCurseController();*/}
-            case "6" -> {/*removeTeacherFromCourseController();*/}
-            case "7" -> {/*removeTeacherController();*/}
-            case "8" -> {/*findTeacherByLastNameController()*/;}
-            case "9" -> {/*showAllTeachersController();*/}
-            case "10" -> {/*showAllTeachersWithoutCourseController();*/}
-            case "11" -> {/*showAllCoursesOfTeacherController();*/}
+            case "1" -> io.readEducationUI();
+            case "2" -> io.updateEducationNameUI();
+            case "3" -> io.addEducationToCourseUI();
+            case "4" -> io.addEducationToStudentUI();
+            case "5" -> io.removeEducationFromCourseUI();
+            case "6" -> io.removeEducationFromStudentUI();
+            case "7" -> io.removeEducationUI();
+            case "8" -> io.findEducationByNameUI();
+            case "9" -> io.showAllEducationsUI();
+            case "10" -> io.showAllCoursesWithoutEducationUI();
+            case "11" -> io.showAllStudentsWithoutEducationUI();
+            case "12" -> io.showAllEducationsWithoutCourseUI();
+            case "13" -> io.showAllEducationsWithoutStudentsUI();
             case "0" -> educationLoop = false;
             default -> System.out.println("Wrong input, please choose 1-6");
         }
-
     }
 
 
     private void statisticsManagementController() {
-
-
         io.printStatisticsMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
-
-            case "1" ->{ /*studentsByDateOfBirthController()*/}
+            case "1" -> { /*studentsByDateOfBirthController()*/}
             case "2" -> {/*courseHighestPointsController();*/}
             case "3" -> {/*courseLowestPointsController();*/}
             case "4" -> {/*educationMostStudentsController();*/}
             case "5" -> {/*teacherMostCoursesController();*/}
             case "6" -> {/*educationMostCoursesController();*/}
             case "7" -> {/*averageEmploymentYearController();*/}
-            case "8" -> {/*listEmploymentYearAscOrdController();*/;}
+            case "8" -> {/*listEmploymentYearAscOrdController();*/
+                ;
+            }
             case "9" -> {/* numberOfStudentsByEducationController();*/}
             case "10" -> {/*numberOfCoursesByEducationController();*/}
             case "0" -> statisticsLoop = false;
             default -> System.out.println("Wrong input, please choose 1-6");
         }
-
     }
-    //Run program
-
-    //Implement Statistics here
 }

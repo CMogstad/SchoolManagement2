@@ -85,45 +85,34 @@ public class EducationDaoImplementation implements EducationDAO{
 
     @Override
     public List<Education> findEducationByName(String name) {
-
         EntityManager em = emf.createEntityManager();
-
 
         List<Education> educations = em.createNamedQuery("Education.findByEducationName", Education.class)
                 .setParameter("name", name)
                 .getResultList();
 
-
         em.close();
 
         return educations;
-
     }
 
     @Override
     public List<Education> showAllEducations() {
-
         EntityManager em = emf.createEntityManager();
-
 
         List<Education> educations = em.createNamedQuery("Education.showAll", Education.class)
                 .getResultList();
 
-
         em.close();
 
         return educations;
-
     }
 
     @Override
     public List<Course> listEducationCourses(int id) {
-
         EntityManager em = emf.createEntityManager();
 
-
         Education education = em.find(Education.class, id);
-
 
         em.close();
 

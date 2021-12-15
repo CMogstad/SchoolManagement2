@@ -14,14 +14,18 @@ import java.util.List;
 public class ConsoleUI {
 
     ConsoleInput input;
-
     StudentController sc;
-
     TeacherController tc;
-
     CourseController cc;
-
     EducationController ec;
+
+    public ConsoleUI(ConsoleInput input, StudentController sc, TeacherController tc, CourseController cc, EducationController ec) {
+        this.input = input;
+        this.sc = sc;
+        this.tc = tc;
+        this.cc = cc;
+        this.ec = ec;
+    }
 
     public void printMainMenu() {
         System.out.print("""
@@ -100,7 +104,7 @@ public class ConsoleUI {
                 6. Remove Course From Education
                 7. Remove Course From Teacher
                 8. Remove Course
-                9. Find Course by Name
+                9. Find Course by Subject
                 10. Show All Courses
                 11. Show All Courses Without an Education
                 12. Show All Courses Without a Teacher
@@ -177,7 +181,7 @@ public class ConsoleUI {
         System.out.print("Please enter new last name of student: ");
         String newName = input.readString();
 
-        sc.updateStudentFirstNameController(studentId, newName);
+        sc.updateStudentLastNameController(studentId, newName);
 
         System.out.println("\nStudent has been updated!");
     }
@@ -192,18 +196,6 @@ public class ConsoleUI {
         sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
 
         System.out.println("\nStudent has been updated!");
-    }
-
-    public void removeEducationFromStudent() {
-        System.out.print("\nPlease enter ID of student: ");
-        int studentId = input.readInt();
-
-        System.out.print("Please enter ID of Education: ");
-        int educationId = input.readInt();
-
-        sc.removeEducationFromStudentController(studentId, educationId);
-
-        System.out.println("\nEducation has been removed from student!");
     }
 
     public void removeStudentUI() {
@@ -398,7 +390,7 @@ public class ConsoleUI {
         printList(courses);
     }
 
-    public void updateEducationByNameUI() {
+    public void updateEducationNameUI() {
         System.out.print("\nPlease enter id of education: ");
         int id = input.readInt();
 
@@ -455,7 +447,7 @@ public class ConsoleUI {
         System.out.println("\nEducation has been removed from student!");
     }
 
-    public void removeEducationFromCourse() {
+    public void removeEducationFromCourseUI() {
         System.out.print("\nPlease enter id of education you want to remove: ");
         int eID = input.readInt();
 
@@ -468,7 +460,7 @@ public class ConsoleUI {
     }
 
     public void findEducationByNameUI() {
-        System.out.println("\nPlease enter name of education : ");
+        System.out.println("\nPlease enter name of education: ");
         String name = input.readString();
 
         printList(ec.findEducationByNameController(name));
@@ -501,7 +493,7 @@ public class ConsoleUI {
     }
 
     public void readCourseUI() {
-        System.out.print("\nPlease enter name of course subject : ");
+        System.out.print("\nPlease enter name of course subject: ");
         String subject = input.readString();
 
         System.out.print("Please enter course points: ");
@@ -518,17 +510,17 @@ public class ConsoleUI {
 
         ec.addEducationController(educationName);
 
-        System.out.println("\nStudent has been updated!");
+        System.out.println("\nEducation has been added!");
     }
 
     public void readStudentUI() {
-        System.out.print("\nPlease enter first name : ");
+        System.out.print("\nPlease enter first name: ");
         String firstName = input.readString();
 
-        System.out.print("Please enter last name : ");
+        System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter date of birth");
+        System.out.print("Please enter date of birth: ");
         String dateOfBirth = input.readString();
 
         sc.createStudentController(firstName, lastName, dateOfBirth);
@@ -537,13 +529,13 @@ public class ConsoleUI {
     }
 
     public void readTeacherUI() {
-        System.out.print("\nPlease enter first name : ");
+        System.out.print("\nPlease enter first name: ");
         String firstName = input.readString();
 
-        System.out.print("Please enter last name : ");
+        System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter employment Year : ");
+        System.out.print("Please enter employment Year: ");
         int employmentYear = input.readInt();
 
         tc.createTeacher(firstName, lastName, employmentYear);
@@ -571,5 +563,17 @@ public class ConsoleUI {
 
     public void printList(List list) {
         list.forEach(System.out::println);
+    }
+
+    public void updateCourseSubjectUI() { //TODO
+        System.out.println("Not implemented yet!");
+    }
+
+    public void updateCoursePointsUI() { //TODO
+        System.out.println("Not implemented yet!");
+    }
+
+    public void showAllEducationsWithoutStudentsUI() { //TODO
+        System.out.println("Not implemented yet!");
     }
 }

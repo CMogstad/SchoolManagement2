@@ -19,4 +19,6 @@ public interface StudentDAO {
 
     List<Student> showAllStudentsWithoutEducation();
 
+    List<Student> findStudentByLastName(String lastName);
+
 }

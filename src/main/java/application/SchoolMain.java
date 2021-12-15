@@ -1,6 +1,7 @@
 package application;
 
-import controller.MainController;
+import controller.*;
+import database.*;
 import entities.Student;
 import entities.Teacher;
 import userinterface.ConsoleInput;
@@ -12,13 +13,20 @@ public class SchoolMain {
 
     public static void main(String[] args) {
 
-
-        ConsoleUI io = new ConsoleUI();
+        StudentImpDAO sDAO = new StudentImpDAO();
+        TeacherDAO tDAO = new TeacherDAOImplementation();
+        CourseDAO cDAO = new CourseDAOImplementation();
+        EducationDAO eDAO = new EducationDaoImplementation();
 
         ConsoleInput uInput = new ConsoleInput();
+        StudentController sc = new StudentController(sDAO);
+        TeacherController tc = new TeacherController(tDAO, cDAO);
+        CourseController cc = new CourseController(cDAO, tDAO, eDAO);
+        EducationController ec = new EducationController(eDAO, cDAO, sDAO);
+
+        ConsoleUI io = new ConsoleUI(uInput, sc, tc, cc, ec);
 
         MainController mc = new MainController(io, uInput);
-
         mc.mainProgram();
 
 

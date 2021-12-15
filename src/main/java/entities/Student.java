@@ -29,7 +29,7 @@ public class Student {
     }
 
     public int getBirthYear() {
-        String yearStr = dateOfBirth.substring(0, 3);
+        String yearStr = dateOfBirth.substring(0, 4);
         Integer yearInt = Integer.valueOf(yearStr);
         return yearInt;
     }

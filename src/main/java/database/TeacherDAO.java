@@ -1,6 +1,5 @@
 package database;
 
-import entities.Course;
 import entities.Teacher;
 import java.util.List;
 
@@ -17,6 +16,8 @@ public interface TeacherDAO {
     List<Teacher> showAllTeachers();
 
     List<Teacher> showAllTeachersWithoutCourse();
+
+    List<Teacher> findTeacherByLastName(String lastName);
 
     /*
     • Add teachers to educations
