@@ -16,6 +16,10 @@ public class MainController {
 
     ConsoleInput uInput;
 
+    StudentController sc = new StudentController();
+
+    TeacherController tc = new TeacherController();
+
 
 
     public MainController(ConsoleUI io, ConsoleInput uInput) {
@@ -72,7 +76,7 @@ public class MainController {
             }
             case "5" -> {
                 while (statisticsLoop) {
-
+                    statisticsManagementController();
                 }
             }
             case "0" -> mainLoop = false;

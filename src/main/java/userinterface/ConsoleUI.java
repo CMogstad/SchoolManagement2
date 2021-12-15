@@ -134,6 +134,7 @@ public class ConsoleUI {
                 8. List Employment year Ascending Order
                 9. Show number of students by Education
                 10. Show numbers of courses by Education
+                0. Back to Main Menu
 
                 Please choose: """);
     }
