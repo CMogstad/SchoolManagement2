@@ -39,7 +39,7 @@ public class ConsoleUI {
                 4. Update Date of Birth
                 5. Add Education To Student
                 6. Remove Education From Student
-                7. Remove Student 
+                7. Remove Student
                 8. Find Student By Last Name
                 9. Show All Students
                 10. Show All Students Without Education

@@ -24,6 +24,9 @@ public class Education {
     @ManyToMany (mappedBy = "educations", cascade = CascadeType.PERSIST)
     private List<Course> courses = new ArrayList<>();
 
+    @ManyToMany
+    private List<Student> students = new ArrayList<>();
+
     public void addCourse(Course course){
         courses.add(course);
 
@@ -35,9 +38,6 @@ public class Education {
 
         course.getEducations().remove(this);
     }
-
-    @ManyToMany
-    private List<Student> students = new ArrayList<>();
 
     public void addStudent(Student student){
         students.add(student);
