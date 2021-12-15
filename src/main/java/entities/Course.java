@@ -4,6 +4,14 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries(
+        {
+                @NamedQuery(name = "Course.showAll", query = "SELECT c FROM Course c"),
+                @NamedQuery(name = "Course.findByCourseSubject", query = "SELECT c FROM Course c WHERE c.subject=:subject"),
+
+        }
+)
+
 @Entity
 public class Course {
     @Id
