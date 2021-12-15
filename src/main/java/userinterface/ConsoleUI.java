@@ -122,7 +122,7 @@ public class ConsoleUI {
         System.out.println("""
                 _______________________________________________
                                 School Management
-                              Statistics Menu
+                                 Statistics Menu
                 _______________________________________________
                 1. Show Students by Date Of Birth
                 2. Show Course with highest points
@@ -131,6 +131,7 @@ public class ConsoleUI {
                 5. Show Teacher with most Courses
                 6. Show Education with most Courses
                 7. Show average of Employment year
+                8. List Employment year Ascending Order
                 9. Show number of students by Education
                 10. Show numbers of courses by Education
 

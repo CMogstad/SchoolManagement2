@@ -25,5 +25,7 @@ public interface StatisticsDao {
 
     List numberOfCoursesByEducation();
 
+    List listEmployentYearAscOrd();
+
 
 }

@@ -147,6 +147,20 @@ public class StatisticsDaoImplementation implements StatisticsDao {
     }
 
     @Override
+    public List listEmployentYearAscOrd() {
+
+        EntityManager em = emf.createEntityManager();
+
+        List list = em.createQuery("SELECT t FROM Teacher t ORDER BY t.employmentYear ASC", Teacher.class)
+                .getResultList();
+
+        return list;
+
+
+    }
+
+
+    @Override
     public List numberOfCoursesByEducation() {
 
         EntityManager em = emf.createEntityManager();
