@@ -65,7 +65,7 @@ public class StudentConsoleUI {
             String newName = input.readString();
 
             sc.updateStudentFirstNameController(studentId, newName);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
@@ -82,7 +82,7 @@ public class StudentConsoleUI {
             String newName = input.readString();
 
             sc.updateStudentLastNameController(studentId, newName);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
 
         }
@@ -100,7 +100,7 @@ public class StudentConsoleUI {
             String newDateOfBirth = input.readString();
 
             sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
@@ -117,7 +117,7 @@ public class StudentConsoleUI {
 
             System.out.println("\nStudent has been removed!");
         }
-     catch (StringIndexOutOfBoundsException e) {
+     catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
     }
@@ -132,7 +132,7 @@ public class StudentConsoleUI {
 
             mUI.printList(students);
 
-    } catch (NoResultException e) {
+    } catch (Exception e) {
         System.out.println("Last name was not found, please insert other name");
     }
     }
@@ -160,7 +160,7 @@ public class StudentConsoleUI {
 
             sc.addEducationToStudentController(eID, sID);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
         System.out.println("Education and student has been joined! ");
@@ -178,7 +178,7 @@ public class StudentConsoleUI {
 
             sc.removeStudentFromEducationController(eID, sID);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 

@@ -57,7 +57,7 @@ public class EducationConsoleUI {
 
             ec.updateEducationController(id, newName);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -74,7 +74,7 @@ public class EducationConsoleUI {
             int cID = input.readInt();
 
             ec.addEducationToCourseController(eID, cID);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -91,7 +91,7 @@ public class EducationConsoleUI {
             int sID = input.readInt();
 
             ec.addEducationToStudentController(eID, sID);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -106,7 +106,7 @@ public class EducationConsoleUI {
 
             ec.removeEducationByIDController(id);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -124,7 +124,7 @@ public class EducationConsoleUI {
 
             ec.removeEducationFromStudentController(eID, sID);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -144,7 +144,7 @@ public class EducationConsoleUI {
 
             ec.removeEducationFromCourseController(eID, cID);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -158,7 +158,7 @@ public class EducationConsoleUI {
             String name = input.readString();
 
             mainUI.printList(ec.findEducationByNameController(name));
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("Name was not found, please try again: .");
         }
     }
@@ -185,7 +185,7 @@ public class EducationConsoleUI {
 
 
             mainUI.printList(ec.listEducationStudentsController(id));
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
     }

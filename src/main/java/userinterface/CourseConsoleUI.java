@@ -68,7 +68,7 @@ public class CourseConsoleUI {
 
             cc.updateCourseSubjectController(id, subject);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -89,7 +89,7 @@ public class CourseConsoleUI {
 
             cc.updateCoursePointsController(id, coursePoints);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -107,7 +107,7 @@ public class CourseConsoleUI {
             int cID = input.readInt();
 
             cc.addCourseToEducationController(cID, eID);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -125,7 +125,7 @@ public class CourseConsoleUI {
 
             cc.addCourseToTeacherController(courseId, teacherId);
         }
-        catch (NoResultException e) {
+        catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -142,7 +142,7 @@ public class CourseConsoleUI {
             int cID = input.readInt();
 
             cc.removeCourseFromEducationController(cID, eID);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -159,7 +159,7 @@ public class CourseConsoleUI {
             int teacherId = input.readInt();
 
             cc.removeCourseFromTeacherController(courseId, teacherId);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -174,7 +174,7 @@ public class CourseConsoleUI {
             int courseId = input.readInt();
 
             cc.removeCourseById(courseId);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -190,7 +190,7 @@ public class CourseConsoleUI {
             List<Course> courses = cc.findCourseBySubjectController(subject);
 
             mainUI.printList(courses);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
     }
@@ -206,7 +206,7 @@ public class CourseConsoleUI {
 
             printCourse(course);
 
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
     }

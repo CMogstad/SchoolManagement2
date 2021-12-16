@@ -54,7 +54,7 @@ public class StatisticsConsoleUI {
             List<Student> list = stc.studentsByDateOfBirthController(eYear, lYear);
 
             mainUI.printList(list);
-        } catch (StringIndexOutOfBoundsException e) {
+        } catch (Exception e) {
             System.out.println("Incorrect input of Date of Birth, please update in update in Student Date of Birth option.");
         }
     }
