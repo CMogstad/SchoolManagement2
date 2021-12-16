@@ -6,10 +6,9 @@ import entities.Education;
 import entities.Student;
 import entities.Teacher;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ConsoleUI {
+public class MainConsoleUI {
 
     ConsoleInput input;
     StudentController sc;
@@ -18,7 +17,7 @@ public class ConsoleUI {
     EducationController ec;
     StatisticsController stc;
 
-    public ConsoleUI(ConsoleInput input, StudentController sc, TeacherController tc, CourseController cc, EducationController ec, StatisticsController stc) {
+    public MainConsoleUI(ConsoleInput input, StudentController sc, TeacherController tc, CourseController cc, EducationController ec, StatisticsController stc) {
         this.input = input;
         this.sc = sc;
         this.tc = tc;
