@@ -474,7 +474,9 @@ public class ConsoleUI {
         System.out.print("Please enter ID of student: ");
         int sID = input.readInt();
 
-        ec.removeEducationFromStudentController(eID, sID);
+        //ec.removeEducationFromStudentController(eID, sID);
+
+
 
         System.out.println("\nEducation has been removed from student!");
     }

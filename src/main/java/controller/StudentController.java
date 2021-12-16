@@ -70,7 +70,7 @@ public class StudentController {
 
         eDAO.updateEducation(education);
 
-    }
+    }*/
 
     public void removeStudentFromEducationController(int eID, int sID){
 
@@ -85,7 +85,7 @@ public class StudentController {
         sDAO.updateStudent(student);
 
 
-    }*/
+    }
 
     public void deleteStudentByID(int id) {
 
