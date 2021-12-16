@@ -42,6 +42,7 @@ public class EducationConsoleUI {
     }
 
     public void addEducationToStudentUI() {
+
         System.out.print("\nPlease enter ID of education: ");
         int eID = input.readInt();
 

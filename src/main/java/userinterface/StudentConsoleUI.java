@@ -46,7 +46,7 @@ public class StudentConsoleUI {
         System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter date of birth: ");
+        System.out.print("Please enter date of birth(YYYYMMDD): ");
         String dateOfBirth = input.readString();
 
         sc.createStudentController(firstName, lastName, dateOfBirth);

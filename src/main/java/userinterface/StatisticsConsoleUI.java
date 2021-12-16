@@ -43,15 +43,20 @@ public class StatisticsConsoleUI {
     }
 
     public void showStudentsByDateOfBirthUI() {
-        System.out.print("Please enter earliest year: ");
-        int eYear = input.readInt();
 
-        System.out.print("Please enter latest year: ");
-        int lYear = input.readInt();
+        try {
+            System.out.print("Please enter earliest year: ");
+            int eYear = input.readInt();
 
-        List<Student> list = stc.studentsByDateOfBirthController(eYear, lYear);
+            System.out.print("Please enter latest year: ");
+            int lYear = input.readInt();
 
-        mainUI.printList(list);
+            List<Student> list = stc.studentsByDateOfBirthController(eYear, lYear);
+
+            mainUI.printList(list);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Incorrect input of Date of Birth, please update in update in Student Date of Birth option.");
+        }
     }
 
     public void courseHighestPointUI() {
