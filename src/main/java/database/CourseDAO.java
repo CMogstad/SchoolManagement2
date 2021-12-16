@@ -28,4 +28,10 @@ public interface CourseDAO {
 
     List<Course> showAllCoursesWithoutTeacher();
 
+    void removeCourseFromTeacher(int cID, int tID);
+
+    void removeCourseFromEducation(int cId, int eId);
+
+
+
 }

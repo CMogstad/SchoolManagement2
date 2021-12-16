@@ -85,6 +85,7 @@ public class CourseDAOImplementation implements CourseDAO {
         return course.getEducations();
     }
 
+    @Override
     public List<Course> showAllCoursesWithoutEducation(){
         EntityManager em = emf.createEntityManager();
 
@@ -113,6 +114,7 @@ public class CourseDAOImplementation implements CourseDAO {
 
     }
 
+    @Override
     public List<Course> showAllCoursesWithoutTeacher() {
         EntityManager em = emf.createEntityManager();
 
@@ -125,6 +127,46 @@ public class CourseDAOImplementation implements CourseDAO {
         em.close();
 
         return courses;
+    }
+
+    @Override
+    public void removeCourseFromEducation(int cId, int eId){
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        Education education = em.find(Education.class, eId);
+
+        Course course = em.find(Course.class, cId);
+
+        education.removeCourse(course);
+
+        em.getTransaction().commit();
+
+        em.close();
+
+    }
+
+    @Override
+    public void removeCourseFromTeacher(int cID, int tID){
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        Teacher teacher = em.find(Teacher.class, tID);
+
+        Course course = em.find(Course.class, cID);
+
+        teacher.removeCourse(course);
+
+       // course.removeTeacher(teacher);
+
+        em.getTransaction().commit();
+
+        em.close();
+
     }
 
 }

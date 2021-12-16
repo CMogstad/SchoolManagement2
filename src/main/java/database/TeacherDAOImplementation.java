@@ -109,4 +109,24 @@ public class TeacherDAOImplementation implements TeacherDAO {
         return teacher.getCourses();
 
     }
+
+
+    public void removeTeacherFromCourse(int tID, int cID) {
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+
+        Teacher teacher = em.find(Teacher.class, tID);
+
+        Course course = em.find(Course.class, cID);
+
+        course.removeTeacher(teacher);
+
+        em.getTransaction().commit();
+
+        em.close();
+
+    }
 }

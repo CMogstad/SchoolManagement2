@@ -27,4 +27,8 @@ public interface EducationDAO {
     List<Student> listEducationStudents(int id);
 
     List<Education> listEducationWithoutStudents();
+
+    void removeEducationFromCourse(int eId, int cId);
+
+    void removeEducationFromStudent(int eID, int sId);
 }

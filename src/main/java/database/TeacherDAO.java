@@ -22,6 +22,8 @@ public interface TeacherDAO {
 
     List<Course> showCoursesOfTeacher(int id);
 
+    void removeTeacherFromCourse(int cID, int tID);
+
     /*
     • Add teachers to educations
 • List all teachers in an education

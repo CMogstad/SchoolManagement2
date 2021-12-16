@@ -21,4 +21,6 @@ public interface StudentDAO {
 
     List<Student> findStudentByLastName(String lastName);
 
+    void removeStudentFromEducation(int sID, int eID);
+
 }

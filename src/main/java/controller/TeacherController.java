@@ -86,15 +86,7 @@ public class TeacherController {
     public void removeCourseFromTeacherController(int courseId, int teacherId) { //TODO
 
 
-        Teacher teacher = tDAO.findTeacher(teacherId);
-
-        Course course = cDAO.findCourse(courseId);
-
-        teacher.removeCourse(course);
-
-        tDAO.updateTeacher(teacher);
-
-        cDAO.updateCourse(course);
+        tDAO.removeTeacherFromCourse(courseId, teacherId);
 
 
     }

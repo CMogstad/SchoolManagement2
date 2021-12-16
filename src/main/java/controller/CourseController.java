@@ -85,27 +85,16 @@ public class CourseController {
     }
 
     public void removeCourseFromEducationController(int cID, int eID) {
-        Course course = cDao.findCourse(cID);
 
-        Education education = eDao.findEducation(eID);
+        cDao.removeCourseFromEducation(cID, eID);
 
-        education.removeCourse(course);
-
-        cDao.updateCourse(course);
-
-        eDao.updateEducation(education);
     }
 
     public void removeCourseFromTeacher(int cID, int tID) {
-        Course course = cDao.findCourse(cID);
 
-        Teacher teacher = tDao.findTeacher(tID);
 
-        teacher.removeCourse(course);
+        cDao.removeCourseFromTeacher(cID, tID);
 
-        cDao.updateCourse(course);
-
-        tDao.updateTeacher(teacher);
     }
 
 

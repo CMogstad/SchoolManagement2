@@ -167,4 +167,39 @@ public class EducationDaoImplementation implements EducationDAO{
 
         return educations;
     }
+
+    public void removeEducationFromCourse(int eId, int cId){
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        Education education = em.find(Education.class, eId);
+
+        Course course = em.find(Course.class, cId);
+
+        course.removeEducation(education);
+
+        em.getTransaction().commit();
+
+        em.close();
+
+    }
+
+    public void removeEducationFromStudent(int eID, int sId){
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        Education education = em.find(Education.class, eID);
+
+        Student student = em.find(Student.class, sId);
+
+        em.getTransaction().commit();
+
+        em.close();
+
+
+
+    }
 }

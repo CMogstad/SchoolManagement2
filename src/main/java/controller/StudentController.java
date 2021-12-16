@@ -78,32 +78,12 @@ public class StudentController {
 
     public void removeStudentFromEducationController(int eID, int sID){
 
-        Education education = eDAO.findEducation(eID);
 
-        Student student = sDAO.findStudent(sID);
-
-        education.removeStudent(student);
-
-        eDAO.updateEducation(education);
-
-        sDAO.updateStudent(student);
-
-      /*  EntityManager em = emf.createEntityManager();
-
-        em.getTransaction().begin();
-
-        Customer customer = em.find(Customer.class, cID);
-
-        Bank bank = em.find(Bank.class, bID);
-
-        customer.removeBank(bank);
-
-        em.getTransaction().commit();
-
-        em.close();*/
-
+        sDAO.removeStudentFromEducation(sID, eID);
 
     }
+
+
 
     public void deleteStudentByID(int id) {
 

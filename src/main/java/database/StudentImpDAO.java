@@ -33,6 +33,24 @@ public class StudentImpDAO implements StudentDAO {
         em.close();
     }
 
+    public void removeStudentFromEducation(int sID, int eID){
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+
+        Student student = em.find(Student.class, sID);
+
+        Education education = em.find(Education.class, eID);
+
+        education.removeStudent(student);
+
+        em.getTransaction().commit();
+
+        em.close();
+    }
+
     @Override
     public void removeStudent(int id) {
         EntityManager em = emf.createEntityManager();

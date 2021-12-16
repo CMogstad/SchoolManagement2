@@ -156,7 +156,7 @@ public class MainController {
             case "8" -> io.findEducationByNameUI();
             case "9" -> io.showAllEducationsUI();
             case "10" -> io.showAllCoursesWithoutEducationUI();
-            case "11" -> io.showAllStudentsWithoutEducationUI();
+            case "11" -> io.listEducationStudentsUI();
             case "12" -> io.showAllEducationsWithoutCourseUI();
             case "13" -> io.showAllEducationsWithoutStudentsUI();
             case "0" -> educationLoop = false;
