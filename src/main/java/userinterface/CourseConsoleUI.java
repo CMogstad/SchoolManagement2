@@ -2,6 +2,9 @@ package userinterface;
 
 import controller.CourseController;
 import entities.Course;
+import entities.Education;
+import entities.Student;
+import entities.Teacher;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class CourseConsoleUI {
                 10. Show All Courses
                 11. Show All Courses Without an Education
                 12. Show All Courses Without a Teacher
+                13. Show Detailed Course Information
                 0. Back to Main Menu
 
                 Please choose:""");
@@ -205,6 +209,33 @@ public class CourseConsoleUI {
     public void showAllCoursesWithoutTeacherUI() {
         List<Course> courses = cc.showAllCoursesWithoutTeacherController();
         printListCourses(courses);
+    }
+
+    public void showDetailedCourseInfoUI() {
+        try {
+            System.out.print("\nPlease enter ID of course: ");
+            int cID = input.readInt();
+
+           Course course = cc.findCourseController(cID);
+
+            System.out.println("""
+                    \n________________________________________________________
+                                  DETAILED COURSE INFORMATION          
+                    ________________________________________________________ """);
+            System.out.println("Subject: " + course.getSubject());
+            System.out.println("Course Points: " + course.getCoursePoints());
+            System.out.println("Educations: ");
+            for (Education e : course.getEducations()) {
+                System.out.println("   " + e.getId() + ". " + e.getName());
+            }
+            System.out.println("Teachers: ");
+            for (Teacher t : course.getTeachers()) {
+                System.out.println("   " + t.getId() + ". " + t.getFirstName() + " " + t.getLastName());
+            }
+
+        } catch (Exception e) {
+            System.out.println("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void printCourse(Course course) {

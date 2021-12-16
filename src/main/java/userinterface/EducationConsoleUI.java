@@ -3,6 +3,8 @@ package userinterface;
 import controller.EducationController;
 import entities.Course;
 import entities.Education;
+import entities.Student;
+import entities.Teacher;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class EducationConsoleUI {
                 11. Show All Student of an Education
                 12. Show All Educations Without Courses
                 13. Show All Educations Without Students
+                14. Show Detailed Education Information
                 0. Back to Main Menu
 
                 Please choose: """);
@@ -196,6 +199,32 @@ public class EducationConsoleUI {
     public void showAllEducationsWithoutStudentsUI() {
         List<Education> list = ec.listEducationWithoutStudentsController();
         mainUI.printList(list);
+    }
+
+    public void showDetailedEducationInfoUI() {
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int eID = input.readInt();
+
+            Education education = ec.findEducationController(eID);
+
+            System.out.println("""
+                    \n________________________________________________________
+                                  DETAILED EDUCATION INFORMATION          
+                    ________________________________________________________ """);
+            System.out.println("Name: " + education.getName());
+            System.out.println("Courses: ");
+            for (Course c : education.getCourses()) {
+                System.out.println("   " + c.getId() + ". " + c.getSubject());
+            }
+            System.out.println("Students: ");
+            for (Student s : education.getStudents()) {
+                System.out.println("   " + s.getId() + ". " + s.getFirstName() + " " + s.getLastName());
+            }
+
+        } catch (Exception e) {
+            System.out.println("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void educationHeader() {

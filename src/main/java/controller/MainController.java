@@ -96,6 +96,7 @@ public class MainController {
             case "8" -> sIO.findStudentByLastNameUI();
             case "9" -> sIO.showAllStudentsUI();
             case "10" -> sIO.showAllStudentsWithoutEducationUI();
+            case "11" -> sIO.showDetailedStudentInfoUI();
             case "0" -> studentLoop = false;
             default -> System.out.println("Wrong input, please choose 1-10");
         }
@@ -118,6 +119,7 @@ public class MainController {
             case "9" -> tIO.showAllTeachersUI();
             case "10" -> tIO.showAllTeacherWithoutCourseUI();
             case "11" -> tIO.showCoursesOfTeacherUI();
+            case "12" -> tIO.showDetailedStudentInfoUI();
             case "0" -> teacherLoop = false;
             default -> System.out.println("Wrong input, please choose 1-11");
         }
@@ -142,6 +144,7 @@ public class MainController {
             case "10" -> cIO.showAllCoursesUI();
             case "11" -> cIO.showAllCoursesWithoutEducationUI();
             case "12" -> cIO.showAllCoursesWithoutTeacherUI();
+            case "13" -> cIO.showDetailedCourseInfoUI();
             case "0" -> courseLoop = false;
             default -> System.out.println("Wrong input, please choose 1-12");
         }
@@ -166,6 +169,7 @@ public class MainController {
             case "11" -> eIO.listEducationStudentsUI();
             case "12" -> eIO.showAllEducationsWithoutCourseUI();
             case "13" -> eIO.showAllEducationsWithoutStudentsUI();
+            case "14" -> eIO.showDetailedEducationInfoUI();
             case "0" -> educationLoop = false;
             default -> System.out.println("Wrong input, please choose 1-13");
         }

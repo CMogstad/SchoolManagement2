@@ -1,6 +1,7 @@
 package userinterface;
 
 import controller.StudentController;
+import entities.Education;
 import entities.Student;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class StudentConsoleUI {
                 8. Find Student By Last Name
                 9. Show All Students
                 10. Show All Students Without Education
+                11. Show Detailed Student information
                 0. Back to Main Menu
 
                 Please choose: """);
@@ -163,7 +165,6 @@ public class StudentConsoleUI {
     }
 
     public void removeEducationFromStudentUI() {
-
         try {
             System.out.print("\nPlease enter ID of education you want to remove: ");
             int eID = input.readInt();
@@ -174,10 +175,31 @@ public class StudentConsoleUI {
             sc.removeStudentFromEducationController(eID, sID);
             System.out.println("\nEducation has been removed from student!");
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.println("ID was not found, Please insert right ID: ");
         }
+    }
 
+    public void showDetailedStudentInfoUI() {
+        try {
+            System.out.print("\nPlease enter ID of student: ");
+            int sID = input.readInt();
 
+            Student student = sc.findStudentController(sID);
+
+            System.out.println("""
+                    \n________________________________________________________
+                                  DETAILED STUDENT INFORMATION          
+                    ________________________________________________________ """);
+            System.out.println("Name: " + student.getFirstName() + " " + student.getLastName());
+            System.out.println("Date of Birth: " + student.getDateOfBirth());
+            System.out.println("Educations: ");
+            for (Education e : student.getEducations()) {
+                System.out.println("   " + e.getId() + ". " + e.getName());
+            }
+
+        } catch (Exception e) {
+            System.out.println("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void printStudent(Student student) {

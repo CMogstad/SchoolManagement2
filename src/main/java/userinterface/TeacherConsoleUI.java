@@ -2,6 +2,8 @@ package userinterface;
 
 import controller.TeacherController;
 import entities.Course;
+import entities.Education;
+import entities.Student;
 import entities.Teacher;
 
 import java.util.List;
@@ -36,6 +38,7 @@ public class TeacherConsoleUI {
                 9. Show All Teachers
                 10. Show All Teachers Without a Course
                 11. Show All Courses of a Teacher
+                12. Show Detailed Teacher Information
                 0. Back to Main Menu
 
                 Please choose: """);
@@ -197,6 +200,29 @@ public class TeacherConsoleUI {
 
     public void printTeacher(Teacher teacher) {
         System.out.println(teacher);
+    }
+
+    public void showDetailedStudentInfoUI() {
+        try {
+            System.out.print("\nPlease enter ID of teacher: ");
+            int tID = input.readInt();
+
+            Teacher teacher = tc.findTeacherController(tID);
+
+            System.out.println("""
+                    \n________________________________________________________
+                                  DETAILED TEACHER INFORMATION          
+                    ________________________________________________________ """);
+            System.out.println("Name: " + teacher.getFirstName() + " " + teacher.getLastName());
+            System.out.println("Year of Employment: " + teacher.getEmploymentYear());
+            System.out.println("Courses: ");
+            for (Course c : teacher.getCourses()) {
+                System.out.println("   " + c.getId() + ". " + c.getSubject());
+            }
+
+        } catch (Exception e) {
+            System.out.println("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void teacherHeader() {
