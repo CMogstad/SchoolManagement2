@@ -4,6 +4,7 @@ import database.CourseDAO;
 import database.TeacherDAO;
 import database.TeacherDAOImplementation;
 import entities.Course;
+import entities.Education;
 import entities.Student;
 import entities.Teacher;
 
@@ -83,11 +84,36 @@ public class TeacherController {
     }
 
     public void removeCourseFromTeacherController(int courseId, int teacherId) { //TODO
-        System.out.println("This function has not been implemented yet");
+
+
+        Teacher teacher = tDAO.findTeacher(teacherId);
+
+        Course course = cDAO.findCourse(courseId);
+
+        teacher.removeCourse(course);
+
+        tDAO.updateTeacher(teacher);
+
+        cDAO.updateCourse(course);
+
+
     }
 
     public void removeTeacherByIDController(int teacherId) { //TODO
-        System.out.println("This function has not been implemented yet");
+
+
+        Teacher teacher = tDAO.findTeacher(teacherId);
+
+        List<Course> courses = teacher.getCourses();
+
+        for (Course c : courses) {
+            c.removeTeacher(teacher);
+        }
+
+        tDAO.removeTeacher(teacherId);
+
+
+
     }
 
     public List<Teacher> findTeacherByLastNameController(String lastName) {
@@ -95,7 +121,9 @@ public class TeacherController {
     }
 
     public List<Course> showCoursesOfTeacherController(int teacherId) { //TODO
-        System.out.println("This function has not been implemented yet");
-        return null;
+
+        return tDAO.showCoursesOfTeacher(teacherId);
+
+
     }
 }

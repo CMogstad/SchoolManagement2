@@ -1,5 +1,7 @@
 package database;
 
+import entities.Course;
+import entities.Education;
 import entities.Student;
 import entities.Teacher;
 
@@ -94,5 +96,17 @@ public class TeacherDAOImplementation implements TeacherDAO {
         em.close();
 
         return teachers;
+    }
+
+    public List<Course> showCoursesOfTeacher(int id){
+
+        EntityManager em = emf.createEntityManager();
+
+        Teacher teacher = em.find(Teacher.class, id);
+
+        em.close();
+
+        return teacher.getCourses();
+
     }
 }
