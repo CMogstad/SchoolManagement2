@@ -104,22 +104,22 @@ public class MainController {
     }
 
     private void teacherManagementController() {
-        io.printTeacherMenu();
+        tIO.printTeacherMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
-            case "1" -> io.readTeacherUI();
-            case "2" -> io.updateTeacherFirstNameUI();
-            case "3" -> io.updateTeacherLastNameUI();
-            case "4" -> io.updateEmploymentYearUI();
-            case "5" -> io.addCourseToTeacherUI();
-            case "6" -> io.removeCourseFromTeacherUI();
-            case "7" -> io.removeTeacherByIDUI();
-            case "8" -> io.findTeacherByLastNameUI();
-            case "9" -> io.showAllTeachersUI();
-            case "10" -> io.showAllTeacherWithoutCourseUI();
-            case "11" -> io.showCoursesOfTeacherUI();
+            case "1" -> tIO.readTeacherUI();
+            case "2" -> tIO.updateTeacherFirstNameUI();
+            case "3" -> tIO.updateTeacherLastNameUI();
+            case "4" -> tIO.updateEmploymentYearUI();
+            case "5" -> tIO.addCourseToTeacherUI();
+            case "6" -> tIO.removeCourseFromTeacherUI();
+            case "7" -> tIO.removeTeacherByIDUI();
+            case "8" -> tIO.findTeacherByLastNameUI();
+            case "9" -> tIO.showAllTeachersUI();
+            case "10" -> tIO.showAllTeacherWithoutCourseUI();
+            case "11" -> tIO.showCoursesOfTeacherUI();
             case "0" -> teacherLoop = false;
             default -> System.out.println("Wrong input, please choose 1-11");
         }
