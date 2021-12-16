@@ -53,7 +53,7 @@ public class StudentController {
     public void  updateStudentDateOfBirthController (int id, String dateOfBirth){
         Student student = sDAO.findStudent(id);
 
-        student.setLastName(dateOfBirth);
+        student.setDateOfBirth(dateOfBirth);
 
         sDAO.updateStudent(student);
     }
