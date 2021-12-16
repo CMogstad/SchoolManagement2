@@ -16,7 +16,7 @@ public class StudentController {
         this.sDAO = sDAO;
     }
 
-    public void createStudent(String firstName, String lastName, String dateOfBirth) {
+    public void createStudentController(String firstName, String lastName, String dateOfBirth) {
         Student student = new Student(firstName, lastName, dateOfBirth);
 
         sDAO.addStudent(student);
@@ -26,6 +26,12 @@ public class StudentController {
     public void updateStudentController(Student student) {
 
         sDAO.updateStudent(student);
+
+    }
+
+    public List<Student> findStudentByLastNameController(String lastName){
+
+       return sDAO.findStudentByLastName(lastName);
 
     }
 

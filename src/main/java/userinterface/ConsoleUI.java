@@ -234,7 +234,7 @@ public class ConsoleUI {
         System.out.print("\nPlease enter ID of student: ");
         int studentId = input.readInt();
 
-        sc.removeStudentController(studentId);
+        sc.deleteStudentByID(studentId);
 
         System.out.println("\nStudent has been removed!");
     }
@@ -632,5 +632,5 @@ public class ConsoleUI {
         System.out.println("Not implemented yet!");
 
     }
-    
+
 }
