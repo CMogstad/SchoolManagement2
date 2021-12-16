@@ -53,7 +53,7 @@ public class Course {
 
     public void removeTeacher(Teacher teacher) {
         teachers.remove(teacher);
-        teacher.getCourses().add(this);
+        teacher.getCourses().remove(this);
     }
 
     public void setId(int id) {

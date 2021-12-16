@@ -111,7 +111,7 @@ public class TeacherDAOImplementation implements TeacherDAO {
     }
 
 
-    public void removeTeacherFromCourse(int tID, int cID) {
+    public void removeTeacherFromCourse(int cID, int tID) {
 
         EntityManager em = emf.createEntityManager();
 
