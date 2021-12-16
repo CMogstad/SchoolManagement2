@@ -706,9 +706,7 @@ public class ConsoleUI {
 
     }
     public void listEmploymentYearAscOrdUI(){
-
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
-
         printList(list);
     }
 

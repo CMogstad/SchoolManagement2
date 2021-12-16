@@ -1,5 +1,6 @@
 package controller;
 
+import database.StatisticsDao;
 import database.StatisticsDaoImplementation;
 import entities.Course;
 import entities.Education;
@@ -10,7 +11,11 @@ import java.util.List;
 
 public class StatisticsController {
 
-    StatisticsDaoImplementation sDao;
+    StatisticsDao sDao;
+
+    public StatisticsController(StatisticsDao sDao) {
+        this.sDao = sDao;
+    }
 
     public List<Student> studentsByDateOfBirthController(int start, int end) {
 
@@ -73,9 +78,7 @@ public class StatisticsController {
     }
 
     public List<Teacher> listEmploymentYearAscOrdController() {
-
         return sDao.listEmploymentYearAscOrd();
-
     }
     
 /*    public void numberOfCoursesByEducationController() {

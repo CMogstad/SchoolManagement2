@@ -117,9 +117,7 @@ public class TeacherDAOImplementation implements TeacherDAO {
 
         em.getTransaction().begin();
 
-
         Teacher teacher = em.find(Teacher.class, tID);
-
         Course course = em.find(Course.class, cID);
 
         course.removeTeacher(teacher);

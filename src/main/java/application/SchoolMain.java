@@ -17,13 +17,14 @@ public class SchoolMain {
         TeacherDAO tDAO = new TeacherDAOImplementation();
         CourseDAO cDAO = new CourseDAOImplementation();
         EducationDAO eDAO = new EducationDaoImplementation();
+        StatisticsDao stcDAO = new StatisticsDaoImplementation();
 
         ConsoleInput uInput = new ConsoleInput();
         StudentController sc = new StudentController(sDAO, eDAO);
         TeacherController tc = new TeacherController(tDAO, cDAO);
         CourseController cc = new CourseController(cDAO, tDAO, eDAO);
         EducationController ec = new EducationController(eDAO, cDAO, sDAO);
-        StatisticsController stc = new StatisticsController();
+        StatisticsController stc = new StatisticsController(stcDAO);
 
         ConsoleUI io = new ConsoleUI(uInput, sc, tc, cc, ec, stc);
 

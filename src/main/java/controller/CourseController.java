@@ -30,15 +30,17 @@ public class CourseController {
 
         Course course = cDao.findCourse(id);
         List<Teacher> teachers = course.getTeachers();
-        for (Teacher t :
-                teachers) {
-            t.removeCourse(course);
+
+        for (int i = teachers.size(); i < 0; i--) {
+            teachers.get(i).removeCourse(course);
         }
+
         List<Education> educations = course.getEducations();
-        for (Education e :
-                educations) {
-            e.removeCourse(course);
+
+        for (int i = educations.size(); i < 0; i--) {
+            educations.get(i).removeCourse(course);
         }
+
         cDao.removeCourse(id);
     }
 

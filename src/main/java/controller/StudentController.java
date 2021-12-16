@@ -7,6 +7,7 @@ import entities.Education;
 import entities.Student;
 
 import javax.persistence.EntityManager;
+import java.util.Iterator;
 import java.util.List;
 
 public class StudentController {
@@ -33,20 +34,21 @@ public class StudentController {
 
     }
 
-    public List<Student> findStudentByLastNameController(String lastName){
+    public List<Student> findStudentByLastNameController(String lastName) {
 
-       return sDAO.findStudentByLastName(lastName);
+        return sDAO.findStudentByLastName(lastName);
 
     }
 
-    public void  updateStudentFirstNameController (int id, String name){
+    public void updateStudentFirstNameController(int id, String name) {
         Student student = sDAO.findStudent(id);
 
         student.setFirstName(name);
 
         sDAO.updateStudent(student);
     }
-    public void  updateStudentLastNameController (int id, String name){
+
+    public void updateStudentLastNameController(int id, String name) {
         Student student = sDAO.findStudent(id);
 
         student.setLastName(name);
@@ -54,7 +56,7 @@ public class StudentController {
         sDAO.updateStudent(student);
     }
 
-    public void  updateStudentDateOfBirthController (int id, String dateOfBirth){
+    public void updateStudentDateOfBirthController(int id, String dateOfBirth) {
         Student student = sDAO.findStudent(id);
 
         student.setDateOfBirth(dateOfBirth);
@@ -76,7 +78,7 @@ public class StudentController {
 
     }*/
 
-    public void removeStudentFromEducationController(int eID, int sID){
+    public void removeStudentFromEducationController(int eID, int sID) {
 
 
         sDAO.removeStudentFromEducation(sID, eID);
@@ -84,17 +86,15 @@ public class StudentController {
     }
 
 
-
     public void deleteStudentByID(int id) {
-
         Student student = sDAO.findStudent(id);
         List<Education> list = student.getEducations();
 
-        for (Education e : list) {
-            e.removeStudent(student);
+        for (int i = list.size(); i < 0; i--) {
+            list.get(i).removeStudent(student);
         }
-        sDAO.removeStudent(id);
 
+        sDAO.removeStudent(id);
     }
 
     public Student findStudentController(int id) {

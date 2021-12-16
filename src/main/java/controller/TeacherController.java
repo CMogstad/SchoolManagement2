@@ -49,18 +49,6 @@ public class TeacherController {
         tDAO.updateTeacher(teacher);
     }
 
-    public void deleteTeacherByID(int id) {
-        Teacher teacher = tDAO.findTeacher(id);
-
-        List<Course> courses = teacher.getCourses();
-
-        for (Course c : courses) {
-            c.removeTeacher(teacher);
-        }
-
-        tDAO.removeTeacher(id);
-    }
-
     public Teacher findTeacherController(int id) {
         return tDAO.findTeacher(id);
     }
@@ -84,28 +72,20 @@ public class TeacherController {
     }
 
     public void removeCourseFromTeacherController(int courseId, int teacherId) { //TODO
-
-
         tDAO.removeTeacherFromCourse(courseId, teacherId);
-
-
     }
 
     public void removeTeacherByIDController(int teacherId) { //TODO
-
 
         Teacher teacher = tDAO.findTeacher(teacherId);
 
         List<Course> courses = teacher.getCourses();
 
-        for (Course c : courses) {
-            c.removeTeacher(teacher);
+        for (int i = courses.size(); i < 0; i--) {
+            courses.get(i).removeTeacher(teacher);
         }
 
         tDAO.removeTeacher(teacherId);
-
-
-
     }
 
     public List<Teacher> findTeacherByLastNameController(String lastName) {
@@ -115,7 +95,5 @@ public class TeacherController {
     public List<Course> showCoursesOfTeacherController(int teacherId) { //TODO
 
         return tDAO.showCoursesOfTeacher(teacherId);
-
-
     }
 }

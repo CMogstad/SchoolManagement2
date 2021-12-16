@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class StatisticsDaoImplementation implements StatisticsDao {
 
 
-
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
     @Override
@@ -45,7 +44,6 @@ public class StatisticsDaoImplementation implements StatisticsDao {
 
     @Override
     public List<Course> courseHighestPoints() {
-
         EntityManager em = emf.createEntityManager();
 
         // List<Course> courses = em.createQuery("SELECT max(c.coursePoints) FROM Course c ", Course.class)
@@ -58,10 +56,11 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         TypedQuery<Course> tq = em.createQuery("SELECT c FROM Course c", Course.class);
         int maxPoints = tq.getResultStream().mapToInt(c -> c.getCoursePoints()).max().orElse(0);
 
+        List<Course> list = tq.getResultStream().filter(c -> c.getCoursePoints() == maxPoints).collect(Collectors.toList());
+
         em.close();
 
-        return tq.getResultStream().filter(c -> c.getCoursePoints() == maxPoints).collect(Collectors.toList());
-
+        return list;
     }
 
     @Override
@@ -74,11 +73,11 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         TypedQuery<Course> tq = em.createQuery("SELECT c FROM Course c", Course.class);
         int minPoints = tq.getResultStream().mapToInt(c -> c.getCoursePoints()).min().orElse(0);
 
+        List<Course> list = tq.getResultStream().filter(c -> c.getCoursePoints() == minPoints).collect(Collectors.toList());
 
         em.close();
 
-        return tq.getResultStream().filter(c -> c.getCoursePoints() == minPoints).collect(Collectors.toList());
-
+        return list;
     }
 
     @Override
@@ -92,13 +91,14 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         /*List list = em.createQuery("SELECT max(e.students) FROM Education e", Education.class)
                 .getResultList();*/
 
-        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e",Education.class);
+        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e", Education.class);
         int mostStudents = tq.getResultStream().mapToInt(e -> e.getStudents().size()).max().orElse(0);
+
+        List<Education> list = tq.getResultStream().filter(e -> e.getStudents().size() == mostStudents).collect(Collectors.toList());
 
         em.close();
 
-        return tq.getResultStream().filter(e -> e.getStudents().size()==mostStudents).collect(Collectors.toList());
-
+        return list;
     }
 
     @Override
@@ -109,13 +109,14 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         /*List list = em.createQuery("SELECT max(t.courses) FROM Teacher t", Teacher.class)
                 .getResultList();*/
 
-        TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t",Teacher.class);
+        TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t", Teacher.class);
         int mostCourses = tq.getResultStream().mapToInt(t -> t.getCourses().size()).max().orElse(0);
+
+        List<Teacher> list = tq.getResultStream().filter(t -> t.getCourses().size() == mostCourses).collect(Collectors.toList());
 
         em.close();
 
-        return tq.getResultStream().filter(t -> t.getCourses().size()==mostCourses).collect(Collectors.toList());
-
+        return list;
     }
 
     @Override
@@ -126,13 +127,14 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         /*List list = em.createQuery("SELECT max(e.courses) FROM Education e", Education.class)
                 .getResultList();*/
 
-        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e",Education.class);
+        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e", Education.class);
         int mostCourses = tq.getResultStream().mapToInt(e -> e.getCourses().size()).max().orElse(0);
+
+        List<Education> list = tq.getResultStream().filter(e -> e.getCourses().size() == mostCourses).collect(Collectors.toList());
 
         em.close();
 
-        return tq.getResultStream().filter(e -> e.getCourses().size()==mostCourses).collect(Collectors.toList());
-
+        return list;
     }
 
     @Override
@@ -143,13 +145,12 @@ public class StatisticsDaoImplementation implements StatisticsDao {
        /* List list = em.createQuery("SELECT avg(t.employmentYear) FROM Teacher t", Teacher.class)
                 .getResultList();*/
 
-        TypedQuery<Teacher> tq = em.createQuery ("SELECT t FROM Teacher t", Teacher.class);
+        TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t", Teacher.class);
         double avgYear = tq.getResultStream().mapToInt(t -> t.getEmploymentYear()).average().orElse(0);
 
         em.close();
 
         return avgYear;
-
     }
 
     @Override
@@ -164,7 +165,6 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         em.close();
 
         return list;
-
     }
 
     @Override
@@ -180,6 +180,8 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         List<Teacher> list = tq.getResultStream()
                 .sorted((t1, t2) -> t1.getEmploymentYear() - t2.getEmploymentYear())
                 .collect(Collectors.toList());
+
+        em.close();
 
         return list;
     }
@@ -200,5 +202,3 @@ public class StatisticsDaoImplementation implements StatisticsDao {
 
     }*/
 }
-//Sortera baserat på poäng
-// Sortera baserat på arraylist

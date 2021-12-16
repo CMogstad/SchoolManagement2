@@ -47,7 +47,6 @@ public class Education {
 
     public void removeStudent(Student student){
         students.remove(student);
-
         student.getEducations().remove(this);
     }
 

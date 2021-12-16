@@ -67,14 +67,14 @@ public class EducationController {
 
         List<Course> courses = education.getCourses();
 
-        for (Course c : courses) {
-            c.removeEducation(education);
+        for (int i = courses.size(); i < 0; i--) {
+            courses.get(i).removeEducation(education);
         }
 
         List<Student> students = education.getStudents();
 
-        for (Student s : students) {
-            s.removeEducation(education);
+        for (int i = students.size(); i < 0; i--) {
+            students.get(i).removeEducation(education);
         }
 
         eDao.removeEducation(id);
