@@ -24,11 +24,11 @@ public class SchoolMain {
 
         MainConsoleUI mIO = new MainConsoleUI(uInput, sc, tc, cc, ec, stc);
 
-        StudentConsoleUI sIO = new StudentConsoleUI(sc, uInput);
-        TeacherConsoleUI tIO = new TeacherConsoleUI(tc, uInput);
-        CourseConsoleUI cIO = new CourseConsoleUI(cc, uInput);
-        EducationConsoleUI eIO = new EducationConsoleUI(ec, uInput);
-        StatisticsConsoleUI stcIO = new StatisticsConsoleUI(stc, uInput);
+        StudentConsoleUI sIO = new StudentConsoleUI(sc, mIO, uInput);
+        TeacherConsoleUI tIO = new TeacherConsoleUI(tc, mIO, uInput);
+        CourseConsoleUI cIO = new CourseConsoleUI(cc, mIO, uInput);
+        EducationConsoleUI eIO = new EducationConsoleUI(ec, mIO, uInput);
+        StatisticsConsoleUI stcIO = new StatisticsConsoleUI(stc, mIO, uInput);
 
         MainController mc = new MainController(mIO, sIO, tIO, cIO, eIO, stcIO, uInput);
         mc.mainProgram();
