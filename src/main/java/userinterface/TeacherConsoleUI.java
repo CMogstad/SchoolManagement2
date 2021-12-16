@@ -42,6 +42,7 @@ public class TeacherConsoleUI {
 
                 Please choose: """);
     }
+
     public void readTeacherUI() {
         System.out.print("\nPlease enter first name: ");
         String firstName = input.readString();
@@ -101,6 +102,7 @@ public class TeacherConsoleUI {
 
 
     }
+
     public void updateEmploymentYearUI() {
 
     try {
@@ -137,6 +139,7 @@ public class TeacherConsoleUI {
 
 
     }
+
     public void removeCourseFromTeacherUI() {
 
     try {
@@ -154,6 +157,7 @@ public class TeacherConsoleUI {
 
 
     }
+
     public void removeTeacherByIDUI() {
 
     try {
@@ -168,6 +172,7 @@ public class TeacherConsoleUI {
 
 
     }
+
     public void findTeacherByLastNameUI() {
 
     try {
@@ -182,6 +187,7 @@ public class TeacherConsoleUI {
         System.out.println("Last Name was not found, Please insert other name: .");
     }
     }
+
     public void showAllTeachersUI() {
         List<Teacher> teachers = tc.showAllTeachersController();
 
@@ -191,8 +197,9 @@ public class TeacherConsoleUI {
     public void showAllTeacherWithoutCourseUI() {
         List<Teacher> teachers = tc.showAllTeacherWithoutCourseController();
 
-       mainUI.printList(teachers);
+        mainUI.printList(teachers);
     }
+
     public void showCoursesOfTeacherUI() {
 
     try {
@@ -212,6 +219,18 @@ public class TeacherConsoleUI {
 
     public void printTeacher(Teacher teacher) {
         System.out.println(teacher);
+    }
+
+
+    public void printTeacher(Teacher teacher) {
+        System.out.println(teacher);
+    }
+
+    public static void teacherHeader() {
+        System.out.println("""
+                ________________________________________________________________________________________________
+                  ID         NAME
+                ________________________________________________________________________________________________ """);
     }
 
 }

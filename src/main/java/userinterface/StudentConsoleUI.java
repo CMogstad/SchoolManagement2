@@ -195,4 +195,12 @@ public class StudentConsoleUI {
         System.out.println(student);
     }
 
+    public static void studentHeader() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID          FIRST NAME                 LAST NAME               DATE OF BIRTH               
+                _______________________________________________________________________________________ """);
+
+    }
+
 }
