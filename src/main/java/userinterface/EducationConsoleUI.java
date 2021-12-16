@@ -56,12 +56,14 @@ public class EducationConsoleUI {
 
 
             ec.updateEducationController(id, newName);
+
+            System.out.println("\nEducation has been updated!");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nEducation has been updated!");
+
     }
 
     public void addEducationToCourseUI() {
@@ -74,11 +76,14 @@ public class EducationConsoleUI {
             int cID = input.readInt();
 
             ec.addEducationToCourseController(eID, cID);
+
+            System.out.println("\nEducation and Course has been joined! ");
+
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nEducation and Course has been joined! ");
+
     }
 
     public void addEducationToStudentUI() {
@@ -91,11 +96,12 @@ public class EducationConsoleUI {
             int sID = input.readInt();
 
             ec.addEducationToStudentController(eID, sID);
+            System.out.println("Education and student has been joined! ");
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("Education and student has been joined! ");
+
     }
 
     public void removeEducationUI() {
@@ -105,12 +111,13 @@ public class EducationConsoleUI {
             int id = input.readInt();
 
             ec.removeEducationByIDController(id);
+            System.out.println("\nEducation has been removed! ");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nEducation has been removed! ");
+
     }
 
     public void removeEducationFromStudentUI() {
@@ -123,6 +130,7 @@ public class EducationConsoleUI {
             int sID = input.readInt();
 
             ec.removeEducationFromStudentController(eID, sID);
+            System.out.println("\nEducation has been removed from student!");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
@@ -130,7 +138,7 @@ public class EducationConsoleUI {
 
         //sc.removeStudentFromEducationController(eID, sID);
 
-        System.out.println("\nEducation has been removed from student!");
+
     }
 
     public void removeEducationFromCourseUI() {
@@ -143,12 +151,14 @@ public class EducationConsoleUI {
             int cID = input.readInt();
 
             ec.removeEducationFromCourseController(eID, cID);
+
+            System.out.println("\nEducation has been removed from course!");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nEducation has been removed from course!");
+
     }
 
     public void findEducationByNameUI() {

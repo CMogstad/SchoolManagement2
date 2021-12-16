@@ -89,15 +89,17 @@ public class TeacherConsoleUI {
         try {
 
             tc.updateTeacherLastNameController(teacherId, lastName);
+
+            System.out.println("\nLast name has been updated!");
+            System.out.println(" ");
+
+            Teacher teacher = tc.findTeacherController(teacherId);
+            printTeacher(teacher);
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nLast name has been updated!");
-        System.out.println(" ");
 
-        Teacher teacher = tc.findTeacherController(teacherId);
-        printTeacher(teacher);
     }
     public void updateEmploymentYearUI() {
 
@@ -109,11 +111,13 @@ public class TeacherConsoleUI {
         int employmentYear = input.readInt();
 
         tc.updateTeacherEmploymentYearController(teacherId, employmentYear);
+
+        System.out.println("\nThe employment year has been updated!");
     } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nThe employment year has been updated!");
+
     }
 
     public void addCourseToTeacherUI() {
@@ -126,11 +130,12 @@ public class TeacherConsoleUI {
         int teacherId = input.readInt();
 
         tc.addCourseToTeacherController(courseId, teacherId);
+        System.out.println("\nCourse has been added to teacher!");
     } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nCourse has been added to teacher!");
+
     }
     public void removeCourseFromTeacherUI() {
 
@@ -142,11 +147,12 @@ public class TeacherConsoleUI {
         int teacherId = input.readInt();
 
         tc.removeCourseFromTeacherController(courseId, teacherId);
+        System.out.println("\nCourse has been removed from teacher!");
     } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nCourse has been removed from teacher!");
+
     }
     public void removeTeacherByIDUI() {
 
@@ -155,11 +161,12 @@ public class TeacherConsoleUI {
         int teacherId = input.readInt();
 
         tc.removeTeacherByIDController(teacherId);
+        System.out.println("\nThe teacher has been removed!");
     } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nThe teacher has been removed!");
+
     }
     public void findTeacherByLastNameUI() {
 
@@ -199,7 +206,7 @@ public class TeacherConsoleUI {
         mainUI.printList(courses);
 
     } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
+        System.out.println("ID was not found, Please insert right ID:");
         }
     }
 

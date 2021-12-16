@@ -65,11 +65,12 @@ public class StudentConsoleUI {
             String newName = input.readString();
 
             sc.updateStudentFirstNameController(studentId, newName);
+            System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nStudent has been updated!");
+
     }
 
     public void updateStudentLastNameUI() {
@@ -82,12 +83,13 @@ public class StudentConsoleUI {
             String newName = input.readString();
 
             sc.updateStudentLastNameController(studentId, newName);
+            System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
 
         }
 
-        System.out.println("\nStudent has been updated!");
+
     }
 
     public void updateStudentDateOfBirthUI() {
@@ -100,11 +102,12 @@ public class StudentConsoleUI {
             String newDateOfBirth = input.readString();
 
             sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
+            System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
         System.out.println("ID was not found, Please insert right ID: .");
     }
 
-        System.out.println("\nStudent has been updated!");
+
     }
 
     public void removeStudentUI() {
@@ -159,11 +162,13 @@ public class StudentConsoleUI {
             int sID = input.readInt();
 
             sc.addEducationToStudentController(eID, sID);
+
+            System.out.println("Education and student has been joined! ");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
-        System.out.println("Education and student has been joined! ");
+
 
     }
 
@@ -177,12 +182,13 @@ public class StudentConsoleUI {
             int sID = input.readInt();
 
             sc.removeStudentFromEducationController(eID, sID);
+            System.out.println("\nEducation has been removed from student!");
         }
         catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
-        System.out.println("\nEducation has been removed from student!");
+
     }
 
     public void printStudent(Student student) {
