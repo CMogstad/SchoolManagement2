@@ -270,6 +270,10 @@ public class ConsoleUI {
         tc.updateTeacherFirstNameController(teacherId, firstName);
 
         System.out.println("\nTeacher has been updated!");
+        System.out.println(" ");
+
+        Teacher teacher = tc.findTeacherController(teacherId);
+        printTeacher(teacher);
     }
 
     public void updateTeacherLastNameUI() {
@@ -282,13 +286,17 @@ public class ConsoleUI {
         tc.updateTeacherLastNameController(teacherId, lastName);
 
         System.out.println("\nLast name has been updated!");
+        System.out.println(" ");
+
+        Teacher teacher = tc.findTeacherController(teacherId);
+        printTeacher(teacher);
     }
 
     public void updateEmploymentYearUI() {
         System.out.print("\nPlease enter ID of Teacher: ");
         int teacherId = input.readInt();
 
-        System.out.print("Please enter new employment year: ");
+        System.out.print("Please enter new employment year [YYYY]: ");
         int employmentYear = input.readInt();
 
         tc.updateTeacherEmploymentYearController(teacherId, employmentYear);
@@ -355,7 +363,9 @@ public class ConsoleUI {
         int teacherId = input.readInt();
 
         List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
+        Teacher teacher = tc.findTeacherController(teacherId);
 
+        printTeacher(teacher);
         printList(courses);
     }
 
@@ -569,7 +579,7 @@ public class ConsoleUI {
         System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter employment Year: ");
+        System.out.print("Please enter employment Year [YYYY]: ");
         int employmentYear = input.readInt();
 
         tc.createTeacher(firstName, lastName, employmentYear);
