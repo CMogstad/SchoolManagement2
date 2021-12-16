@@ -126,24 +126,24 @@ public class MainController {
     }
 
     private void courseManagementController() {
-        io.printCourseMenu();
+        cIO.printCourseMenu();
 
         String choice = uInput.readString();
 
         switch (choice) {
 
-            case "1" -> io.readCourseUI();
-            case "2" -> io.updateCourseSubjectUI();
-            case "3" -> io.updateCoursePointsUI();
-            case "4" -> io.addEducationToCourseUI();
-            case "5" -> io.addCourseToTeacherUI();
-            case "6" -> io.removeEducationFromCourseUI();
-            case "7" -> io.removeCourseFromTeacherUI();
-            case "8" -> io.removeCourseByIdUI();
-            case "9" -> io.findCourseBySubjectUI();
-            case "10" -> io.showAllCoursesUI();
-            case "11" -> io.showAllCoursesWithoutEducationUI();
-            case "12" -> io.showAllCoursesWithoutTeacherUI();
+            case "1" -> cIO.readCourseUI();
+            case "2" -> cIO.updateCourseSubjectUI();
+            case "3" -> cIO.updateCoursePointsUI();
+            case "4" -> cIO.addEducationToCourseUI();
+            case "5" -> cIO.addCourseToTeacherUI();
+            case "6" -> cIO.removeEducationFromCourseUI();
+            case "7" -> cIO.removeCourseFromTeacherUI();
+            case "8" -> cIO.removeCourseByIdUI();
+            case "9" -> cIO.findCourseBySubjectUI();
+            case "10" -> cIO.showAllCoursesUI();
+            case "11" -> cIO.showAllCoursesWithoutEducationUI();
+            case "12" -> cIO.showAllCoursesWithoutTeacherUI();
             case "0" -> courseLoop = false;
             default -> System.out.println("Wrong input, please choose 1-12");
         }

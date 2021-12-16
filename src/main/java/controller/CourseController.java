@@ -92,8 +92,9 @@ public class CourseController {
 
     }
 
-    public void removeCourseFromTeacher(int cID, int tID) {
 
+
+    public void removeCourseFromTeacherController(int cID, int tID) {
 
         cDao.removeCourseFromTeacher(cID, tID);
 
