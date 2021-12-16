@@ -202,4 +202,20 @@ public class EducationDaoImplementation implements EducationDAO{
 
 
     }
+
+
+    @Override
+    public List<Course> showAllCoursesWithoutEducation(){
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        List<Course> list = em.createQuery("SELECT c FROM Course c WHERE c.educations is empty", Course.class).getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+
+        return list;
+    }
 }

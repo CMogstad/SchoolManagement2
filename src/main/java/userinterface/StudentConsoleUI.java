@@ -143,4 +143,9 @@ public class StudentConsoleUI {
 
         System.out.println("\nEducation has been removed from student!");
     }
+
+    public void printStudent(Student student) {
+        System.out.println(student);
+    }
+
 }

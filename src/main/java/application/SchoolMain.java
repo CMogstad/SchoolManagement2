@@ -14,7 +14,7 @@ public class SchoolMain {
         EducationDAO eDAO = new EducationDaoImplementation();
         StatisticsDao stcDAO = new StatisticsDaoImplementation();
 
-        ConsoleInput uInput = new ConsoleInput();
+        ConsoleInput input = new ConsoleInput();
 
         StudentController sc = new StudentController(sDAO, eDAO);
         TeacherController tc = new TeacherController(tDAO, cDAO);
@@ -22,15 +22,15 @@ public class SchoolMain {
         EducationController ec = new EducationController(eDAO, cDAO, sDAO);
         StatisticsController stc = new StatisticsController(stcDAO);
 
-        MainConsoleUI mIO = new MainConsoleUI(uInput, sc, tc, cc, ec, stc);
+        MainConsoleUI mIO = new MainConsoleUI(input, sc, tc, cc, ec, stc);
 
-        StudentConsoleUI sIO = new StudentConsoleUI(sc, mIO, uInput);
-        TeacherConsoleUI tIO = new TeacherConsoleUI(tc, mIO, uInput);
-        CourseConsoleUI cIO = new CourseConsoleUI(cc, mIO, uInput);
-        EducationConsoleUI eIO = new EducationConsoleUI(ec, mIO, uInput);
-        StatisticsConsoleUI stcIO = new StatisticsConsoleUI(stc, mIO, uInput);
+        StudentConsoleUI sIO = new StudentConsoleUI(sc, mIO, input);
+        TeacherConsoleUI tIO = new TeacherConsoleUI(tc, mIO, input);
+        CourseConsoleUI cIO = new CourseConsoleUI(cc, mIO, input);
+        EducationConsoleUI eIO = new EducationConsoleUI(ec, mIO, input);
+        StatisticsConsoleUI stcIO = new StatisticsConsoleUI(stc, mIO, input);
 
-        MainController mc = new MainController(mIO, sIO, tIO, cIO, eIO, stcIO, uInput);
+        MainController mc = new MainController(mIO, sIO, tIO, cIO, eIO, stcIO, input);
         mc.mainProgram();
 
 

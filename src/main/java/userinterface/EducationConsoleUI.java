@@ -1,6 +1,7 @@
 package userinterface;
 
 import controller.EducationController;
+import entities.Course;
 import entities.Education;
 
 import java.util.List;
@@ -15,6 +16,32 @@ public class EducationConsoleUI {
         this.ec = ec;
         this.mainUI = mainUI;
         this.input = input;
+    }
+
+
+    public void printEducationMenu() {
+        System.out.print("""
+                                
+                _______________________________________________
+                                School Management
+                                 Education Menu
+                _______________________________________________
+                1. Add Education
+                2. Update Education Name
+                3. Add Education to Course
+                4. Add Education to Student
+                5. Remove Education from Course
+                6. Remove Education from Student
+                7. Remove Education
+                8. Find Education by Name
+                9. Show All Educations
+                10. Show All Courses of an Education
+                11. Show All Student of an Education
+                12. Show All Educations Without Courses
+                13. Show All Educations Without Students
+                0. Back to Main Menu
+
+                Please choose: """);
     }
 
     public void updateEducationNameUI() {
@@ -132,8 +159,11 @@ public class EducationConsoleUI {
         System.out.println("\nEducation has been added!");
     }
 
+    public void showAllCoursesWithoutEducationUI() {
+        List<Course> courses = ec.showAllCoursesWithoutEducationController();
 
-
+        mainUI.printList(courses);
+    }
 
     public void showAllEducationsWithoutStudentsUI(){
         List<Education> list = ec.listEducationWithoutStudentsController();

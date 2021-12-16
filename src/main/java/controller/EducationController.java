@@ -125,4 +125,9 @@ public class EducationController {
     public List<Education> listEducationWithoutStudentsController() {
         return eDao.listEducationWithoutStudents();
     }
+
+
+    public List<Course> showAllCoursesWithoutEducationController() {
+        return eDao.showAllCoursesWithoutEducation();
+    }
 }

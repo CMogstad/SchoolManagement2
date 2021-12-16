@@ -31,4 +31,6 @@ public interface EducationDAO {
     void removeEducationFromCourse(int eId, int cId);
 
     void removeEducationFromStudent(int eID, int sId);
+
+    List<Course> showAllCoursesWithoutEducation();
 }
