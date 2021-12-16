@@ -6,14 +6,18 @@ import database.StudentImpDAO;
 import entities.Education;
 import entities.Student;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class StudentController {
 
     StudentImpDAO sDAO;
 
-    public StudentController(StudentImpDAO sDAO) {
+    EducationDAO eDAO;
+
+    public StudentController(StudentImpDAO sDAO, EducationDAO eDAO) {
         this.sDAO = sDAO;
+        this.eDAO = eDAO;
     }
 
     public void createStudentController(String firstName, String lastName, String dateOfBirth) {
@@ -83,6 +87,20 @@ public class StudentController {
         eDAO.updateEducation(education);
 
         sDAO.updateStudent(student);
+
+      /*  EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        Customer customer = em.find(Customer.class, cID);
+
+        Bank bank = em.find(Bank.class, bID);
+
+        customer.removeBank(bank);
+
+        em.getTransaction().commit();
+
+        em.close();*/
 
 
     }

@@ -476,7 +476,7 @@ public class ConsoleUI {
 
         //ec.removeEducationFromStudentController(eID, sID);
 
-
+        sc.removeStudentFromEducationController(eID, sID);
 
         System.out.println("\nEducation has been removed from student!");
     }
@@ -709,6 +709,11 @@ public class ConsoleUI {
 
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
 
+        printList(list);
+    }
+
+    public void showAllEducationsWithoutStudentsUI(){
+        List<Education> list = ec.listEducationWithoutStudentsController();
         printList(list);
     }
 
