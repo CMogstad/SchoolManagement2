@@ -22,7 +22,7 @@ public class SchoolMain {
         EducationController ec = new EducationController(eDAO, cDAO, sDAO);
         StatisticsController stc = new StatisticsController(stcDAO);
 
-        MainConsoleUI mIO = new MainConsoleUI(input, sc, tc, cc, ec, stc);
+        MainConsoleUI mIO = new MainConsoleUI();
 
         StudentConsoleUI sIO = new StudentConsoleUI(sc, mIO, input);
         TeacherConsoleUI tIO = new TeacherConsoleUI(tc, mIO, input);

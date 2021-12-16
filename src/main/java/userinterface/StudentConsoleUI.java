@@ -56,37 +56,53 @@ public class StudentConsoleUI {
     }
 
     public void updateStudentFirstNameUI() {
-        System.out.print("\nPlease enter ID of student: ");
-        int studentId = input.readInt();
 
-        System.out.print("Please enter new first name of student: ");
-        String newName = input.readString();
+        try {
+            System.out.print("\nPlease enter ID of student: ");
+            int studentId = input.readInt();
 
-        sc.updateStudentFirstNameController(studentId, newName);
+            System.out.print("Please enter new first name of student: ");
+            String newName = input.readString();
+
+            sc.updateStudentFirstNameController(studentId, newName);
+        } catch (NoResultException e) {
+        System.out.println("ID was not found, Please insert right ID: .");
+    }
 
         System.out.println("\nStudent has been updated!");
     }
 
     public void updateStudentLastNameUI() {
-        System.out.print("\nPlease enter ID of student: ");
-        int studentId = input.readInt();
 
-        System.out.print("Please enter new last name of student: ");
-        String newName = input.readString();
+        try {
+            System.out.print("\nPlease enter ID of student: ");
+            int studentId = input.readInt();
 
-        sc.updateStudentLastNameController(studentId, newName);
+            System.out.print("Please enter new last name of student: ");
+            String newName = input.readString();
+
+            sc.updateStudentLastNameController(studentId, newName);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+
+        }
 
         System.out.println("\nStudent has been updated!");
     }
 
     public void updateStudentDateOfBirthUI() {
-        System.out.print("\nPlease enter ID of student: ");
-        int studentId = input.readInt();
 
-        System.out.print("Please enter new date of birth of student: ");
-        String newDateOfBirth = input.readString();
+        try {
+            System.out.print("\nPlease enter ID of student: ");
+            int studentId = input.readInt();
 
-        sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
+            System.out.print("Please enter new date of birth of student: ");
+            String newDateOfBirth = input.readString();
+
+            sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
+        } catch (NoResultException e) {
+        System.out.println("ID was not found, Please insert right ID: .");
+    }
 
         System.out.println("\nStudent has been updated!");
     }
@@ -107,12 +123,18 @@ public class StudentConsoleUI {
     }
 
     public void findStudentByLastNameUI() {
-        System.out.print("\nPlease enter last name: ");
-        String lastName = input.readString();
 
-        List<Student> students = sc.findStudentByLastNameController(lastName);
+        try {
+            System.out.print("\nPlease enter last name: ");
+            String lastName = input.readString();
 
-        mUI.printList(students);
+            List<Student> students = sc.findStudentByLastNameController(lastName);
+
+            mUI.printList(students);
+
+    } catch (NoResultException e) {
+        System.out.println("Last name was not found, please insert other name");
+    }
     }
 
     public void showAllStudentsUI() {
