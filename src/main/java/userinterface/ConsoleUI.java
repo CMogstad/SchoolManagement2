@@ -630,7 +630,7 @@ public class ConsoleUI {
 
     }
 
-    private void showStudentsByDateOfBirthUI() {
+    public void showStudentsByDateOfBirthUI() {
         System.out.print("Please enter earliest year: ");
         int eYear = input.readInt();
 
@@ -643,7 +643,7 @@ public class ConsoleUI {
 
     }
 
-    private void courseHighestPointUI() {
+    public void courseHighestPointUI() {
 
         List<Course> list = stc.courseHighestPointsController();
 
@@ -651,42 +651,42 @@ public class ConsoleUI {
 
     }
 
-    private void courseLowestPointUI() {
+    public void courseLowestPointUI() {
 
         List<Course> list = stc.courseLowestPointsController();
 
         printList(list);
     }
 
-    private void educationMostStudentsUI() {
+    public void educationMostStudentsUI() {
 
         List<Education> list = stc.educationMostStudentsController();
 
         printList(list);
     }
 
-    private void teacherMostCoursesUI(){
+    public void teacherMostCoursesUI(){
 
         List<Teacher> list  = stc.teacherMostCoursesController();
 
         printList(list);
 
     }
-    private void educationMostCoursesUI(){
+    public void educationMostCoursesUI(){
 
         List<Education> list = stc.educationMostStudentsController();
 
         printList(list);
 
     }
-    private void averageEmploymentYearUI(){
+    public void averageEmploymentYearUI(){
 
         double avg = stc.averageEmploymentYearController();
         System.out.println("Average employment year: " + avg);
 
     }
 
-    private void numberOfStudentsByEducationUI(){
+    public void numberOfStudentsByEducationUI(){
 
         List<Education> list = stc.getListOfAllEducationsController();
 
@@ -695,7 +695,7 @@ public class ConsoleUI {
         }
 
     }
-    private void numberOfCoursesByEducationUI(){
+    public void numberOfCoursesByEducationUI(){
 
         List<Education> list = stc.getListOfAllEducationsController();
 
@@ -705,7 +705,7 @@ public class ConsoleUI {
         }
 
     }
-    private void listEmploymentYearAscOrdUI(){
+    public void listEmploymentYearAscOrdUI(){
 
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
 
