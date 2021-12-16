@@ -75,6 +75,7 @@ public class Student {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        birthYear = getBirthYear();
     }
 
     public List<Education> getEducations() {
