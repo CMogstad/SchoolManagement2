@@ -64,7 +64,7 @@ public class MainController {
             }
             case "5" -> {
                 while (statisticsLoop) {
-
+                    statisticsManagementController();
                 }
             }
             case "0" -> mainLoop = false;
@@ -90,7 +90,7 @@ public class MainController {
             case "9" -> io.showAllStudentsUI();
             case "10" -> io.showAllStudentsWithoutEducationUI();
             case "0" -> studentLoop = false;
-            default -> System.out.println("Wrong input, please choose 1-6");
+            default -> System.out.println("Wrong input, please choose 1-10");
         }
     }
 
@@ -112,7 +112,7 @@ public class MainController {
             case "10" -> io.showAllTeacherWithoutCourseUI();
             case "11" -> io.showCoursesOfTeacherUI();
             case "0" -> teacherLoop = false;
-            default -> System.out.println("Wrong input, please choose 1-6");
+            default -> System.out.println("Wrong input, please choose 1-11");
         }
     }
 
@@ -136,7 +136,7 @@ public class MainController {
             case "11" -> io.showAllCoursesWithoutEducationUI();
             case "12" -> io.showAllCoursesWithoutTeacherUI();
             case "0" -> courseLoop = false;
-            default -> System.out.println("Wrong input, please choose 1-6");
+            default -> System.out.println("Wrong input, please choose 1-12");
         }
     }
 
@@ -160,7 +160,7 @@ public class MainController {
             case "12" -> io.showAllEducationsWithoutCourseUI();
             case "13" -> io.showAllEducationsWithoutStudentsUI();
             case "0" -> educationLoop = false;
-            default -> System.out.println("Wrong input, please choose 1-6");
+            default -> System.out.println("Wrong input, please choose 1-13");
         }
     }
 
@@ -171,20 +171,18 @@ public class MainController {
         String choice = uInput.readString();
 
         switch (choice) {
-            case "1" -> { /*studentsByDateOfBirthController()*/}
-            case "2" -> {/*courseHighestPointsController();*/}
-            case "3" -> {/*courseLowestPointsController();*/}
-            case "4" -> {/*educationMostStudentsController();*/}
-            case "5" -> {/*teacherMostCoursesController();*/}
-            case "6" -> {/*educationMostCoursesController();*/}
-            case "7" -> {/*averageEmploymentYearController();*/}
-            case "8" -> {/*listEmploymentYearAscOrdController();*/
-                ;
-            }
-            case "9" -> {/* numberOfStudentsByEducationController();*/}
-            case "10" -> {/*numberOfCoursesByEducationController();*/}
+            case "1" -> io.showStudentsByDateOfBirthUI();
+            case "2" -> io.courseHighestPointUI();
+            case "3" -> io.courseLowestPointUI();
+            case "4" -> io.educationMostStudentsUI();
+            case "5" -> io.teacherMostCoursesUI();
+            case "6" -> io.educationMostCoursesUI();
+            case "7" -> io.averageEmploymentYearUI();
+            case "8" -> io.numberOfStudentsByEducationUI();
+            case "9" -> io.numberOfCoursesByEducationUI();
+            case "10" -> io.listEmploymentYearAscOrdUI();
             case "0" -> statisticsLoop = false;
-            default -> System.out.println("Wrong input, please choose 1-6");
+            default -> System.out.println("Wrong input, please choose 1-10");
         }
     }
 }
