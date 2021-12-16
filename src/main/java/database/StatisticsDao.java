@@ -23,11 +23,10 @@ public interface StatisticsDao {
 
     double averageEmploymentYear();
 
-    List numberOfStudentsByEducation();
+    List<Education> getListOfAllEducations();
 
-    List numberOfCoursesByEducation();
+    List<Teacher> listEmploymentYearAscOrd();
 
-    List listEmploymentYearAscOrd();
-
+    //List numberOfCoursesByEducation();
 
 }

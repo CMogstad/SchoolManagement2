@@ -1,89 +1,85 @@
 package controller;
 
-import database.StatisticsDao;
 import database.StatisticsDaoImplementation;
 import entities.Course;
 import entities.Education;
 import entities.Student;
 import entities.Teacher;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public class StatisticsController {
 
     StatisticsDaoImplementation sDao;
 
-    public void studentsByDateOfBirthController(int start, int end) {
+    public List<Student> studentsByDateOfBirthController(int start, int end) {
 
-        sDao.studentsByDateOfBirth(start, end);
-
-    }
-
-
-    public void courseHighestPointsController() {
-
-      sDao.courseHighestPoints();
+        return sDao.studentsByDateOfBirth(start, end);
 
     }
 
 
-    public void courseLowestPointsController() {
+    public List<Course> courseHighestPointsController() {
 
-        sDao.courseLowestPoints();
-
-    }
-
-
-    public void educationMostStudentsController() {
-
-     sDao.educationMostStudents();
+        return sDao.courseHighestPoints();
 
     }
 
 
-    public void teacherMostCoursesController() {
+    public List<Course> courseLowestPointsController() {
 
-        sDao.teacherMostCourses();
-
-
-    }
-
-
-    public void educationMostCoursesController() {
-
-     sDao.educationMostCourses();
-
+        return sDao.courseLowestPoints();
 
     }
 
 
-    public void averageEmploymentYearController() {
+    public List<Education> educationMostStudentsController() {
 
-        sDao.averageEmploymentYear();
-
-
-    }
-
-
-    public void numberOfStudentsByEducationController() {
-
-     sDao.numberOfStudentsByEducation();
-
+        return sDao.educationMostStudents();
 
     }
 
 
-    public void numberOfCoursesByEducationController() {
+    public List<Teacher> teacherMostCoursesController() {
 
-    sDao.numberOfCoursesByEducation();
+        return sDao.teacherMostCourses();
 
+    }
+
+
+    public List<Education> educationMostCoursesController() {
+
+        return sDao.educationMostCourses();
 
     }
 
-    public void listEmploymentYearAscOrdController(){
 
-        sDao.listEmploymentYearAscOrd();
+    public double averageEmploymentYearController() {
+
+       return sDao.averageEmploymentYear();
 
     }
+
+ /*   public List<Education> numberOfStudentsByEducationController() {
+
+        return sDao.getListOfAllEducations();
+
+
+    }*/
+
+    public List<Education> getListOfAllEducationsController() {
+        return sDao.getListOfAllEducations();
+
+    }
+
+    public List<Teacher> listEmploymentYearAscOrdController() {
+
+        return sDao.listEmploymentYearAscOrd();
+
+    }
+    
+/*    public void numberOfCoursesByEducationController() {
+
+        sDao.numberOfCoursesByEducation();
+    }*/
 }

@@ -15,8 +15,7 @@ import java.util.stream.Collectors;
 
 public class StatisticsDaoImplementation implements StatisticsDao {
 
-    //Sortera baserat på poäng
-    // Sortera baserat på arraylist
+
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
@@ -154,12 +153,13 @@ public class StatisticsDaoImplementation implements StatisticsDao {
     }
 
     @Override
-    public List numberOfStudentsByEducation() {
+    public List<Education> getListOfAllEducations() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT count(e.students) FROM Education e", Education.class)
-                .getResultList();
+        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e", Education.class);
+
+        List<Education> list = tq.getResultList();
 
         em.close();
 
@@ -168,29 +168,37 @@ public class StatisticsDaoImplementation implements StatisticsDao {
     }
 
     @Override
-    public List listEmploymentYearAscOrd() {
+    public List<Teacher> listEmploymentYearAscOrd() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT t FROM Teacher t ORDER BY t.employmentYear ASC", Teacher.class)
-                .getResultList();
+        /*List list = em.createQuery("SELECT t FROM Teacher t ORDER BY t.employmentYear ASC", Teacher.class)
+                .getResultList();*/
+
+        TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t", Teacher.class);
+
+        List<Teacher> list = tq.getResultStream()
+                .sorted((t1, t2) -> t1.getEmploymentYear() - t2.getEmploymentYear())
+                .collect(Collectors.toList());
 
         return list;
-
-
     }
 
 
-    @Override
+/*    @Override
     public List numberOfCoursesByEducation() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT count(e.courses) FROM Education e", Education.class)
-                .getResultList();
+        *//*List list = em.createQuery("SELECT count(e.courses) FROM Education e", Education.class)
+                .getResultList();*//*
+
+
 
         return list;
 
 
-    }
+    }*/
 }
+//Sortera baserat på poäng
+// Sortera baserat på arraylist
