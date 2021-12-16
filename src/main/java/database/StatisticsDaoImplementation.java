@@ -8,7 +8,10 @@ import entities.Teacher;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class StatisticsDaoImplementation implements StatisticsDao {
 
@@ -33,7 +36,7 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         em.close();
         return students;*/
 
-        List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.birthYear >=:birthStart AND s.birthYear <=:birthEnd",Student.class)
+        List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.birthYear >=:birthStart AND s.birthYear <=:birthEnd", Student.class)
                 .setParameter("birthStart", birthStart)
                 .setParameter("birthEnd", birthEnd)
                 .getResultList();
@@ -46,17 +49,19 @@ public class StatisticsDaoImplementation implements StatisticsDao {
 
         EntityManager em = emf.createEntityManager();
 
-        List<Course> courses = em.createQuery("SELECT max(c.coursePoints) FROM Course c ", Course.class)
-                .getResultList();
+        // List<Course> courses = em.createQuery("SELECT max(c.coursePoints) FROM Course c ", Course.class)
+        //       .getResultList();
 
         //SELECT p FROM Product p WHERE p.value(SELECT AVG(q.value) FROM Product q)
 
         //(count, sum, avg, max, min)
 
+        TypedQuery<Course> tq = em.createQuery("SELECT c FROM Course c", Course.class);
+        int maxPoints = tq.getResultStream().mapToInt(c -> c.getCoursePoints()).max().orElse(0);
+
         em.close();
 
-        return courses;
-
+        return tq.getResultStream().filter(c -> c.getCoursePoints() == maxPoints).collect(Collectors.toList());
 
     }
 
@@ -64,74 +69,87 @@ public class StatisticsDaoImplementation implements StatisticsDao {
     public List<Course> courseLowestPoints() {
         EntityManager em = emf.createEntityManager();
 
-        List<Course> courses = em.createQuery("SELECT min(c.coursePoints) FROM Course c ", Course.class)
-                .getResultList();
+       /* List<Course> courses = em.createQuery("SELECT min(c.coursePoints) FROM Course c ", Course.class)
+                .getResultList();*/
 
+        TypedQuery<Course> tq = em.createQuery("SELECT c FROM Course c", Course.class);
+        int minPoints = tq.getResultStream().mapToInt(c -> c.getCoursePoints()).min().orElse(0);
 
 
         em.close();
 
-        return courses;
+        return tq.getResultStream().filter(c -> c.getCoursePoints() == minPoints).collect(Collectors.toList());
 
     }
 
     @Override
-    public List educationMostStudents() {
+    public List<Education> educationMostStudents() {
 
         EntityManager em = emf.createEntityManager();
 
        /* List list = em.createQuery("SELECT c FROM Customer c WHERE c.banks is empty", Customer.class)
                 .getResultList();*/
 
-        List list = em.createQuery("SELECT max(e.students) FROM Education e", Education.class)
-                .getResultList();
+        /*List list = em.createQuery("SELECT max(e.students) FROM Education e", Education.class)
+                .getResultList();*/
+
+        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e",Education.class);
+        int mostStudents = tq.getResultStream().mapToInt(e -> e.getStudents().size()).max().orElse(0);
 
         em.close();
 
-         return list;
+        return tq.getResultStream().filter(e -> e.getStudents().size()==mostStudents).collect(Collectors.toList());
 
     }
 
     @Override
-    public List teacherMostCourses() {
+    public List<Teacher> teacherMostCourses() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT max(t.courses) FROM Teacher t", Teacher.class)
-                .getResultList();
+        /*List list = em.createQuery("SELECT max(t.courses) FROM Teacher t", Teacher.class)
+                .getResultList();*/
+
+        TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t",Teacher.class);
+        int mostCourses = tq.getResultStream().mapToInt(t -> t.getCourses().size()).max().orElse(0);
 
         em.close();
 
-        return list;
+        return tq.getResultStream().filter(t -> t.getCourses().size()==mostCourses).collect(Collectors.toList());
 
     }
 
     @Override
-    public List educationMostCourses() {
+    public List<Education> educationMostCourses() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT max(e.courses) FROM Education e", Education.class)
-                .getResultList();
+        /*List list = em.createQuery("SELECT max(e.courses) FROM Education e", Education.class)
+                .getResultList();*/
+
+        TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e",Education.class);
+        int mostCourses = tq.getResultStream().mapToInt(e -> e.getCourses().size()).max().orElse(0);
 
         em.close();
 
-        return list;
-
+        return tq.getResultStream().filter(e -> e.getCourses().size()==mostCourses).collect(Collectors.toList());
 
     }
 
     @Override
-    public List averageEmploymentYear() {
+    public double averageEmploymentYear() {
 
         EntityManager em = emf.createEntityManager();
 
-        List list = em.createQuery("SELECT avg(t.employmentYear) FROM Teacher t", Teacher.class)
-                .getResultList();
+       /* List list = em.createQuery("SELECT avg(t.employmentYear) FROM Teacher t", Teacher.class)
+                .getResultList();*/
+
+        TypedQuery<Teacher> tq = em.createQuery ("SELECT t FROM Teacher t", Teacher.class);
+        double avgYear = tq.getResultStream().mapToInt(t -> t.getEmploymentYear()).average().orElse(0);
 
         em.close();
 
-        return list;
+        return avgYear;
 
     }
 
@@ -146,7 +164,6 @@ public class StatisticsDaoImplementation implements StatisticsDao {
         em.close();
 
         return list;
-
 
     }
 
