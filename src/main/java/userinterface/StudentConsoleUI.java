@@ -47,10 +47,16 @@ public class StudentConsoleUI {
         System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter date of birth(YYYYMMDD): ");
-        String dateOfBirth = input.readString();
+        try {
 
-        sc.createStudentController(firstName, lastName, dateOfBirth);
+            System.out.print("Please enter date of birth(YYYYMMDD): ");
+            String dateOfBirth = input.readString();
+
+
+            sc.createStudentController(firstName, lastName, dateOfBirth);
+        } catch (Exception e) {
+            System.out.println("Please use correct birth format :");
+        }
 
         System.out.println("\nStudent has been added!");
     }
@@ -67,7 +73,7 @@ public class StudentConsoleUI {
             sc.updateStudentFirstNameController(studentId, newName);
             System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
+        System.out.println("ID was not found, Please insert right ID:");
     }
 
 
@@ -85,7 +91,7 @@ public class StudentConsoleUI {
             sc.updateStudentLastNameController(studentId, newName);
             System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.println("ID was not found, Please insert right ID: ");
 
         }
 
@@ -104,7 +110,7 @@ public class StudentConsoleUI {
             sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
             System.out.println("\nStudent has been updated!");
         } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
+        System.out.println("ID was not found, Please insert right ID: ");
     }
 
 
