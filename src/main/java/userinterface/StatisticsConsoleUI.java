@@ -52,7 +52,7 @@ public class StatisticsConsoleUI {
 
             List<Student> list = stc.studentsByDateOfBirthController(eYear, lYear);
 
-            mainUI.printList(list);
+            mainUI.printStudentList(list);
 
         } catch (Exception e) {
             System.out.println("Incorrect input of Date of Birth, please update in update in Student Date of Birth option.");
@@ -61,22 +61,36 @@ public class StatisticsConsoleUI {
 
     public void courseHighestPointUI() {
         List<Course> list = stc.courseHighestPointsController();
-        mainUI.printList(list);
+        mainUI.printListCourses(list);
     }
 
     public void courseLowestPointUI() {
         List<Course> list = stc.courseLowestPointsController();
-        mainUI.printList(list);
+        mainUI.printListCourses(list);
     }
 
     public void educationMostStudentsUI() {
         List<Education> list = stc.educationMostStudentsController();
-        mainUI.printList(list);
+       // mainUI.printEducationList(list);
+        mainUI.educationHeader();
+
+        for (Education e : list) {
+            System.out.println("  " +
+                    mainUI.fixString(10, String.valueOf(e.getId())) +
+                    mainUI.fixString(25, e.getName()) +
+                    MainConsoleUI.fixString(18, String.valueOf(e.getStudents().size())));
+
+        }
+
+        mainUI.educationFooter();
+
     }
 
     public void teacherMostCoursesUI() {
         List<Teacher> list = stc.teacherMostCoursesController();
-        mainUI.printList(list);
+        mainUI.printTeacherList(list);
+
+        MainConsoleUI.fixString(18, String.valueOf(e.getCourses().size())));
     }
 
     public void educationMostCoursesUI() {
@@ -97,7 +111,13 @@ public class StatisticsConsoleUI {
 
     public void averageEmploymentYearUI() {
         double avg = stc.averageEmploymentYearController();
-        System.out.println("Average employment year: " + avg);
+
+        statisticsHeaderAverage();
+        System.out.println("  " +MainConsoleUI.fixString(8, "") +
+                        MainConsoleUI.fixString(18, String.valueOf(avg)));
+
+
+                statisticsFooter();
     }
 
     public void numberOfStudentsByEducationUI() {
@@ -130,17 +150,35 @@ public class StatisticsConsoleUI {
 
     public void listEmploymentYearAscOrdUI() {
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
-        mainUI.printList(list);
+
+        mainUI.printTeacherList(list);
+
     }
 
     public void statisticsHeader() {
         System.out.println("""
                 _______________________________________________________________________________________
-                          Statistics RESULTS               
+                          STATISTICS RESULTS               
                 _______________________________________________________________________________________ """);
     }
 
     public void statisticsFooter() {
-        System.out.println("________________________________________________________________________________\n\n");
+        System.out.println("_______________________________________________________________________________________\n\n");
     }
+
+    public void statisticsHeaderAverage() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                          AVERAGE EMPLOYMENT YEAR           
+                _______________________________________________________________________________________ """);
+    }
+
+
+    public void educationHeaderWithSize() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID          NAME OF EDUCATION           
+                _______________________________________________________________________________________ """);
+    }
+
 }

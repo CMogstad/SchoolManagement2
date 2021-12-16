@@ -70,7 +70,7 @@ public class TeacherConsoleUI {
             System.out.println(" ");
 
             Teacher teacher = tc.findTeacherController(teacherId);
-            printTeacher(teacher);
+            mainUI.printTeacher(teacher);
 
         } catch (Exception e) {
             System.out.print("ID was not found, Please insert right ID: ");
@@ -93,7 +93,7 @@ public class TeacherConsoleUI {
             System.out.println(" ");
 
             Teacher teacher = tc.findTeacherController(teacherId);
-            printTeacher(teacher);
+            mainUI.printTeacher(teacher);
         } catch (Exception e) {
             System.out.print("ID was not found, Please insert right ID: ");
         }
@@ -165,7 +165,8 @@ public class TeacherConsoleUI {
             String lastName = input.readString();
 
             List<Teacher> teachers = tc.findTeacherByLastNameController(lastName);
-            mainUI.printList(teachers);
+
+            mainUI.printTeacherList(teachers);
 
         } catch (Exception e) {
             System.out.print("Last Name was not found, Please insert other name: ");
@@ -174,12 +175,14 @@ public class TeacherConsoleUI {
 
     public void showAllTeachersUI() {
         List<Teacher> teachers = tc.showAllTeachersController();
-        mainUI.printList(teachers);
+
+        mainUI.printTeacherList(teachers);
     }
 
     public void showAllTeacherWithoutCourseUI() {
         List<Teacher> teachers = tc.showAllTeacherWithoutCourseController();
-        mainUI.printList(teachers);
+
+        mainUI.printTeacherList(teachers);
     }
 
     public void showCoursesOfTeacherUI() {
@@ -190,17 +193,14 @@ public class TeacherConsoleUI {
             List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
             Teacher teacher = tc.findTeacherController(teacherId);
 
-            printTeacher(teacher);
-            mainUI.printList(courses);
+            mainUI.printTeacher(teacher);
+            mainUI.printListCourses(courses);
 
         } catch (Exception e) {
             System.out.print("ID was not found, Please insert right ID: ");
         }
     }
 
-    public void printTeacher(Teacher teacher) {
-        System.out.println(teacher);
-    }
 
     public void showDetailedStudentInfoUI() {
         try {
@@ -225,14 +225,6 @@ public class TeacherConsoleUI {
         }
     }
 
-    public void teacherHeader() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                  ID          FIRST NAME                 LAST NAME               YEAR OF EMPLOYMENT               
-                _______________________________________________________________________________________ """);
-    }
 
-    public void teacherFooter() {
-        System.out.println("________________________________________________________________________________\n\n");
-    }
 }
+

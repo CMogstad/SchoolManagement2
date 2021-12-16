@@ -145,7 +145,7 @@ public class EducationConsoleUI {
             System.out.println("\nPlease enter name of education: ");
             String name = input.readString();
 
-            mainUI.printList(ec.findEducationByNameController(name));
+            mainUI.printEducationList(ec.findEducationByNameController(name));
 
         } catch (Exception e) {
             System.out.print("Name was not found, please try again: ");
@@ -153,18 +153,18 @@ public class EducationConsoleUI {
     }
 
     public void showAllEducationsUI() {
-        mainUI.printList(ec.showAllEducationsController());
+        mainUI.printEducationList(ec.showAllEducationsController());
     }
 
     public void listEducationCoursesController() {
         System.out.print("\nPlease enter ID of education: ");
         int id = input.readInt();
 
-        mainUI.printList(ec.listEducationCoursesController(id));
+        mainUI.printListCourses(ec.listEducationCoursesController(id));
     }
 
     public void showAllEducationsWithoutCourseUI() {
-        mainUI.printList(ec.showAllEducationsWithoutCourseController());
+        mainUI.printEducationList(ec.showAllEducationsWithoutCourseController());
     }
 
     public void listEducationStudentsUI() {
@@ -172,7 +172,7 @@ public class EducationConsoleUI {
             System.out.print("\nPlease enter ID of education: ");
             int id = input.readInt();
 
-            mainUI.printList(ec.listEducationStudentsController(id));
+            mainUI.printStudentList(ec.listEducationStudentsController(id));
 
         } catch (Exception e) {
             System.out.print("ID was not found, Please insert right ID: ");
@@ -180,7 +180,7 @@ public class EducationConsoleUI {
     }
 
     public void listEducationWithoutStudentsUI() {
-        mainUI.printList(ec.listEducationWithoutStudentsController());
+        mainUI.printEducationList(ec.listEducationWithoutStudentsController());
     }
 
     public void readEducationUI() {
@@ -193,12 +193,12 @@ public class EducationConsoleUI {
 
     public void showAllCoursesWithoutEducationUI() {
         List<Course> courses = ec.showAllCoursesWithoutEducationController();
-        mainUI.printList(courses);
+        mainUI.printListCourses(courses);
     }
 
     public void showAllEducationsWithoutStudentsUI() {
         List<Education> list = ec.listEducationWithoutStudentsController();
-        mainUI.printList(list);
+        mainUI.printEducationList(list);
     }
 
     public void showDetailedEducationInfoUI() {
@@ -227,38 +227,5 @@ public class EducationConsoleUI {
         }
     }
 
-    public void educationHeader() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                  ID          EDUCATION NAME    
-                _______________________________________________________________________________________ """);
-    }
-
-    public void educationFooter() {
-        System.out.println("________________________________________________________________________________\n\n");
-
-    }
-
-    public void printEducationList(List<Education> educations) {
-        educationHeader();
-
-        for (Education e : educations) {
-
-            System.out.println("  " +
-                    MainConsoleUI.fixString(6, String.valueOf(e.getId())) +
-                    MainConsoleUI.fixString(18, e.getName()));
-        }
-
-        educationFooter();
-    }
-
-    public void printEducation(Education education) {
-        educationHeader();
-
-        System.out.println("  " +
-                MainConsoleUI.fixString(6, String.valueOf(education.getId())) +
-                MainConsoleUI.fixString(18, education.getName()));
-
-        educationFooter();
-    }
 }
+

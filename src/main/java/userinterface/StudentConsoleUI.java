@@ -3,6 +3,7 @@ package userinterface;
 import controller.StudentController;
 import entities.Education;
 import entities.Student;
+import entities.Teacher;
 
 import java.util.List;
 
@@ -131,7 +132,7 @@ public class StudentConsoleUI {
 
             List<Student> students = sc.findStudentByLastNameController(lastName);
 
-            mUI.printList(students);
+            mUI.printStudentList(students);
 
         } catch (Exception e) {
             System.out.print("Last name was not found, please insert other name: ");
@@ -140,12 +141,12 @@ public class StudentConsoleUI {
 
     public void showAllStudentsUI() {
         List<Student> students = sc.showAllStudentsController();
-        mUI.printList(students);
+        mUI.printStudentList(students);
     }
 
     public void showAllStudentsWithoutEducationUI() {
         List<Student> students = sc.showAllStudentsWithoutEducationController();
-        mUI.printList(students);
+        mUI.printStudentList(students);
     }
 
     public void addEducationToStudentUI() {
@@ -202,18 +203,5 @@ public class StudentConsoleUI {
         }
     }
 
-    public void printStudent(Student student) {
-        System.out.println(student);
-    }
 
-    public void studentHeader() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                  ID          FIRST NAME                 LAST NAME               DATE OF BIRTH               
-                _______________________________________________________________________________________ """);
-    }
-
-    public void studentFooter() {
-        System.out.println("________________________________________________________________________________\n\n");
-    }
 }
