@@ -158,7 +158,7 @@ public class CourseConsoleUI {
 
         Course course = cc.findCourseController(courseId);
 
-        mainUI.printCourse(course);
+        printCourse(course);
     }
 
     public void showAllCoursesUI() {
@@ -177,5 +177,9 @@ public class CourseConsoleUI {
         List<Course> courses = cc.showAllCoursesWithoutTeacherController();
 
         mainUI.printList(courses);
+    }
+
+    public void printCourse(Course course) {
+        System.out.println(course);
     }
 }
