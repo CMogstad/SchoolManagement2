@@ -8,9 +8,9 @@ public class ConsoleInput {
     Scanner sc = new Scanner(System.in);
 
     public int readInt() {
-        int i = 0;
+        int i;
 
-        while(true){
+        while (true) {
             try {
                 i = sc.nextInt();
                 return i;

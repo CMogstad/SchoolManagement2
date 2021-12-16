@@ -2,6 +2,7 @@ package database;
 
 import entities.Education;
 import entities.Student;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -17,7 +18,9 @@ public class StudentImpDAO implements StudentDAO {
         EntityTransaction t = em.getTransaction();
 
         t.begin();
+
         em.persist(student);
+
         t.commit();
         em.close();
     }
@@ -33,21 +36,17 @@ public class StudentImpDAO implements StudentDAO {
         em.close();
     }
 
-    public void removeStudentFromEducation(int sID, int eID){
-
+    public void removeStudentFromEducation(int sID, int eID) {
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-
         Student student = em.find(Student.class, sID);
-
         Education education = em.find(Education.class, eID);
 
         education.removeStudent(student);
 
         em.getTransaction().commit();
-
         em.close();
     }
 
@@ -59,7 +58,9 @@ public class StudentImpDAO implements StudentDAO {
         Student student = em.find(Student.class, id);
 
         t.begin();
+
         em.remove(student);
+
         t.commit();
         em.close();
     }
@@ -90,7 +91,7 @@ public class StudentImpDAO implements StudentDAO {
         EntityManager em = emf.createEntityManager();
 
         List<Student> students = em.createQuery("SELECT s FROM Student s WHERE s.educations is empty", Student.class)
-                        .getResultList();
+                .getResultList();
 
         em.close();
         return students;
@@ -108,6 +109,4 @@ public class StudentImpDAO implements StudentDAO {
 
         return students;
     }
-
-
 }

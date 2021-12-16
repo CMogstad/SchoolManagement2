@@ -1,8 +1,6 @@
 package database;
 
 import entities.Course;
-import entities.Education;
-import entities.Student;
 import entities.Teacher;
 
 import javax.persistence.EntityManager;
@@ -56,8 +54,8 @@ public class TeacherDAOImplementation implements TeacherDAO {
         EntityManager em = emf.createEntityManager();
 
         Teacher teacher = em.find(Teacher.class, id);
-        em.close();
 
+        em.close();
         return teacher;
     }
 
@@ -69,7 +67,6 @@ public class TeacherDAOImplementation implements TeacherDAO {
         List<Teacher> teachers = tq.getResultList();
 
         em.close();
-
         return teachers;
     }
 
@@ -81,7 +78,6 @@ public class TeacherDAOImplementation implements TeacherDAO {
         List<Teacher> teachers = tq.getResultList();
 
         em.close();
-
         return teachers;
     }
 
@@ -98,21 +94,16 @@ public class TeacherDAOImplementation implements TeacherDAO {
         return teachers;
     }
 
-    public List<Course> showCoursesOfTeacher(int id){
-
+    public List<Course> showCoursesOfTeacher(int id) {
         EntityManager em = emf.createEntityManager();
 
         Teacher teacher = em.find(Teacher.class, id);
 
         em.close();
-
         return teacher.getCourses();
-
     }
 
-
     public void removeTeacherFromCourse(int cID, int tID) {
-
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -123,8 +114,6 @@ public class TeacherDAOImplementation implements TeacherDAO {
         course.removeTeacher(teacher);
 
         em.getTransaction().commit();
-
         em.close();
-
     }
 }

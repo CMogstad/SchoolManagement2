@@ -4,58 +4,52 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @NamedQueries(
         {
                 @NamedQuery(name = "Education.showAll", query = "SELECT e FROM Education e"),
                 @NamedQuery(name = "Education.findByEducationName", query = "SELECT e FROM Education e WHERE e.name=:name"),
-
         }
 )
 
 @Entity
 public class Education {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
 
-    @ManyToMany (mappedBy = "educations", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "educations", cascade = CascadeType.PERSIST)
     private List<Course> courses = new ArrayList<>();
 
     @ManyToMany
     private List<Student> students = new ArrayList<>();
 
-    public void addCourse(Course course){
-        courses.add(course);
-
-        course.getEducations().add(this);
-    }
-
-    public void removeCourse(Course course){
-        courses.remove(course);
-
-        course.getEducations().remove(this);
-    }
-
-    public void addStudent(Student student){
-        students.add(student);
-
-        student.getEducations().add(this);
-    }
-
-    public void removeStudent(Student student){
-        students.remove(student);
-        student.getEducations().remove(this);
-    }
-
     public Education() {
     }
 
-
     public Education(String name) {
         this.name = name;
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+        course.getEducations().add(this);
+    }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+        course.getEducations().remove(this);
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+        student.getEducations().add(this);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+        student.getEducations().remove(this);
     }
 
     public void setId(int id) {
@@ -92,9 +86,7 @@ public class Education {
 
     @Override
     public String toString() {
-        return "Education{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "ID: " + id +
+                " Name: " + name;
     }
 }

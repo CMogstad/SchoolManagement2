@@ -1,6 +1,5 @@
 package database;
 
-import entities.Education;
 import entities.Student;
 
 import java.util.List;
@@ -22,5 +21,4 @@ public interface StudentDAO {
     List<Student> findStudentByLastName(String lastName);
 
     void removeStudentFromEducation(int sID, int eID);
-
 }

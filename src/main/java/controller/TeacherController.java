@@ -2,13 +2,9 @@ package controller;
 
 import database.CourseDAO;
 import database.TeacherDAO;
-import database.TeacherDAOImplementation;
 import entities.Course;
-import entities.Education;
-import entities.Student;
 import entities.Teacher;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherController {
@@ -23,12 +19,7 @@ public class TeacherController {
 
     public void createTeacher(String firstName, String lastName, int employmentYear) {
         Teacher teacher = new Teacher(firstName, lastName, employmentYear);
-
         tDAO.addTeacher(teacher);
-    }
-
-    public void updateTeacherController(Teacher teacher) {
-        tDAO.updateTeacher(teacher);
     }
 
     public void updateTeacherFirstNameController(int id, String name) {
@@ -76,12 +67,11 @@ public class TeacherController {
     }
 
     public void removeTeacherByIDController(int teacherId) { //TODO
-
         Teacher teacher = tDAO.findTeacher(teacherId);
 
         List<Course> courses = teacher.getCourses();
 
-        for (int i = courses.size(); i < 0; i--) {
+        for (int i = courses.size() - 1; i >= 0; i--) {
             courses.get(i).removeTeacher(teacher);
         }
 
@@ -93,7 +83,6 @@ public class TeacherController {
     }
 
     public List<Course> showCoursesOfTeacherController(int teacherId) { //TODO
-
         return tDAO.showCoursesOfTeacher(teacherId);
     }
 }

@@ -25,7 +25,6 @@ public class MainConsoleUI {
         list.forEach(System.out::println);
     }
 
-
     public static String fixString(int wantedSize, String stringToFix) {
         if (stringToFix.length() < wantedSize) {
             while (stringToFix.length() < wantedSize) {
@@ -41,12 +40,10 @@ public class MainConsoleUI {
                 ________________________________________________________________________________________________
                   ID          NAME                 BIRTHDAY               SALARY               DEPARTMENT
                 ________________________________________________________________________________________________ """);
-
     }
 
     public static void footer() {
         System.out.println("________________________________________________________________________________________________\n\n");
-
     }
 
     public static void headerStudents() {
@@ -54,10 +51,7 @@ public class MainConsoleUI {
                 ________________________________________________________________________________________________
                   ID          NAME                 BIRTHDAY               SALARY               DEPARTMENT
                 ________________________________________________________________________________________________ """);
-
     }
-
-
 
     public static void showAllEmployees() {
       /*  UI.header();
@@ -72,23 +66,6 @@ public class MainConsoleUI {
         UI.footer();
         System.out.println("\n Press any key to continue.");
         getStringInput();*/
-
-
     }
-
-
-/*    UI.header();
-alEmployees.stream().sorted(Comparator.comparing(Employee::getLastname))
-            .forEach(e->System.out.println("  " +
-    fixString(6, String.valueOf(e.getId())) +
-    fixString(22, e.getFirstname() + " " + e.getLastname()) +
-    fixString(22, e.getBirthday()) +
-    fixString(19, String.valueOf(e.getSalary())) +
-    fixString(18, e.getDepartment())));
-
-UI.footer();
-System.out.println("\n Press any key to continue.");
-    getStringInput();*/
-
 
 }

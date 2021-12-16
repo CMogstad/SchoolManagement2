@@ -1,10 +1,8 @@
 package userinterface;
 
 import controller.CourseController;
-import database.*;
 import entities.Course;
 
-import javax.persistence.NoResultException;
 import java.util.List;
 
 public class CourseConsoleUI {
@@ -40,7 +38,7 @@ public class CourseConsoleUI {
                 12. Show All Courses Without a Teacher
                 0. Back to Main Menu
 
-                Please choose: """);
+                Please choose:""");
     }
 
     public void readCourseUI() {
@@ -56,51 +54,40 @@ public class CourseConsoleUI {
     }
 
     public void updateCourseSubjectUI() {
-
         try {
-            System.out.println("Please enter ID of course: ");
+            System.out.println("\nPlease enter ID of course: ");
 
             int id = input.readInt();
 
             System.out.println("Please enter new subject: ");
-
             String subject = input.readString();
 
             cc.updateCourseSubjectController(id, subject);
-            System.out.println("Course subject has been updated!");
+            System.out.println("\nCourse subject has been updated!");
+
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: .");
         }
-        catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
-        }
-
-
-
     }
 
     public void updateCoursePointsUI() {
-
         try {
-            System.out.println("Please enter ID of Course: ");
+            System.out.print("\nPlease enter ID of Course: ");
 
             int id = input.readInt();
 
             System.out.println("Please enter new course points: ");
-
             int coursePoints = input.readInt();
 
             cc.updateCoursePointsController(id, coursePoints);
             System.out.println("Course points have been updated!");
+
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-        catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
-        }
-
-
-
     }
 
     public void addEducationToCourseUI() {
-
         try {
             System.out.print("\nPlease enter ID of education: ");
             int eID = input.readInt();
@@ -110,15 +97,13 @@ public class CourseConsoleUI {
 
             cc.addCourseToEducationController(cID, eID);
             System.out.println("\nEducation and Course has been joined! ");
+
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
     public void addCourseToTeacherUI() {
-
         try {
             System.out.print("\nPlease enter ID of Course: ");
             int courseId = input.readInt();
@@ -128,16 +113,13 @@ public class CourseConsoleUI {
 
             cc.addCourseToTeacherController(courseId, teacherId);
             System.out.println("\nCourse has been added to teacher!");
-        }
-        catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
-        }
 
-
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void removeEducationFromCourseUI() {
-
         try {
             System.out.print("\nPlease enter ID of education you want to remove: ");
             int eID = input.readInt();
@@ -147,15 +129,13 @@ public class CourseConsoleUI {
 
             cc.removeCourseFromEducationController(cID, eID);
             System.out.println("\nEducation has been removed from course!");
+
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
     public void removeCourseFromTeacherUI() {
-
         try {
             System.out.print("\nPlease enter ID of Course: ");
             int courseId = input.readInt();
@@ -165,31 +145,26 @@ public class CourseConsoleUI {
 
             cc.removeCourseFromTeacherController(courseId, teacherId);
             System.out.println("\nCourse has been removed from teacher!");
+
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
-
     public void removeCourseByIdUI() {
-
         try {
             System.out.print("\nPlease enter ID of course: ");
             int courseId = input.readInt();
 
             cc.removeCourseById(courseId);
             System.out.println("\nThe course has been removed!");
+
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
     public void findCourseBySubjectUI() {
-
         try {
             System.out.print("\nPlease enter subject of course: ");
             String subject = input.readString();
@@ -204,7 +179,6 @@ public class CourseConsoleUI {
 
 
     public void findCourseByIdUI() {
-
         try {
             System.out.print("\nPlease enter ID of course: ");
             int courseId = input.readInt();
@@ -213,77 +187,58 @@ public class CourseConsoleUI {
 
             printCourse(course);
 
-
-
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
     }
 
-
     public void showAllCoursesUI() {
         List<Course> courses = cc.showAllCoursesController();
-
-        //mainUI.printList(courses);
-
         printListCourses(courses);
     }
 
     public void showAllCoursesWithoutEducationUI() {
         List<Course> courses = cc.showAllCoursesWithoutEducationController();
-
-       // mainUI.printList(courses);
-
         printListCourses(courses);
     }
 
     public void showAllCoursesWithoutTeacherUI() {
         List<Course> courses = cc.showAllCoursesWithoutTeacherController();
-
-       // mainUI.printList(courses);
-
         printListCourses(courses);
     }
 
     public void printCourse(Course course) {
-       // System.out.println(course);
+        courseHeader();
 
-            courseHeader();
+        System.out.println("  " +
+                MainConsoleUI.fixString(6, String.valueOf(course.getId())) +
+                MainConsoleUI.fixString(18, course.getSubject()) +
+                MainConsoleUI.fixString(18, String.valueOf(course.getCoursePoints())));
 
-            System.out.println("  " +
-                    mainUI.fixString(6, String.valueOf(course.getId())) +
-                    mainUI.fixString(18,  course.getSubject()) +
-                    mainUI.fixString(18, String.valueOf(course.getCoursePoints())));
-
-            courseFooter();
+        courseFooter();
     }
 
     public void printListCourses(List<Course> courses) {
-
         courseHeader();
 
-        for (Course c : courses){
-
+        for (Course c : courses) {
             System.out.println("  " +
-                    mainUI.fixString(6, String.valueOf(c.getId())) +
-                    mainUI.fixString(18,  c.getSubject()) +
-                    mainUI.fixString(18, String.valueOf(c.getCoursePoints())));
+                    MainConsoleUI.fixString(6, String.valueOf(c.getId())) +
+                    MainConsoleUI.fixString(18, c.getSubject()) +
+                    MainConsoleUI.fixString(18, String.valueOf(c.getCoursePoints())));
         }
 
         courseFooter();
-
     }
 
     public void courseHeader() {
         System.out.println("""
                 _______________________________________________________________________________________
-                  ID          SUBJECT      COURSE POINTS           
+                  ID          SUBJECT      COURSE POINTS    
                 _______________________________________________________________________________________ """);
-
     }
 
     public void courseFooter() {
         System.out.println("________________________________________________________________________________\n\n");
-
     }
 }

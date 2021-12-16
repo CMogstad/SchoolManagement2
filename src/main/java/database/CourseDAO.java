@@ -33,5 +33,4 @@ public interface CourseDAO {
     void removeCourseFromEducation(int cId, int eId);
 
 
-
 }

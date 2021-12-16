@@ -8,18 +8,16 @@ import java.util.List;
         {
                 @NamedQuery(name = "Course.showAll", query = "SELECT c FROM Course c"),
                 @NamedQuery(name = "Course.findByCourseSubject", query = "SELECT c FROM Course c WHERE c.subject=:subject"),
-
         }
 )
 
 @Entity
 public class Course {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String subject;
-
     private int coursePoints;
 
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
@@ -98,10 +96,8 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", subject='" + subject + '\'' +
-                ", points=" + coursePoints +
-                '}';
+        return "ID: " + id +
+                " Subject: " + subject +
+                " Course Points: " + coursePoints;
     }
 }

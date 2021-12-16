@@ -42,7 +42,6 @@ public class MainController {
         }
     }
 
-
     private void runSchoolManagementProgram() {
         mIO.printMainMenu();
 
@@ -171,7 +170,6 @@ public class MainController {
             default -> System.out.println("Wrong input, please choose 1-13");
         }
     }
-
 
     private void statisticsManagementController() {
         stcIO.printStatisticsMenu();

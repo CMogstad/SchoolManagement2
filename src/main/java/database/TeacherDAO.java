@@ -2,6 +2,7 @@ package database;
 
 import entities.Course;
 import entities.Teacher;
+
 import java.util.List;
 
 public interface TeacherDAO {
@@ -23,11 +24,4 @@ public interface TeacherDAO {
     List<Course> showCoursesOfTeacher(int id);
 
     void removeTeacherFromCourse(int cID, int tID);
-
-    /*
-    • Add teachers to educations
-• List all teachers in an education
-• remove teachers from educations
-• Add teachers to educations
-     */
 }

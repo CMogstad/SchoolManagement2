@@ -44,7 +44,6 @@ public class Student {
         education.getStudents().remove(this);
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
@@ -88,11 +87,9 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                '}';
+        return "ID: " + id +
+                " First name: " + firstName +
+                " Last name: " + lastName +
+                " Date of Birth: " + dateOfBirth;
     }
 }

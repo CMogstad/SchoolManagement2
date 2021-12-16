@@ -78,11 +78,9 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", employmentYear=" + employmentYear +
-                '}';
+        return "ID: " + id +
+                " First name: " + firstName +
+                " Last name: " + lastName +
+                " Year of Employment: " + employmentYear;
     }
 }

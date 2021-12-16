@@ -3,7 +3,6 @@ package userinterface;
 import controller.StudentController;
 import entities.Student;
 
-import javax.persistence.NoResultException;
 import java.util.List;
 
 public class StudentConsoleUI {
@@ -52,17 +51,16 @@ public class StudentConsoleUI {
             System.out.print("Please enter date of birth(YYYYMMDD): ");
             String dateOfBirth = input.readString();
 
-
             sc.createStudentController(firstName, lastName, dateOfBirth);
+
         } catch (Exception e) {
-            System.out.println("Please use correct birth format :");
+            System.out.print("Please use correct birth format :");
         }
 
         System.out.println("\nStudent has been added!");
     }
 
     public void updateStudentFirstNameUI() {
-
         try {
             System.out.print("\nPlease enter ID of student: ");
             int studentId = input.readInt();
@@ -72,15 +70,13 @@ public class StudentConsoleUI {
 
             sc.updateStudentFirstNameController(studentId, newName);
             System.out.println("\nStudent has been updated!");
+
         } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID:");
-    }
-
-
+            System.out.print("ID was not found, Please insert right ID:");
+        }
     }
 
     public void updateStudentLastNameUI() {
-
         try {
             System.out.print("\nPlease enter ID of student: ");
             int studentId = input.readInt();
@@ -90,50 +86,43 @@ public class StudentConsoleUI {
 
             sc.updateStudentLastNameController(studentId, newName);
             System.out.println("\nStudent has been updated!");
+
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: ");
-
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
     public void updateStudentDateOfBirthUI() {
-
         try {
             System.out.print("\nPlease enter ID of student: ");
             int studentId = input.readInt();
 
-            System.out.print("Please enter new date of birth of student[YYMMDD]: ");
+            System.out.print("Please enter new date of birth of student(YYYYMMDD): ");
 
             String newDateOfBirth = input.readString();
 
             sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
             System.out.println("\nStudent has been updated!");
+
         } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: ");
-    }
-
-
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void removeStudentUI() {
-
         try {
             System.out.print("\nPlease enter ID of student: ");
             int studentId = input.readInt();
 
             sc.deleteStudentByID(studentId);
-
             System.out.println("\nStudent has been removed!");
+
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-     catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
-    }
     }
 
     public void findStudentByLastNameUI() {
-
         try {
             System.out.print("\nPlease enter last name: ");
             String lastName = input.readString();
@@ -142,25 +131,22 @@ public class StudentConsoleUI {
 
             mUI.printList(students);
 
-    } catch (Exception e) {
-        System.out.println("Last name was not found, please insert other name");
-    }
+        } catch (Exception e) {
+            System.out.print("Last name was not found, please insert other name: ");
+        }
     }
 
     public void showAllStudentsUI() {
         List<Student> students = sc.showAllStudentsController();
-
         mUI.printList(students);
     }
 
     public void showAllStudentsWithoutEducationUI() {
         List<Student> students = sc.showAllStudentsWithoutEducationController();
-
         mUI.printList(students);
     }
 
     public void addEducationToStudentUI() {
-
         try {
             System.out.print("\nPlease enter ID of education: ");
             int eID = input.readInt();
@@ -169,14 +155,11 @@ public class StudentConsoleUI {
             int sID = input.readInt();
 
             sc.addEducationToStudentController(eID, sID);
+            System.out.println("Education and student has been joined!");
 
-            System.out.println("Education and student has been joined! ");
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-        catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
-        }
-
-
     }
 
     public void removeEducationFromStudentUI() {
@@ -190,8 +173,7 @@ public class StudentConsoleUI {
 
             sc.removeStudentFromEducationController(eID, sID);
             System.out.println("\nEducation has been removed from student!");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
 
@@ -207,14 +189,9 @@ public class StudentConsoleUI {
                 _______________________________________________________________________________________
                   ID          FIRST NAME                 LAST NAME               DATE OF BIRTH               
                 _______________________________________________________________________________________ """);
-
     }
 
     public void studentFooter() {
         System.out.println("________________________________________________________________________________\n\n");
-
     }
-
-
-
 }

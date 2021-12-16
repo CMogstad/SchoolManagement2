@@ -9,13 +9,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class EducationDaoImplementation implements EducationDAO{
+public class EducationDaoImplementation implements EducationDAO {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
     @Override
     public void addEducation(Education education) {
-
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -23,14 +22,11 @@ public class EducationDaoImplementation implements EducationDAO{
         em.persist(education);
 
         em.getTransaction().commit();
-
         em.close();
-
     }
 
     @Override
     public void updateEducation(Education education) {
-
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -38,49 +34,32 @@ public class EducationDaoImplementation implements EducationDAO{
         em.merge(education);
 
         em.getTransaction().commit();
-
         em.close();
-
-
     }
-
-
-
 
     @Override
     public void removeEducation(int id) {
-
         EntityManager em = emf.createEntityManager();
-
 
         Education education = em.find(Education.class, id);
 
         em.getTransaction().begin();
 
-
         em.remove(education);
 
         em.getTransaction().commit();
-
         em.close();
-
     }
 
     @Override
     public Education findEducation(int id) {
-
         EntityManager em = emf.createEntityManager();
 
-
         Education education = em.find(Education.class, id);
-
-
 
         em.close();
 
         return education;
-
-
     }
 
     @Override
@@ -133,8 +112,6 @@ public class EducationDaoImplementation implements EducationDAO{
         em.close();
 
         return list;
-
-
     }
 
     @Override
@@ -142,14 +119,11 @@ public class EducationDaoImplementation implements EducationDAO{
 
         EntityManager em = emf.createEntityManager();
 
-
         Education education = em.find(Education.class, id);
-
 
         em.close();
 
         return education.getStudents();
-
     }
 
     @Override
@@ -162,50 +136,41 @@ public class EducationDaoImplementation implements EducationDAO{
                 .getResultList();
 
         em.getTransaction().commit();
-
         em.close();
 
         return educations;
     }
 
-    public void removeEducationFromCourse(int eId, int cId){
+    public void removeEducationFromCourse(int eId, int cId) {
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
         Education education = em.find(Education.class, eId);
-
         Course course = em.find(Course.class, cId);
 
         course.removeEducation(education);
 
         em.getTransaction().commit();
-
         em.close();
-
     }
 
-    public void removeEducationFromStudent(int eID, int sId){
-
+    public void removeEducationFromStudent(int eID, int sId) {
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
         Education education = em.find(Education.class, eID);
-
         Student student = em.find(Student.class, sId);
 
+        student.removeEducation(education);
+
         em.getTransaction().commit();
-
         em.close();
-
-
-
     }
 
-
     @Override
-    public List<Course> showAllCoursesWithoutEducation(){
+    public List<Course> showAllCoursesWithoutEducation() {
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -213,7 +178,6 @@ public class EducationDaoImplementation implements EducationDAO{
         List<Course> list = em.createQuery("SELECT c FROM Course c WHERE c.educations is empty", Course.class).getResultList();
 
         em.getTransaction().commit();
-
         em.close();
 
         return list;

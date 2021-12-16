@@ -4,7 +4,6 @@ import controller.TeacherController;
 import entities.Course;
 import entities.Teacher;
 
-import javax.persistence.NoResultException;
 import java.util.List;
 
 public class TeacherConsoleUI {
@@ -12,7 +11,6 @@ public class TeacherConsoleUI {
     TeacherController tc;
     MainConsoleUI mainUI;
     ConsoleInput input;
-
 
     public TeacherConsoleUI(TeacherController tc, MainConsoleUI mainUI, ConsoleInput input) {
         this.tc = tc;
@@ -50,14 +48,13 @@ public class TeacherConsoleUI {
         System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter employment Year [YYYY]: ");
+        System.out.print("Please enter employment Year(YYYY): ");
         int employmentYear = input.readInt();
 
         tc.createTeacher(firstName, lastName, employmentYear);
     }
 
     public void updateTeacherFirstNameUI() {
-
         try {
             System.out.print("\nPlease enter ID of Teacher: ");
             int teacherId = input.readInt();
@@ -73,13 +70,9 @@ public class TeacherConsoleUI {
             printTeacher(teacher);
 
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-        }
-
-
-
+    }
 
 
     public void updateTeacherLastNameUI() {
@@ -99,123 +92,106 @@ public class TeacherConsoleUI {
             Teacher teacher = tc.findTeacherController(teacherId);
             printTeacher(teacher);
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID: ");
         }
-
-
     }
 
     public void updateEmploymentYearUI() {
+        try {
+            System.out.print("\nPlease enter ID of Teacher: ");
+            int teacherId = input.readInt();
 
-    try {
-        System.out.print("\nPlease enter ID of Teacher: ");
-        int teacherId = input.readInt();
+            System.out.print("Please enter new employment year (YYYY): ");
+            int employmentYear = input.readInt();
 
-        System.out.print("Please enter new employment year [YYYY]: ");
-        int employmentYear = input.readInt();
+            tc.updateTeacherEmploymentYearController(teacherId, employmentYear);
+            System.out.println("\nThe employment year has been updated!");
 
-        tc.updateTeacherEmploymentYearController(teacherId, employmentYear);
-
-        System.out.println("\nThe employment year has been updated!");
-    } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
-    }
-
-
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void addCourseToTeacherUI() {
+        try {
+            System.out.print("\nPlease enter ID of Course: ");
+            int courseId = input.readInt();
 
-    try {
-        System.out.print("\nPlease enter ID of Course: ");
-        int courseId = input.readInt();
+            System.out.print("Please enter ID of Teacher: ");
+            int teacherId = input.readInt();
 
-        System.out.print("Please enter ID of Teacher: ");
-        int teacherId = input.readInt();
-
-        tc.addCourseToTeacherController(courseId, teacherId);
-        System.out.println("\nCourse has been added to teacher!");
-    } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
-    }
-
-
+            tc.addCourseToTeacherController(courseId, teacherId);
+            System.out.println("\nCourse has been added to teacher!");
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void removeCourseFromTeacherUI() {
+        try {
+            System.out.print("\nPlease enter ID of Course: ");
+            int courseId = input.readInt();
 
-    try {
-        System.out.print("\nPlease enter ID of Course: ");
-        int courseId = input.readInt();
+            System.out.print("Please enter ID of Teacher: ");
+            int teacherId = input.readInt();
 
-        System.out.print("Please enter ID of Teacher: ");
-        int teacherId = input.readInt();
+            tc.removeCourseFromTeacherController(courseId, teacherId);
+            System.out.println("\nCourse has been removed from teacher!");
 
-        tc.removeCourseFromTeacherController(courseId, teacherId);
-        System.out.println("\nCourse has been removed from teacher!");
-    } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
-    }
-
-
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void removeTeacherByIDUI() {
+        try {
+            System.out.print("\nPlease enter ID of Teacher: ");
+            int teacherId = input.readInt();
 
-    try {
-        System.out.print("\nPlease enter ID of Teacher: ");
-        int teacherId = input.readInt();
+            tc.removeTeacherByIDController(teacherId);
+            System.out.println("\nThe teacher has been removed!");
 
-        tc.removeTeacherByIDController(teacherId);
-        System.out.println("\nThe teacher has been removed!");
-    } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID: .");
-    }
-
-
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
+        }
     }
 
     public void findTeacherByLastNameUI() {
+        try {
+            System.out.print("\nPlease enter the last name of a teacher: ");
+            String lastName = input.readString();
 
-    try {
-        System.out.print("\nPlease enter the last name of a teacher: ");
-        String lastName = input.readString();
+            List<Teacher> teachers = tc.findTeacherByLastNameController(lastName);
+            mainUI.printList(teachers);
 
-        List<Teacher> teachers = tc.findTeacherByLastNameController(lastName);
-
-
-        mainUI.printList(teachers);
-    } catch (Exception e) {
-        System.out.println("Last Name was not found, Please insert other name: .");
-    }
+        } catch (Exception e) {
+            System.out.print("Last Name was not found, Please insert other name: ");
+        }
     }
 
     public void showAllTeachersUI() {
         List<Teacher> teachers = tc.showAllTeachersController();
-
         mainUI.printList(teachers);
     }
 
     public void showAllTeacherWithoutCourseUI() {
         List<Teacher> teachers = tc.showAllTeacherWithoutCourseController();
-
         mainUI.printList(teachers);
     }
 
     public void showCoursesOfTeacherUI() {
+        try {
+            System.out.print("\nPlease enter ID of Teacher: ");
+            int teacherId = input.readInt();
 
-    try {
-        System.out.print("\nPlease enter ID of Teacher: ");
-        int teacherId = input.readInt();
+            List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
+            Teacher teacher = tc.findTeacherController(teacherId);
 
-        List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
-        Teacher teacher = tc.findTeacherController(teacherId);
+            printTeacher(teacher);
+            mainUI.printList(courses);
 
-        printTeacher(teacher);
-        mainUI.printList(courses);
-
-    } catch (Exception e) {
-        System.out.println("ID was not found, Please insert right ID:");
+        } catch (Exception e) {
+            System.out.print("ID was not found, Please insert right ID: ");
         }
     }
 
@@ -223,19 +199,14 @@ public class TeacherConsoleUI {
         System.out.println(teacher);
     }
 
-
-
-
     public void teacherHeader() {
         System.out.println("""
                 _______________________________________________________________________________________
                   ID          FIRST NAME                 LAST NAME               YEAR OF EMPLOYMENT               
                 _______________________________________________________________________________________ """);
-
     }
 
     public void teacherFooter() {
         System.out.println("________________________________________________________________________________\n\n");
-
     }
 }
