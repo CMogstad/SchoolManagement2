@@ -674,7 +674,7 @@ public class ConsoleUI {
     }
     public void educationMostCoursesUI(){
 
-        List<Education> list = stc.educationMostStudentsController();
+        List<Education> list = stc.educationMostCoursesController();
 
         printList(list);
 

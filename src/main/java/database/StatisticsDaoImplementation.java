@@ -92,7 +92,10 @@ public class StatisticsDaoImplementation implements StatisticsDao {
                 .getResultList();*/
 
         TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e", Education.class);
-        int mostStudents = tq.getResultStream().mapToInt(e -> e.getStudents().size()).max().orElse(0);
+        int mostStudents = tq.getResultStream()
+                .mapToInt(e -> e.getStudents().size())
+                .max()
+                .orElse(0);
 
         List<Education> list = tq.getResultStream().filter(e -> e.getStudents().size() == mostStudents).collect(Collectors.toList());
 
@@ -103,14 +106,13 @@ public class StatisticsDaoImplementation implements StatisticsDao {
 
     @Override
     public List<Teacher> teacherMostCourses() {
-
         EntityManager em = emf.createEntityManager();
 
-        /*List list = em.createQuery("SELECT max(t.courses) FROM Teacher t", Teacher.class)
-                .getResultList();*/
-
         TypedQuery<Teacher> tq = em.createQuery("SELECT t FROM Teacher t", Teacher.class);
-        int mostCourses = tq.getResultStream().mapToInt(t -> t.getCourses().size()).max().orElse(0);
+        int mostCourses = tq.getResultStream()
+                .mapToInt(t -> t.getCourses().size())
+                .max()
+                .orElse(0);
 
         List<Teacher> list = tq.getResultStream().filter(t -> t.getCourses().size() == mostCourses).collect(Collectors.toList());
 
@@ -121,14 +123,13 @@ public class StatisticsDaoImplementation implements StatisticsDao {
 
     @Override
     public List<Education> educationMostCourses() {
-
         EntityManager em = emf.createEntityManager();
 
-        /*List list = em.createQuery("SELECT max(e.courses) FROM Education e", Education.class)
-                .getResultList();*/
-
         TypedQuery<Education> tq = em.createQuery("SELECT e FROM Education e", Education.class);
-        int mostCourses = tq.getResultStream().mapToInt(e -> e.getCourses().size()).max().orElse(0);
+        int mostCourses = tq.getResultStream()
+                .mapToInt(e -> e.getCourses().size())
+                .max()
+                .orElse(0);
 
         List<Education> list = tq.getResultStream().filter(e -> e.getCourses().size() == mostCourses).collect(Collectors.toList());
 

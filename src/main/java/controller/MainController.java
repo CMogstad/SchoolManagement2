@@ -178,9 +178,9 @@ public class MainController {
             case "5" -> io.teacherMostCoursesUI();
             case "6" -> io.educationMostCoursesUI();
             case "7" -> io.averageEmploymentYearUI();
-            case "8" -> io.numberOfStudentsByEducationUI();
-            case "9" -> io.numberOfCoursesByEducationUI();
-            case "10" -> io.listEmploymentYearAscOrdUI();
+            case "8" -> io.listEmploymentYearAscOrdUI();
+            case "9" -> io.numberOfStudentsByEducationUI();
+            case "10" -> io.numberOfCoursesByEducationUI();
             case "0" -> statisticsLoop = false;
             default -> System.out.println("Wrong input, please choose 1-10");
         }
