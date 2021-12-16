@@ -29,7 +29,7 @@ public class ConsoleUI {
 
     public void printMainMenu() {
         System.out.print("""
-                
+                                
                 _______________________________________________
                                 School Management
                                     Main Menu
@@ -46,7 +46,7 @@ public class ConsoleUI {
 
     public void printStudentMenu() { //TODO - Implement find student by last name
         System.out.print("""
-                
+                                
                 _______________________________________________
                                 School Management
                                     Student Menu
@@ -68,7 +68,7 @@ public class ConsoleUI {
 
     public void printTeacherMenu() {
         System.out.print("""
-                
+                                
                 _______________________________________________
                                 School Management
                                    Teacher Menu
@@ -91,7 +91,7 @@ public class ConsoleUI {
 
     public void printCourseMenu() {
         System.out.print("""
-                
+                                
                 _______________________________________________
                                 School Management
                                    Course Menu
@@ -116,7 +116,7 @@ public class ConsoleUI {
 
     public void printEducationMenu() {
         System.out.print("""
-                
+                                
                 _______________________________________________
                                 School Management
                                  Education Menu
@@ -141,7 +141,7 @@ public class ConsoleUI {
 
     public void printStatisticsMenu() {
         System.out.println("""
-                
+                                
                 _______________________________________________
                                 School Management
                                  Statistics Menu
@@ -628,9 +628,86 @@ public class ConsoleUI {
 
     }
 
-    public void showAllEducationsWithoutStudentsUI() { //TODO
-        System.out.println("Not implemented yet!");
+    private void showStudentsByDateOfBirthUI() {
+        System.out.print("Please enter earliest year: ");
+        int eYear = input.readInt();
 
+        System.out.print("Please enter latest year: ");
+        int lYear = input.readInt();
+
+        List<Student> list = stc.studentsByDateOfBirthController(eYear, lYear);
+
+        printList(list);
+
+    }
+
+    private void courseHighestPointUI() {
+
+        List<Course> list = stc.courseHighestPointsController();
+
+        printList(list);
+
+    }
+
+    private void courseLowestPointUI() {
+
+        List<Course> list = stc.courseLowestPointsController();
+
+        printList(list);
+    }
+
+    private void educationMostStudentsUI() {
+
+        List<Education> list = stc.educationMostStudentsController();
+
+        printList(list);
+    }
+
+    private void teacherMostCoursesUI(){
+
+        List<Teacher> list  = stc.teacherMostCoursesController();
+
+        printList(list);
+
+    }
+    private void educationMostCoursesUI(){
+
+        List<Education> list = stc.educationMostStudentsController();
+
+        printList(list);
+
+    }
+    private void averageEmploymentYearUI(){
+
+        double avg = stc.averageEmploymentYearController();
+        System.out.println("Average employment year: " + avg);
+
+    }
+
+    private void numberOfStudentsByEducationUI(){
+
+        List<Education> list = stc.getListOfAllEducationsController();
+
+        for (Education e: list) {
+            System.out.println(e.getName() + " " + e.getStudents().size());
+        }
+
+    }
+    private void numberOfCoursesByEducationUI(){
+
+        List<Education> list = stc.getListOfAllEducationsController();
+
+        for (Education e : list) {
+
+            System.out.println(e.getName() + " " + e.getCourses().size());
+        }
+
+    }
+    private void listEmploymentYearAscOrdUI(){
+
+        List<Teacher> list = stc.listEmploymentYearAscOrdController();
+
+        printList(list);
     }
 
 }
