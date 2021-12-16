@@ -104,7 +104,8 @@ public class StudentConsoleUI {
             System.out.print("\nPlease enter ID of student: ");
             int studentId = input.readInt();
 
-            System.out.print("Please enter new date of birth of student: ");
+            System.out.print("Please enter new date of birth of student[YYMMDD]: ");
+
             String newDateOfBirth = input.readString();
 
             sc.updateStudentDateOfBirthController(studentId, newDateOfBirth);
@@ -201,12 +202,19 @@ public class StudentConsoleUI {
         System.out.println(student);
     }
 
-    public static void studentHeader() {
+    public void studentHeader() {
         System.out.println("""
                 _______________________________________________________________________________________
                   ID          FIRST NAME                 LAST NAME               DATE OF BIRTH               
                 _______________________________________________________________________________________ """);
 
     }
+
+    public void studentFooter() {
+        System.out.println("________________________________________________________________________________\n\n");
+
+    }
+
+
 
 }

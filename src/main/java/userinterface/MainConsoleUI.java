@@ -49,6 +49,16 @@ public class MainConsoleUI {
 
     }
 
+    public static void headerStudents() {
+        System.out.println("""
+                ________________________________________________________________________________________________
+                  ID          NAME                 BIRTHDAY               SALARY               DEPARTMENT
+                ________________________________________________________________________________________________ """);
+
+    }
+
+
+
     public static void showAllEmployees() {
         UI.header();
         for (Employee e : alEmployees) {

@@ -58,22 +58,24 @@ public class TeacherConsoleUI {
 
     public void updateTeacherFirstNameUI() {
 
-
+        try {
             System.out.print("\nPlease enter ID of Teacher: ");
             int teacherId = input.readInt();
 
             System.out.print("Please enter the new first name: ");
             String firstName = input.readString();
-        try {
+
             tc.updateTeacherFirstNameController(teacherId, firstName);
-        } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
-        }
             System.out.println("\nTeacher has been updated!");
             System.out.println(" ");
 
             Teacher teacher = tc.findTeacherController(teacherId);
             printTeacher(teacher);
+
+        } catch (Exception e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
+
         }
 
 
@@ -222,9 +224,7 @@ public class TeacherConsoleUI {
     }
 
 
-    public void printTeacher(Teacher teacher) {
-        System.out.println(teacher);
-    }
+  
 
     public static void teacherHeader() {
         System.out.println("""
