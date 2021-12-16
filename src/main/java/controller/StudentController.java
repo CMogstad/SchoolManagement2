@@ -13,7 +13,6 @@ import java.util.List;
 public class StudentController {
 
     StudentImpDAO sDAO;
-
     EducationDAO eDAO;
 
     public StudentController(StudentImpDAO sDAO, EducationDAO eDAO) {
@@ -113,6 +112,18 @@ public class StudentController {
 
         return sDAO.showAllStudentsWithoutEducation();
 
+    }
+
+    public void addEducationToStudentController(int eID, int sID){
+        Education education = eDAO.findEducation(eID);
+
+        Student student = sDAO.findStudent(sID);
+
+        student.addEducation(education);
+
+        sDAO.updateStudent(student);
+
+        eDAO.updateEducation(education);
     }
 
 }
