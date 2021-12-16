@@ -500,7 +500,7 @@ public class ConsoleUI {
 
         ec.removeEducationFromCourseController(eID, cID);
 
-        System.out.println("\nEducation has been removed from student!");
+        System.out.println("\nEducation has been removed from course!");
     }
 
     public void findEducationByNameUI() {
