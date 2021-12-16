@@ -1,7 +1,6 @@
 package controller;
 
-import userinterface.ConsoleInput;
-import userinterface.ConsoleUI;
+import userinterface.*;
 
 public class MainController {
 
@@ -12,14 +11,24 @@ public class MainController {
     static boolean teacherLoop = true;
     static boolean statisticsLoop = true;
 
-    ConsoleUI io;
+    MainConsoleUI io;
+    StudentConsoleUI sIO;
+    TeacherConsoleUI tIO;
+    CourseConsoleUI cIO;
+    EducationConsoleUI eIO;
+    StatisticsConsoleUI stcIO;
+
     ConsoleInput uInput;
 
-    public MainController(ConsoleUI io, ConsoleInput uInput) {
+    public MainController(MainConsoleUI io, StudentConsoleUI sIO, TeacherConsoleUI tIO, CourseConsoleUI cIO, EducationConsoleUI eIO, StatisticsConsoleUI stcIO, ConsoleInput uInput) {
         this.io = io;
+        this.sIO = sIO;
+        this.tIO = tIO;
+        this.cIO = cIO;
+        this.eIO = eIO;
+        this.stcIO = stcIO;
         this.uInput = uInput;
     }
-
 
     public void mainProgram() {
         while (mainLoop) {

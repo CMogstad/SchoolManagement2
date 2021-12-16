@@ -2,12 +2,7 @@ package application;
 
 import controller.*;
 import database.*;
-import entities.Student;
-import entities.Teacher;
-import userinterface.ConsoleInput;
-import userinterface.ConsoleUI;
-
-import java.util.List;
+import userinterface.*;
 
 public class SchoolMain {
 
@@ -20,15 +15,22 @@ public class SchoolMain {
         StatisticsDao stcDAO = new StatisticsDaoImplementation();
 
         ConsoleInput uInput = new ConsoleInput();
+
         StudentController sc = new StudentController(sDAO, eDAO);
         TeacherController tc = new TeacherController(tDAO, cDAO);
         CourseController cc = new CourseController(cDAO, tDAO, eDAO);
         EducationController ec = new EducationController(eDAO, cDAO, sDAO);
         StatisticsController stc = new StatisticsController(stcDAO);
 
-        ConsoleUI io = new ConsoleUI(uInput, sc, tc, cc, ec, stc);
+        MainConsoleUI mIO = new MainConsoleUI(uInput, sc, tc, cc, ec, stc);
 
-        MainController mc = new MainController(io, uInput);
+        StudentConsoleUI sIO = new StudentConsoleUI(sc, uInput);
+        TeacherConsoleUI tIO = new TeacherConsoleUI(tc, uInput);
+        CourseConsoleUI cIO = new CourseConsoleUI(cc, uInput);
+        EducationConsoleUI eIO = new EducationConsoleUI(ec, uInput);
+        StatisticsConsoleUI stcIO = new StatisticsConsoleUI(stc, uInput);
+
+        MainController mc = new MainController(mIO, sIO, tIO, cIO, eIO, stcIO, uInput);
         mc.mainProgram();
 
 
