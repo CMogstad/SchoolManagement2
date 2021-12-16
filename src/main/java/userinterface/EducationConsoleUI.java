@@ -225,4 +225,46 @@ public class EducationConsoleUI {
         mainUI.printList(list);
     }
 
+    public void educationHeader() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID          EDUCATION NAME           
+                _______________________________________________________________________________________ """);
+
+    }
+
+    public void educationFooter() {
+        System.out.println("________________________________________________________________________________\n\n");
+
+    }
+
+    public void printEducationList(List<Education> educations){
+
+        educationHeader();
+
+        for ( Education e : educations) {
+
+            System.out.println("  " +
+                    mainUI.fixString(6, String.valueOf(e.getId())) +
+                    mainUI.fixString(18, e.getName()));
+
+
+
+        }
+
+        educationFooter();
+
+    }
+
+    public void printEducation(Education education){
+
+        educationHeader();
+
+        System.out.println("  " +
+                mainUI.fixString(6, String.valueOf(education.getId())) +
+                mainUI.fixString(18,  education.getName()));
+
+        educationFooter();
+
+    }
 }

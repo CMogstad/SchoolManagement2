@@ -6,6 +6,7 @@ import entities.Education;
 import entities.Student;
 import entities.Teacher;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class StatisticsConsoleUI {
@@ -91,7 +92,18 @@ public class StatisticsConsoleUI {
 
         List<Education> list = stc.educationMostCoursesController();
 
-        mainUI.printList(list);
+       // mainUI.printList(list);
+
+        statisticsHeader();
+
+        for (Education e: list) { //Lägg till header med courses
+
+            System.out.println("  " +
+                    mainUI.fixString(6, String.valueOf(e.getId())) +
+                    mainUI.fixString(18,  e.getName()) +
+                    mainUI.fixString(18, String.valueOf(e.getCourses().size())));
+        }
+        statisticsFooter();
 
     }
     public void averageEmploymentYearUI(){
@@ -105,23 +117,53 @@ public class StatisticsConsoleUI {
 
         List<Education> list = stc.getListOfAllEducationsController();
 
+        statisticsHeader();
+
         for (Education e: list) {
-            System.out.println(e.getName() + " " + e.getStudents().size());
+
+            System.out.println("  " +
+                    mainUI.fixString(18, e.getName()) +
+                    mainUI.fixString(18,  String.valueOf(e.getStudents().size())));
         }
+        statisticsFooter();
+       /* alEmployees.stream().sorted(Comparator.comparing(Employee::getFirstname))
+                .forEach(e->System.out.println("  " +
+                        fixString(6, String.valueOf(e.getId())) +
+                        fixString(22, e.getFirstname() + " " + e.getLastname()) +
+                        fixString(22, e.getBirthday()) +
+                        fixString(19, String.valueOf(e.getSalary())) +
+                        fixString(18, e.getDepartment())));*/
 
     }
     public void numberOfCoursesByEducationUI(){
 
         List<Education> list = stc.getListOfAllEducationsController();
 
-        for (Education e : list) {
+        statisticsHeader();
+        for (Education e: list) {
 
-            System.out.println(e.getName() + " " + e.getCourses().size());
+            System.out.println("  " +
+                    mainUI.fixString(18, e.getName()) +
+                    mainUI.fixString(18,  String.valueOf(e.getCourses().size())));
         }
+        statisticsFooter();
 
     }
     public void listEmploymentYearAscOrdUI(){
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
         mainUI.printList(list);
+    }
+
+    public void statisticsHeader() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                          Statistics RESULTS               
+                _______________________________________________________________________________________ """);
+
+    }
+
+    public void statisticsFooter() {
+        System.out.println("________________________________________________________________________________\n\n");
+
     }
 }

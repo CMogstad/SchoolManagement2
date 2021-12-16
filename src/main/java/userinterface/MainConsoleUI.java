@@ -60,7 +60,7 @@ public class MainConsoleUI {
 
 
     public static void showAllEmployees() {
-        UI.header();
+      /*  UI.header();
         for (Employee e : alEmployees) {
             System.out.println("  " +
                     fixString(6, String.valueOf(e.getId())) +
@@ -71,7 +71,7 @@ public class MainConsoleUI {
         }
         UI.footer();
         System.out.println("\n Press any key to continue.");
-        getStringInput();
+        getStringInput();*/
 
 
     }

@@ -196,7 +196,7 @@ public class CourseConsoleUI {
 
             List<Course> courses = cc.findCourseBySubjectController(subject);
 
-            mainUI.printList(courses);
+            printListCourses(courses);
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
@@ -213,6 +213,8 @@ public class CourseConsoleUI {
 
             printCourse(course);
 
+
+
         } catch (Exception e) {
             System.out.println("ID was not found, Please insert right ID: .");
         }
@@ -222,22 +224,66 @@ public class CourseConsoleUI {
     public void showAllCoursesUI() {
         List<Course> courses = cc.showAllCoursesController();
 
-        mainUI.printList(courses);
+        //mainUI.printList(courses);
+
+        printListCourses(courses);
     }
 
     public void showAllCoursesWithoutEducationUI() {
         List<Course> courses = cc.showAllCoursesWithoutEducationController();
 
-        mainUI.printList(courses);
+       // mainUI.printList(courses);
+
+        printListCourses(courses);
     }
 
     public void showAllCoursesWithoutTeacherUI() {
         List<Course> courses = cc.showAllCoursesWithoutTeacherController();
 
-        mainUI.printList(courses);
+       // mainUI.printList(courses);
+
+        printListCourses(courses);
     }
 
     public void printCourse(Course course) {
-        System.out.println(course);
+       // System.out.println(course);
+
+            courseHeader();
+
+            System.out.println("  " +
+                    mainUI.fixString(6, String.valueOf(course.getId())) +
+                    mainUI.fixString(18,  course.getSubject()) +
+                    mainUI.fixString(18, String.valueOf(course.getCoursePoints())));
+
+            courseFooter();
+    }
+
+    public void printListCourses(List<Course> courses) {
+
+        courseHeader();
+
+        for (Course c : courses){
+
+            System.out.println("  " +
+                    mainUI.fixString(6, String.valueOf(c.getId())) +
+                    mainUI.fixString(18,  c.getSubject()) +
+                    mainUI.fixString(18, String.valueOf(c.getCoursePoints())));
+        }
+
+        courseFooter();
+
+    }
+
+    public void courseHeader() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID          SUBJECT      COURSE POINTS           
+                _______________________________________________________________________________________ """);
+
+    }
+
+    public void courseFooter() {
+        System.out.println("________________________________________________________________________________\n\n");
+
     }
 }
