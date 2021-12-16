@@ -127,7 +127,7 @@ public class MainConsoleUI {
 
         for (Course c : courses) {
             System.out.println("  " +
-                    fixString(10, String.valueOf(c.getId())) +
+                    fixString(11, String.valueOf(c.getId())) +
                     fixString(18, c.getSubject()) +
                     fixString(18, String.valueOf(c.getCoursePoints())));
         }
@@ -138,12 +138,12 @@ public class MainConsoleUI {
     public void courseHeader() {
         System.out.println("""
                 _______________________________________________________________________________________
-                  ID           SUBJECT         COURSE POINTS    
+                  ID          SUBJECT         COURSE POINTS    
                 _______________________________________________________________________________________ """);
     }
 
     public void courseFooter() {
-        System.out.println("_______________________________________________________________________________________\n\n");
+        System.out.println("________________________________________________________________________________\n\n");
     }
 
     public void studentHeader() {
@@ -198,7 +198,7 @@ public class MainConsoleUI {
     }
 
     public void educationFooter() {
-        System.out.println("_______________________________________________________________________________________\n\n");
+        System.out.println("______________________________________________________________________________________________\n\n");
     }
 
 

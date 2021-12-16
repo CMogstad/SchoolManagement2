@@ -71,38 +71,51 @@ public class StatisticsConsoleUI {
 
     public void educationMostStudentsUI() {
         List<Education> list = stc.educationMostStudentsController();
-       // mainUI.printEducationList(list);
-        mainUI.educationHeader();
+        // mainUI.printEducationList(list);
+
+        statisticsHeaderEducationMostStudents();
 
         for (Education e : list) {
+
             System.out.println("  " +
-                    mainUI.fixString(10, String.valueOf(e.getId())) +
+                    mainUI.fixString(6, String.valueOf(e.getId())) +
                     mainUI.fixString(25, e.getName()) +
-                    MainConsoleUI.fixString(18, String.valueOf(e.getStudents().size())));
+                    mainUI.fixString(18, String.valueOf(e.getStudents().size())));
 
         }
 
         mainUI.educationFooter();
-
     }
+
 
     public void teacherMostCoursesUI() {
         List<Teacher> list = stc.teacherMostCoursesController();
-        mainUI.printTeacherList(list);
+       // mainUI.printTeacherList(list);
 
-        MainConsoleUI.fixString(18, String.valueOf(e.getCourses().size())));
+        statisticsHeaderTeacherMostStudents();
+
+        for (Teacher t : list) {
+
+            System.out.println("  " +
+                    MainConsoleUI.fixString(10, String.valueOf(t.getId())) +
+                    MainConsoleUI.fixString(13, t.getFirstName()) +
+                    MainConsoleUI.fixString(20, t.getLastName()) +
+                    MainConsoleUI.fixString(18, String.valueOf(t.getCourses().size())));
+
+                     statisticsFooter();
+        }
     }
 
     public void educationMostCoursesUI() {
         List<Education> list = stc.educationMostCoursesController();
 
-        statisticsHeader();
+        statisticsHeaderEducationMostCourses();
 
         for (Education e : list) {
 
             System.out.println("  " +
-                    MainConsoleUI.fixString(6, String.valueOf(e.getId())) +
-                    MainConsoleUI.fixString(18, e.getName()) +
+                    MainConsoleUI.fixString(7, String.valueOf(e.getId())) +
+                    MainConsoleUI.fixString(22, e.getName()) +
                     MainConsoleUI.fixString(18, String.valueOf(e.getCourses().size())));
         }
 
@@ -123,12 +136,12 @@ public class StatisticsConsoleUI {
     public void numberOfStudentsByEducationUI() {
         List<Education> list = stc.getListOfAllEducationsController();
 
-        statisticsHeader();
+        statisticsHeaderEducationMostStudents();
 
         for (Education e : list) {
 
-            System.out.println("  " +
-                    MainConsoleUI.fixString(18, e.getName()) +
+            System.out.println("  " + MainConsoleUI.fixString(8, String.valueOf(e.getId())) +
+                    MainConsoleUI.fixString(20, e.getName()) +
                     MainConsoleUI.fixString(18, String.valueOf(e.getStudents().size())));
         }
         statisticsFooter();
@@ -137,10 +150,11 @@ public class StatisticsConsoleUI {
     public void numberOfCoursesByEducationUI() {
         List<Education> list = stc.getListOfAllEducationsController();
 
-        statisticsHeader();
+        statisticsHeaderEducationMostCourses();
+
         for (Education e : list) {
 
-            System.out.println("  " +
+            System.out.println("  " + MainConsoleUI.fixString(8, String.valueOf(e.getId())) +
                     MainConsoleUI.fixString(18, e.getName()) +
                     MainConsoleUI.fixString(18, String.valueOf(e.getCourses().size())));
         }
@@ -181,4 +195,26 @@ public class StatisticsConsoleUI {
                 _______________________________________________________________________________________ """);
     }
 
+    public void statisticsHeaderEducationMostCourses() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID        EDUCATION        NUMBER OF COURSES               
+                _______________________________________________________________________________________ """);
+    }
+
+    public void statisticsHeaderEducationMostStudents() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID        EDUCATION        NUMBER OF STUDENTS               
+                _______________________________________________________________________________________ """);
+    }
+
+
+
+    public void statisticsHeaderTeacherMostStudents(){
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID        FIRST NAME       LAST NAME      NUMBER OF STUDENTS               
+                _______________________________________________________________________________________ """);
+    }
 }

@@ -73,7 +73,7 @@ public class TeacherConsoleUI {
             mainUI.printTeacher(teacher);
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -95,7 +95,7 @@ public class TeacherConsoleUI {
             Teacher teacher = tc.findTeacherController(teacherId);
             mainUI.printTeacher(teacher);
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -111,7 +111,7 @@ public class TeacherConsoleUI {
             System.out.println("\nThe employment year has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -126,7 +126,7 @@ public class TeacherConsoleUI {
             tc.addCourseToTeacherController(courseId, teacherId);
             System.out.println("\nCourse has been added to teacher!");
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -142,7 +142,7 @@ public class TeacherConsoleUI {
             System.out.println("\nCourse has been removed from teacher!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -155,7 +155,7 @@ public class TeacherConsoleUI {
             System.out.println("\nThe teacher has been removed!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -169,7 +169,7 @@ public class TeacherConsoleUI {
             mainUI.printTeacherList(teachers);
 
         } catch (Exception e) {
-            System.out.print("Last Name was not found, Please insert other name: ");
+            System.out.print("Last Name was not found, Please insert other name.");
         }
     }
 
@@ -197,7 +197,7 @@ public class TeacherConsoleUI {
             mainUI.printListCourses(courses);
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -221,7 +221,7 @@ public class TeacherConsoleUI {
             }
 
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: ");
+            System.out.println("ID was not found, Please insert right ID.");
         }
     }
 

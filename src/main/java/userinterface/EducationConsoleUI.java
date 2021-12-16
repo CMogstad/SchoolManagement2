@@ -58,7 +58,7 @@ public class EducationConsoleUI {
             System.out.println("\nEducation has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -75,7 +75,7 @@ public class EducationConsoleUI {
             System.out.println("\nEducation and Course has been joined!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -91,7 +91,7 @@ public class EducationConsoleUI {
             System.out.println("Education and student has been joined!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -104,7 +104,7 @@ public class EducationConsoleUI {
             System.out.println("\nEducation has been removed! ");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -120,7 +120,7 @@ public class EducationConsoleUI {
             System.out.println("\nEducation has been removed from student!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -136,7 +136,7 @@ public class EducationConsoleUI {
             System.out.println("\nEducation has been removed from course!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -148,7 +148,7 @@ public class EducationConsoleUI {
             mainUI.printEducationList(ec.findEducationByNameController(name));
 
         } catch (Exception e) {
-            System.out.print("Name was not found, please try again: ");
+            System.out.print("Name was not found, please try again.");
         }
     }
 
@@ -175,7 +175,7 @@ public class EducationConsoleUI {
             mainUI.printStudentList(ec.listEducationStudentsController(id));
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 

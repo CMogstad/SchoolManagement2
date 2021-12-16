@@ -75,7 +75,7 @@ public class StudentConsoleUI {
             System.out.println("\nStudent has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID:");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -91,7 +91,7 @@ public class StudentConsoleUI {
             System.out.println("\nStudent has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -108,7 +108,7 @@ public class StudentConsoleUI {
             System.out.println("\nStudent has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -121,7 +121,7 @@ public class StudentConsoleUI {
             System.out.println("\nStudent has been removed!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -135,7 +135,7 @@ public class StudentConsoleUI {
             mUI.printStudentList(students);
 
         } catch (Exception e) {
-            System.out.print("Last name was not found, please insert other name: ");
+            System.out.print("Last name was not found, please insert other name.");
         }
     }
 
@@ -161,7 +161,7 @@ public class StudentConsoleUI {
             System.out.println("Education and student has been joined!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -176,7 +176,7 @@ public class StudentConsoleUI {
             sc.removeStudentFromEducationController(eID, sID);
             System.out.println("\nEducation has been removed from student!");
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: ");
+            System.out.println("ID was not found, Please insert right ID.");
         }
     }
 

@@ -70,7 +70,7 @@ public class CourseConsoleUI {
             System.out.println("\nCourse subject has been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: .");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -87,7 +87,7 @@ public class CourseConsoleUI {
             System.out.println("Course points have been updated!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -103,7 +103,7 @@ public class CourseConsoleUI {
             System.out.println("\nEducation and Course has been joined! ");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -119,7 +119,7 @@ public class CourseConsoleUI {
             System.out.println("\nCourse has been added to teacher!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -135,7 +135,7 @@ public class CourseConsoleUI {
             System.out.println("\nEducation has been removed from course!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -151,7 +151,7 @@ public class CourseConsoleUI {
             System.out.println("\nCourse has been removed from teacher!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -164,7 +164,7 @@ public class CourseConsoleUI {
             System.out.println("\nThe course has been removed!");
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -177,7 +177,7 @@ public class CourseConsoleUI {
 
             mainUI.printListCourses(courses);
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: .");
+            System.out.println("ID was not found, Please insert right ID.");
         }
     }
 
@@ -192,7 +192,7 @@ public class CourseConsoleUI {
             mainUI.printCourse(course);
 
         } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID: ");
+            System.out.print("ID was not found, Please insert right ID.");
         }
     }
 
@@ -234,7 +234,7 @@ public class CourseConsoleUI {
             }
 
         } catch (Exception e) {
-            System.out.println("ID was not found, Please insert right ID: ");
+            System.out.println("ID was not found, Please insert right ID.");
         }
     }
 
