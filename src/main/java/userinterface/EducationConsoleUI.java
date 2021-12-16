@@ -4,6 +4,7 @@ import controller.EducationController;
 import entities.Course;
 import entities.Education;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class EducationConsoleUI {
@@ -45,59 +46,87 @@ public class EducationConsoleUI {
     }
 
     public void updateEducationNameUI() {
-        System.out.print("\nPlease enter ID of education: ");
-        int id = input.readInt();
 
-        System.out.print("Please enter new first name of Education: ");
-        String newName = input.readString();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int id = input.readInt();
 
-        ec.updateEducationController(id, newName);
+            System.out.print("Please enter new first name of Education: ");
+            String newName = input.readString();
+
+
+            ec.updateEducationController(id, newName);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation has been updated!");
     }
 
     public void addEducationToCourseUI() {
-        System.out.print("\nPlease enter ID of education: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of course: ");
-        int cID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int eID = input.readInt();
 
-        ec.addEducationToCourseController(eID, cID);
+            System.out.print("Please enter ID of course: ");
+            int cID = input.readInt();
+
+            ec.addEducationToCourseController(eID, cID);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation and Course has been joined! ");
     }
 
     public void addEducationToStudentUI() {
 
-        System.out.print("\nPlease enter ID of education: ");
-        int eID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int eID = input.readInt();
 
-        System.out.print("Please enter ID of student: ");
-        int sID = input.readInt();
+            System.out.print("Please enter ID of student: ");
+            int sID = input.readInt();
 
-        ec.addEducationToStudentController(eID, sID);
+            ec.addEducationToStudentController(eID, sID);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("Education and student has been joined! ");
     }
 
     public void removeEducationUI() {
-        System.out.print("\nPlease enter ID of the education you want to remove: ");
-        int id = input.readInt();
 
-        ec.removeEducationByIDController(id);
+        try {
+            System.out.print("\nPlease enter ID of the education you want to remove: ");
+            int id = input.readInt();
+
+            ec.removeEducationByIDController(id);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation has been removed! ");
     }
 
     public void removeEducationFromStudentUI() {
-        System.out.print("\nPlease enter ID of education you want to remove: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of student: ");
-        int sID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education you want to remove: ");
+            int eID = input.readInt();
 
-        ec.removeEducationFromStudentController(eID, sID);
+            System.out.print("Please enter ID of student: ");
+            int sID = input.readInt();
+
+            ec.removeEducationFromStudentController(eID, sID);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         //sc.removeStudentFromEducationController(eID, sID);
 
@@ -105,22 +134,33 @@ public class EducationConsoleUI {
     }
 
     public void removeEducationFromCourseUI() {
-        System.out.print("\nPlease enter ID of education you want to remove: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of course: ");
-        int cID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education you want to remove: ");
+            int eID = input.readInt();
 
-        ec.removeEducationFromCourseController(eID, cID);
+            System.out.print("Please enter ID of course: ");
+            int cID = input.readInt();
+
+            ec.removeEducationFromCourseController(eID, cID);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation has been removed from course!");
     }
 
     public void findEducationByNameUI() {
-        System.out.println("\nPlease enter name of education: ");
-        String name = input.readString();
 
-        mainUI.printList(ec.findEducationByNameController(name));
+        try {
+            System.out.println("\nPlease enter name of education: ");
+            String name = input.readString();
+
+            mainUI.printList(ec.findEducationByNameController(name));
+        } catch (NoResultException e) {
+            System.out.println("Name was not found, please try again: .");
+        }
     }
 
     public void showAllEducationsUI() {
@@ -139,10 +179,15 @@ public class EducationConsoleUI {
     }
 
     public void listEducationStudentsUI() {
-        System.out.print("\nPlease enter ID of education: ");
-        int id = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int id = input.readInt();
 
-        mainUI.printList(ec.listEducationStudentsController(id));
+
+            mainUI.printList(ec.listEducationStudentsController(id));
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
     }
 
     public void listEducationWithoutStudentsUI() {

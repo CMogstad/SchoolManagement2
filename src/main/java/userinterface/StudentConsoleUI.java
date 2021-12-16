@@ -3,6 +3,7 @@ package userinterface;
 import controller.StudentController;
 import entities.Student;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class StudentConsoleUI {
@@ -91,12 +92,18 @@ public class StudentConsoleUI {
     }
 
     public void removeStudentUI() {
-        System.out.print("\nPlease enter ID of student: ");
-        int studentId = input.readInt();
 
-        sc.deleteStudentByID(studentId);
+        try {
+            System.out.print("\nPlease enter ID of student: ");
+            int studentId = input.readInt();
 
-        System.out.println("\nStudent has been removed!");
+            sc.deleteStudentByID(studentId);
+
+            System.out.println("\nStudent has been removed!");
+        }
+     catch (StringIndexOutOfBoundsException e) {
+        System.out.println("ID was not found, Please insert right ID: .");
+    }
     }
 
     public void findStudentByLastNameUI() {
@@ -121,25 +128,37 @@ public class StudentConsoleUI {
     }
 
     public void addEducationToStudentUI() {
-        System.out.print("\nPlease enter ID of education: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of student: ");
-        int sID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int eID = input.readInt();
 
-        sc.addEducationToStudentController(eID, sID);
+            System.out.print("Please enter ID of student: ");
+            int sID = input.readInt();
 
+            sc.addEducationToStudentController(eID, sID);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
         System.out.println("Education and student has been joined! ");
+
     }
 
     public void removeEducationFromStudentUI() {
-        System.out.print("\nPlease enter ID of education you want to remove: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of student: ");
-        int sID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education you want to remove: ");
+            int eID = input.readInt();
 
-        sc.removeStudentFromEducationController(eID, sID);
+            System.out.print("Please enter ID of student: ");
+            int sID = input.readInt();
+
+            sc.removeStudentFromEducationController(eID, sID);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation has been removed from student!");
     }

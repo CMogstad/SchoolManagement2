@@ -4,6 +4,7 @@ import controller.CourseController;
 import database.*;
 import entities.Course;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class CourseConsoleUI {
@@ -56,110 +57,160 @@ public class CourseConsoleUI {
 
     public void updateCourseSubjectUI() {
 
-        System.out.println("Please enter ID of course: ");
+        try {
+            System.out.println("Please enter ID of course: ");
 
-        int id = input.readInt();
+            int id = input.readInt();
 
-        System.out.println("Please enter new subject: ");
+            System.out.println("Please enter new subject: ");
 
-        String subject = input.readString();
+            String subject = input.readString();
 
-        cc.updateCourseSubjectController(id, subject);
+            cc.updateCourseSubjectController(id, subject);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("Course subject has been updated!");
 
     }
 
     public void updateCoursePointsUI() {
-        System.out.println("Please enter ID of Course: ");
 
-        int id = input.readInt();
+        try {
+            System.out.println("Please enter ID of Course: ");
 
-        System.out.println("Please enter new course points: ");
+            int id = input.readInt();
 
-        int coursePoints = input.readInt();
+            System.out.println("Please enter new course points: ");
 
-        cc.updateCoursePointsController(id, coursePoints);
+            int coursePoints = input.readInt();
+
+            cc.updateCoursePointsController(id, coursePoints);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("Course points have been updated!");
 
     }
 
     public void addEducationToCourseUI() {
-        System.out.print("\nPlease enter ID of education: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of course: ");
-        int cID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education: ");
+            int eID = input.readInt();
 
-        cc.addCourseToEducationController(cID, eID);
+            System.out.print("Please enter ID of course: ");
+            int cID = input.readInt();
+
+            cc.addCourseToEducationController(cID, eID);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation and Course has been joined! ");
     }
 
     public void addCourseToTeacherUI() {
-        System.out.print("\nPlease enter ID of Course: ");
-        int courseId = input.readInt();
 
-        System.out.print("Please enter ID of Teacher: ");
-        int teacherId = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of Course: ");
+            int courseId = input.readInt();
 
-        cc.addCourseToTeacherController(courseId, teacherId);
+            System.out.print("Please enter ID of Teacher: ");
+            int teacherId = input.readInt();
+
+            cc.addCourseToTeacherController(courseId, teacherId);
+        }
+        catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nCourse has been added to teacher!");
     }
 
     public void removeEducationFromCourseUI() {
-        System.out.print("\nPlease enter ID of education you want to remove: ");
-        int eID = input.readInt();
 
-        System.out.print("Please enter ID of course: ");
-        int cID = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of education you want to remove: ");
+            int eID = input.readInt();
 
-        cc.removeCourseFromEducationController(cID, eID);
+            System.out.print("Please enter ID of course: ");
+            int cID = input.readInt();
+
+            cc.removeCourseFromEducationController(cID, eID);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nEducation has been removed from course!");
     }
 
     public void removeCourseFromTeacherUI() {
-        System.out.print("\nPlease enter ID of Course: ");
-        int courseId = input.readInt();
 
-        System.out.print("Please enter ID of Teacher: ");
-        int teacherId = input.readInt();
+        try {
+            System.out.print("\nPlease enter ID of Course: ");
+            int courseId = input.readInt();
 
-        cc.removeCourseFromTeacherController(courseId, teacherId);
+            System.out.print("Please enter ID of Teacher: ");
+            int teacherId = input.readInt();
+
+            cc.removeCourseFromTeacherController(courseId, teacherId);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nCourse has been removed from teacher!");
     }
 
 
     public void removeCourseByIdUI() {
-        System.out.print("\nPlease enter ID of course: ");
-        int courseId = input.readInt();
 
-        cc.removeCourseById(courseId);
+        try {
+            System.out.print("\nPlease enter ID of course: ");
+            int courseId = input.readInt();
+
+            cc.removeCourseById(courseId);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
 
         System.out.println("\nThe course has been removed!");
     }
 
     public void findCourseBySubjectUI() {
-        System.out.print("\nPlease enter subject of course: ");
-        String subject = input.readString();
 
-        List<Course> courses = cc.findCourseBySubjectController(subject);
+        try {
+            System.out.print("\nPlease enter subject of course: ");
+            String subject = input.readString();
 
-        mainUI.printList(courses);
+            List<Course> courses = cc.findCourseBySubjectController(subject);
+
+            mainUI.printList(courses);
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
     }
+
 
     public void findCourseByIdUI() {
-        System.out.print("\nPlease enter ID of course: ");
-        int courseId = input.readInt();
 
-        Course course = cc.findCourseController(courseId);
+        try {
+            System.out.print("\nPlease enter ID of course: ");
+            int courseId = input.readInt();
 
-        printCourse(course);
+            Course course = cc.findCourseController(courseId);
+
+            printCourse(course);
+
+        } catch (NoResultException e) {
+            System.out.println("ID was not found, Please insert right ID: .");
+        }
     }
+
 
     public void showAllCoursesUI() {
         List<Course> courses = cc.showAllCoursesController();

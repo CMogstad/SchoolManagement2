@@ -67,7 +67,7 @@ public class TeacherConsoleUI {
         System.out.println(" ");
 
         Teacher teacher = tc.findTeacherController(teacherId);
-        printTeacher(teacher);
+        mainUI.printTeacher(teacher);
     }
 
     public void updateTeacherLastNameUI() {
@@ -83,7 +83,7 @@ public class TeacherConsoleUI {
         System.out.println(" ");
 
         Teacher teacher = tc.findTeacherController(teacherId);
-        printTeacher(teacher);
+        mainUI.printTeacher(teacher);
     }
     public void updateEmploymentYearUI() {
         System.out.print("\nPlease enter ID of Teacher: ");
@@ -153,13 +153,8 @@ public class TeacherConsoleUI {
         List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
         Teacher teacher = tc.findTeacherController(teacherId);
 
-        printTeacher(teacher);
+        mainUI.printTeacher(teacher);
         mainUI.printList(courses);
-    }
-
-
-    public void printTeacher(Teacher teacher) {
-        System.out.println(teacher);
     }
 
 }
