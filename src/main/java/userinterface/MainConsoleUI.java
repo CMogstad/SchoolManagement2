@@ -269,6 +269,10 @@ public class MainConsoleUI {
         tc.updateTeacherFirstNameController(teacherId, firstName);
 
         System.out.println("\nTeacher has been updated!");
+        System.out.println(" ");
+
+        Teacher teacher = tc.findTeacherController(teacherId);
+        printTeacher(teacher);
     }
 
     public void updateTeacherLastNameUI() {
@@ -281,13 +285,17 @@ public class MainConsoleUI {
         tc.updateTeacherLastNameController(teacherId, lastName);
 
         System.out.println("\nLast name has been updated!");
+        System.out.println(" ");
+
+        Teacher teacher = tc.findTeacherController(teacherId);
+        printTeacher(teacher);
     }
 
     public void updateEmploymentYearUI() {
         System.out.print("\nPlease enter ID of Teacher: ");
         int teacherId = input.readInt();
 
-        System.out.print("Please enter new employment year: ");
+        System.out.print("Please enter new employment year [YYYY]: ");
         int employmentYear = input.readInt();
 
         tc.updateTeacherEmploymentYearController(teacherId, employmentYear);
@@ -354,7 +362,9 @@ public class MainConsoleUI {
         int teacherId = input.readInt();
 
         List<Course> courses = tc.showCoursesOfTeacherController(teacherId);
+        Teacher teacher = tc.findTeacherController(teacherId);
 
+        printTeacher(teacher);
         printList(courses);
     }
 
@@ -489,7 +499,7 @@ public class MainConsoleUI {
 
         ec.removeEducationFromCourseController(eID, cID);
 
-        System.out.println("\nEducation has been removed from student!");
+        System.out.println("\nEducation has been removed from course!");
     }
 
     public void findEducationByNameUI() {
@@ -568,7 +578,7 @@ public class MainConsoleUI {
         System.out.print("Please enter last name: ");
         String lastName = input.readString();
 
-        System.out.print("Please enter employment Year: ");
+        System.out.print("Please enter employment Year [YYYY]: ");
         int employmentYear = input.readInt();
 
         tc.createTeacher(firstName, lastName, employmentYear);
