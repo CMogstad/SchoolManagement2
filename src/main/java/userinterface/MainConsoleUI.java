@@ -161,4 +161,11 @@ public class MainConsoleUI {
 
         educationFooter();
     }
+
+    public void godJulOchGottNyttÅr() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                                       VI ÖNSKAR GOD JUL OCH GOTT NYTT ÅR !!!!!!       
+                _______________________________________________________________________________________ """);
+    }
 }

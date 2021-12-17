@@ -74,7 +74,7 @@ public class MainController {
                     statisticsManagementController();
                 }
             }
-            case "0" -> mainLoop = false;
+            case "0" -> {mIO.godJulOchGottNyttÅr(); mainLoop = false;}
             default -> System.out.println("Wrong input, please choose 1-5");
         }
     }
