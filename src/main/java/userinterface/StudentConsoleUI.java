@@ -3,7 +3,6 @@ package userinterface;
 import controller.StudentController;
 import entities.Education;
 import entities.Student;
-import entities.Teacher;
 
 import java.util.List;
 
@@ -188,7 +187,8 @@ public class StudentConsoleUI {
             Student student = sc.findStudentController(sID);
 
             System.out.println("""
-                    \n________________________________________________________
+                                        
+                    ________________________________________________________
                                   DETAILED STUDENT INFORMATION          
                     ________________________________________________________ """);
             System.out.println("Name: " + student.getFirstName() + " " + student.getLastName());

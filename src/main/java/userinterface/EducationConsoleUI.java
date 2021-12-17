@@ -4,7 +4,6 @@ import controller.EducationController;
 import entities.Course;
 import entities.Education;
 import entities.Student;
-import entities.Teacher;
 
 import java.util.List;
 
@@ -209,8 +208,9 @@ public class EducationConsoleUI {
             Education education = ec.findEducationController(eID);
 
             System.out.println("""
-                    \n________________________________________________________
-                                  DETAILED EDUCATION INFORMATION          
+                                        
+                    ________________________________________________________
+                                  DETAILED EDUCATION INFORMATION    
                     ________________________________________________________ """);
             System.out.println("Name: " + education.getName());
             System.out.println("Courses: ");

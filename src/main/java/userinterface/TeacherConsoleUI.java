@@ -2,8 +2,6 @@ package userinterface;
 
 import controller.TeacherController;
 import entities.Course;
-import entities.Education;
-import entities.Student;
 import entities.Teacher;
 
 import java.util.List;
@@ -210,7 +208,8 @@ public class TeacherConsoleUI {
             Teacher teacher = tc.findTeacherController(tID);
 
             System.out.println("""
-                    \n________________________________________________________
+                                        
+                    ________________________________________________________
                                   DETAILED TEACHER INFORMATION          
                     ________________________________________________________ """);
             System.out.println("Name: " + teacher.getFirstName() + " " + teacher.getLastName());

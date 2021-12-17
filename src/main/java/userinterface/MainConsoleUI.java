@@ -26,10 +26,6 @@ public class MainConsoleUI {
                 Please choose: """);
     }
 
-    public void printList(List list) {
-        list.forEach(System.out::println);
-    }
-
     public static String fixString(int wantedSize, String stringToFix) {
         if (stringToFix.length() < wantedSize) {
             while (stringToFix.length() < wantedSize) {
@@ -38,39 +34,6 @@ public class MainConsoleUI {
             return stringToFix + "  ";
         } else
             return stringToFix.substring(0, wantedSize) + "  ";
-    }
-
-    public static void header() {
-        System.out.println("""
-                ________________________________________________________________________________________________
-                  ID          NAME                 BIRTHDAY               SALARY               DEPARTMENT
-                ________________________________________________________________________________________________ """);
-    }
-
-    public static void footer() {
-        System.out.println("________________________________________________________________________________________________\n\n");
-    }
-
-    public static void headerStudents() {
-        System.out.println("""
-                ________________________________________________________________________________________________
-                  ID          NAME                 BIRTHDAY               SALARY               DEPARTMENT
-                ________________________________________________________________________________________________ """);
-    }
-
-    public static void showAllEmployees() {
-      /*  UI.header();
-        for (Employee e : alEmployees) {
-            System.out.println("  " +
-                    fixString(6, String.valueOf(e.getId())) +
-                    fixString(22, e.getFirstname() + " " + e.getLastname()) +
-                    fixString(22, e.getBirthday()) +
-                    fixString(19, String.valueOf(e.getSalary())) +
-                    fixString(18, e.getDepartment()));
-        }
-        UI.footer();
-        System.out.println("\n Press any key to continue.");
-        getStringInput();*/
     }
 
     public void teacherHeader() {
@@ -88,7 +51,6 @@ public class MainConsoleUI {
         teacherHeader();
 
         for (Teacher t : teachers) {
-
             System.out.println("  " +
                     fixString(12, String.valueOf(t.getId())) +
                     fixString(23, t.getFirstName()) +
@@ -143,7 +105,7 @@ public class MainConsoleUI {
     }
 
     public void courseFooter() {
-        System.out.println("________________________________________________________________________________\n\n");
+        System.out.println("_______________________________________________________________________________________\n\n");
     }
 
     public void studentHeader() {
@@ -162,33 +124,15 @@ public class MainConsoleUI {
         studentHeader();
 
         for (Student s : students) {
-
-
-
             System.out.println("  " +
                     fixString(10, String.valueOf(s.getId())) +
                     fixString(25, s.getFirstName()) +
-                   fixString(24, s.getLastName()) +
+                    fixString(24, s.getLastName()) +
                     fixString(18, String.valueOf(s.getDateOfBirth())));
-
-
         }
 
         studentFooter();
     }
-
-    public void printStudent(Student student) {
-        studentHeader();
-
-        System.out.println("  " +
-                fixString(10, String.valueOf(student.getId())) +
-                fixString(23, student.getFirstName()) +
-                fixString(24, student.getLastName()) +
-                fixString(18, String.valueOf(student.getDateOfBirth())));
-
-        studentFooter();
-    }
-
 
     public void educationHeader() {
         System.out.println("""
@@ -208,28 +152,13 @@ public class MainConsoleUI {
         for (Education e : educations) {
 
 
-
             System.out.println("  " +
                     fixString(10, String.valueOf(e.getId())) +
                     fixString(25, e.getName()));
-
 
 
         }
 
         educationFooter();
     }
-
-    public void printEducation(Education education) {
-        educationHeader();
-
-        System.out.println("  " +
-                fixString(10, String.valueOf(education.getId())) +
-                fixString(23, education.getName()));
-
-        educationFooter();
-    }
-
-
-
 }

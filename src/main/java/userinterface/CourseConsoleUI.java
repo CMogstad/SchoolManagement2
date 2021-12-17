@@ -3,7 +3,6 @@ package userinterface;
 import controller.CourseController;
 import entities.Course;
 import entities.Education;
-import entities.Student;
 import entities.Teacher;
 
 import java.util.List;
@@ -59,11 +58,10 @@ public class CourseConsoleUI {
 
     public void updateCourseSubjectUI() {
         try {
-            System.out.println("\nPlease enter ID of course: ");
-
+            System.out.print("\nPlease enter ID of course: ");
             int id = input.readInt();
 
-            System.out.println("Please enter new subject: ");
+            System.out.print("Please enter new subject: ");
             String subject = input.readString();
 
             cc.updateCourseSubjectController(id, subject);
@@ -80,7 +78,7 @@ public class CourseConsoleUI {
 
             int id = input.readInt();
 
-            System.out.println("Please enter new course points: ");
+            System.out.print("Please enter new course points: ");
             int coursePoints = input.readInt();
 
             cc.updateCoursePointsController(id, coursePoints);
@@ -181,21 +179,6 @@ public class CourseConsoleUI {
         }
     }
 
-
-    public void findCourseByIdUI() {
-        try {
-            System.out.print("\nPlease enter ID of course: ");
-            int courseId = input.readInt();
-
-            Course course = cc.findCourseController(courseId);
-
-            mainUI.printCourse(course);
-
-        } catch (Exception e) {
-            System.out.print("ID was not found, Please insert right ID.");
-        }
-    }
-
     public void showAllCoursesUI() {
         List<Course> courses = cc.showAllCoursesController();
         mainUI.printListCourses(courses);
@@ -216,10 +199,11 @@ public class CourseConsoleUI {
             System.out.print("\nPlease enter ID of course: ");
             int cID = input.readInt();
 
-           Course course = cc.findCourseController(cID);
+            Course course = cc.findCourseController(cID);
 
             System.out.println("""
-                    \n________________________________________________________
+                                        
+                    ________________________________________________________
                                   DETAILED COURSE INFORMATION          
                     ________________________________________________________ """);
             System.out.println("Subject: " + course.getSubject());
@@ -237,6 +221,4 @@ public class CourseConsoleUI {
             System.out.println("ID was not found, Please insert right ID.");
         }
     }
-
-
 }

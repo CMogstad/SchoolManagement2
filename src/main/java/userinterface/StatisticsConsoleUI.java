@@ -77,12 +77,12 @@ public class StatisticsConsoleUI {
         for (Education e : list) {
 
             System.out.println("  " +
-                    mainUI.fixString(6, String.valueOf(e.getId())) +
-                    mainUI.fixString(25, e.getName()) +
-                    mainUI.fixString(18, String.valueOf(e.getStudents().size())));
+                    MainConsoleUI.fixString(6, String.valueOf(e.getId())) +
+                    MainConsoleUI.fixString(25, e.getName()) +
+                    MainConsoleUI.fixString(18, String.valueOf(e.getStudents().size())));
         }
 
-        mainUI.educationFooter();
+        statisticsFooter();
     }
 
 
@@ -159,16 +159,7 @@ public class StatisticsConsoleUI {
 
     public void listEmploymentYearAscOrdUI() {
         List<Teacher> list = stc.listEmploymentYearAscOrdController();
-
         mainUI.printTeacherList(list);
-
-    }
-
-    public void statisticsHeader() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                          STATISTICS RESULTS               
-                _______________________________________________________________________________________ """);
     }
 
     public void statisticsFooter() {
@@ -179,14 +170,6 @@ public class StatisticsConsoleUI {
         System.out.println("""
                 _______________________________________________________________________________________
                           AVERAGE EMPLOYMENT YEAR           
-                _______________________________________________________________________________________ """);
-    }
-
-
-    public void educationHeaderWithSize() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                  ID          NAME OF EDUCATION           
                 _______________________________________________________________________________________ """);
     }
 
@@ -201,13 +184,6 @@ public class StatisticsConsoleUI {
         System.out.println("""
                 _______________________________________________________________________________________
                   ID        EDUCATION        NUMBER OF STUDENTS               
-                _______________________________________________________________________________________ """);
-    }
-
-    public void statisticsHeaderTeacherMostStudents() {
-        System.out.println("""
-                _______________________________________________________________________________________
-                  ID        FIRST NAME       LAST NAME      NUMBER OF STUDENTS               
                 _______________________________________________________________________________________ """);
     }
 
