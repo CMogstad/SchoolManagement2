@@ -4,9 +4,11 @@ import entities.Course;
 import entities.Education;
 import entities.Student;
 
+import javax.persistence.CacheRetrieveMode;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.HashMap;
 import java.util.List;
 
 public class EducationDaoImplementation implements EducationDAO {
@@ -55,7 +57,10 @@ public class EducationDaoImplementation implements EducationDAO {
     public Education findEducation(int id) {
         EntityManager em = emf.createEntityManager();
 
-        Education education = em.find(Education.class, id);
+        HashMap<String, Object> props = new HashMap<String, Object>();
+        props.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+
+        Education education = em.find(Education.class, id, props);
 
         em.close();
 

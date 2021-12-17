@@ -3,10 +3,8 @@ package database;
 import entities.Education;
 import entities.Student;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 
 public class StudentImpDAO implements StudentDAO {
@@ -69,7 +67,10 @@ public class StudentImpDAO implements StudentDAO {
     public Student findStudent(int id) {
         EntityManager em = emf.createEntityManager();
 
-        Student student = em.find(Student.class, id);
+        HashMap<String, Object> props = new HashMap<String, Object>();
+        props.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+
+        Student student = em.find(Student.class, id, props);
 
         em.close();
         return student;

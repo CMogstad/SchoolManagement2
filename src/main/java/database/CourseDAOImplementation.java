@@ -5,6 +5,7 @@ import entities.Education;
 import entities.Teacher;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 
 public class CourseDAOImplementation implements CourseDAO {
@@ -105,7 +106,11 @@ public class CourseDAOImplementation implements CourseDAO {
     public List<Teacher> listCourseTeachers(int id) {
         EntityManager em = emf.createEntityManager();
 
-        Course course = em.find(Course.class, id);
+
+        HashMap<String, Object> props = new HashMap<String, Object>();
+        props.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+
+        Course course = em.find(Course.class, id, props);
 
         em.close();
 

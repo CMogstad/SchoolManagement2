@@ -202,6 +202,4 @@ public class StudentConsoleUI {
             System.out.println("ID was not found, Please insert right ID: ");
         }
     }
-
-
 }
