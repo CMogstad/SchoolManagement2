@@ -71,7 +71,6 @@ public class StatisticsConsoleUI {
 
     public void educationMostStudentsUI() {
         List<Education> list = stc.educationMostStudentsController();
-        // mainUI.printEducationList(list);
 
         statisticsHeaderEducationMostStudents();
 
@@ -81,7 +80,6 @@ public class StatisticsConsoleUI {
                     mainUI.fixString(6, String.valueOf(e.getId())) +
                     mainUI.fixString(25, e.getName()) +
                     mainUI.fixString(18, String.valueOf(e.getStudents().size())));
-
         }
 
         mainUI.educationFooter();
@@ -90,9 +88,8 @@ public class StatisticsConsoleUI {
 
     public void teacherMostCoursesUI() {
         List<Teacher> list = stc.teacherMostCoursesController();
-       // mainUI.printTeacherList(list);
 
-        statisticsHeaderTeacherMostStudents();
+        statisticsHeaderTeacherMostCourses();
 
         for (Teacher t : list) {
 
@@ -102,7 +99,7 @@ public class StatisticsConsoleUI {
                     MainConsoleUI.fixString(20, t.getLastName()) +
                     MainConsoleUI.fixString(18, String.valueOf(t.getCourses().size())));
 
-                     statisticsFooter();
+            statisticsFooter();
         }
     }
 
@@ -126,11 +123,10 @@ public class StatisticsConsoleUI {
         double avg = stc.averageEmploymentYearController();
 
         statisticsHeaderAverage();
-        System.out.println("  " +MainConsoleUI.fixString(8, "") +
-                        MainConsoleUI.fixString(18, String.valueOf(avg)));
+        System.out.println("  " + MainConsoleUI.fixString(8, "") +
+                MainConsoleUI.fixString(18, String.valueOf(avg)));
 
-
-                statisticsFooter();
+        statisticsFooter();
     }
 
     public void numberOfStudentsByEducationUI() {
@@ -153,7 +149,6 @@ public class StatisticsConsoleUI {
         statisticsHeaderEducationMostCourses();
 
         for (Education e : list) {
-
             System.out.println("  " + MainConsoleUI.fixString(8, String.valueOf(e.getId())) +
                     MainConsoleUI.fixString(18, e.getName()) +
                     MainConsoleUI.fixString(18, String.valueOf(e.getCourses().size())));
@@ -209,12 +204,17 @@ public class StatisticsConsoleUI {
                 _______________________________________________________________________________________ """);
     }
 
-
-
-    public void statisticsHeaderTeacherMostStudents(){
+    public void statisticsHeaderTeacherMostStudents() {
         System.out.println("""
                 _______________________________________________________________________________________
                   ID        FIRST NAME       LAST NAME      NUMBER OF STUDENTS               
+                _______________________________________________________________________________________ """);
+    }
+
+    public void statisticsHeaderTeacherMostCourses() {
+        System.out.println("""
+                _______________________________________________________________________________________
+                  ID        FIRST NAME       LAST NAME      NUMBER OF COURSES               
                 _______________________________________________________________________________________ """);
     }
 }
